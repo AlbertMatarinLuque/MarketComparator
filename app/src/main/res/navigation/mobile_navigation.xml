@@ -22,4 +22,9 @@
         android:name="cat.copernic.daniel.marketcomparator.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/authActivity"
+        android:name="cat.copernic.daniel.marketcomparator.AuthActivity"
+        android:label="fragment_auth_activity"
+        tools:layout="@layout/fragment_auth_activity" />
 </navigation>
