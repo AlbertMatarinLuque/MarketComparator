@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1031597379969",
+    "project_id": "marketcomparator-db048",
+    "storage_bucket": "marketcomparator-db048.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031597379969:android:256518758529fb9d0a9880",
+        "android_client_info": {
+          "package_name": "cat.copernic.daniel.marketcomparator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031597379969-vtaipt503cuq0nj1mbe140gfooiivlut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq8pYm1vN-HdgLF4oyY5pbj7pOygGiAok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031597379969-vtaipt503cuq0nj1mbe140gfooiivlut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
