@@ -73,7 +73,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     fun updateNav(currentUser: FirebaseUser){
         val navView: NavigationView = findViewById(R.id.nav_view)
         val headerView: View
