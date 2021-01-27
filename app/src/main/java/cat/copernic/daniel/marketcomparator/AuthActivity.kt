@@ -39,11 +39,14 @@ class AuthActivity : Fragment() {
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailEditText.text.toString(),
                     passwordEditText.text.toString()).addOnCompleteListener{
                         if(it.isSuccessful){
-                            showPositiveRgisterAlert()
+                            showPositiveRegisterAlert()
                         }else{
-                            showNegativeAlert()
+                            showNegativeRegisterAlert()
                         }
                 }
+            }
+            else{
+                showEmptyAlert()
             }
         }
 
@@ -58,24 +61,46 @@ class AuthActivity : Fragment() {
                     }
                 }
             }
+            else{
+                showEmptyAlert()
+            }
         }
-
         return binding.root
     }
 
+
+
     private fun showNegativeAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Error")
-        builder.setMessage("S'ha produit un error al hora de autentificarse")
+        builder.setTitle("¡Error!")
+        builder.setMessage("S'ha produit un error a l'inicar sessió.")
         builder.setPositiveButton("Aceptar",null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
 
-    private fun showPositiveRgisterAlert(){
+    private fun showNegativeRegisterAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Perfetcte")
-        builder.setMessage("T'has autentificat correctament")
+        builder.setTitle("¡Error!")
+        builder.setMessage("S'ha produit un error al registrarse.")
+        builder.setPositiveButton("Aceptar",null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
+    private fun showEmptyAlert(){
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("¡Error!")
+        builder.setMessage("Falten dades per emplenar.")
+        builder.setPositiveButton("Aceptar",null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
+    private fun showPositiveRegisterAlert(){
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("¡Correcte!")
+        builder.setMessage("T'has registrat correctament.")
         builder.setPositiveButton("Aceptar",null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
@@ -83,8 +108,8 @@ class AuthActivity : Fragment() {
 
     private fun showPositiveLoginAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Perfetcte")
-        builder.setMessage("T'has loginat correctament")
+        builder.setTitle("¡Perfecte!")
+        builder.setMessage("Has iniciat sessió correctament.")
         builder.setPositiveButton("Aceptar",null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
