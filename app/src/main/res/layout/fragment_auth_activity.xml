@@ -38,11 +38,11 @@
             android:id="@+id/singUpButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginEnd="48dp"
             android:layout_marginBottom="184dp"
             android:text="Registrar-se!"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/loginButton" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/loginButton"
@@ -63,13 +63,13 @@
             android:id="@+id/textView"
             android:layout_width="130dp"
             android:layout_height="31dp"
-            android:layout_marginBottom="604dp"
+            android:layout_marginTop="36dp"
             android:text="Bienvenido"
             android:textSize="25sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView3"
@@ -96,11 +96,21 @@
             android:id="@+id/googleImage"
             android:layout_width="55dp"
             android:layout_height="50dp"
-            android:layout_marginStart="260dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="172dp"
+            android:layout_marginTop="68dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/singUpButton"
             app:srcCompat="@mipmap/google_icon" />
+
+        <Button
+            android:id="@+id/connectionClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="64dp"
+            android:text="Tanca sessió"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PasswordEditText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
