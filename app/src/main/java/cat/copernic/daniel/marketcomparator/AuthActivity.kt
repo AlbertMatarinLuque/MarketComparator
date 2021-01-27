@@ -13,6 +13,10 @@ import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
 import kotlinx.coroutines.newFixedThreadPoolContext
 import cat.copernic.daniel.marketcomparator.MainActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.GoogleAuthProvider
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +28,7 @@ class AuthActivity : Fragment() {
 
     private lateinit var MainActivity: Intent
     private lateinit var main : MainActivity
+    private val GOOGLE_SIGN_IN = 100
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,7 +70,13 @@ class AuthActivity : Fragment() {
                 showEmptyAlert()
             }
         }
+        binding.googleImage.setOnClickListener {
+            val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+            val googleClient = GoogleSignIn.getClient(requireContext(), googleConf)
+            startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
+        }
         return binding.root
+
     }
 
 
@@ -115,7 +126,22 @@ class AuthActivity : Fragment() {
         dialog.show()
     }
 
-
-
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == GOOGLE_SIGN_IN){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            val account = task.getResult(ApiException::class.java)
+            if (account != null){
+                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+                    if (it.isSuccessful){
+                        showPositiveRegisterAlert()
+                    }
+                    else{
+                        showNegativeAlert()
+                    }
+                }
+            }
+        }
+    }
 }
