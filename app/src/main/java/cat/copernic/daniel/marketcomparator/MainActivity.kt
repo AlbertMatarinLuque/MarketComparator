@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
 
         mAuth = FirebaseAuth.getInstance()
-        currentUser = mAuth.currentUser!!
+        //currentUser = mAuth.currentUser!!
 
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        updateNav(currentUser)
+        //updateNav(currentUser)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
