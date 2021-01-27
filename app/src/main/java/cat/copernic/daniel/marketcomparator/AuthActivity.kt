@@ -71,8 +71,12 @@ class AuthActivity : Fragment() {
             }
         }
         binding.googleImage.setOnClickListener {
-            val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+            val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build()
             val googleClient = GoogleSignIn.getClient(requireContext(), googleConf)
+            googleClient.signOut()
             startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
         }
         return binding.root
@@ -85,6 +89,7 @@ class AuthActivity : Fragment() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("¡Error!")
         builder.setMessage("S'ha produit un error a l'inicar sessió.")
+
         builder.setPositiveButton("Aceptar",null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
@@ -130,17 +135,21 @@ class AuthActivity : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == GOOGLE_SIGN_IN){
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            val account = task.getResult(ApiException::class.java)
-            if (account != null){
-                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
-                    if (it.isSuccessful){
-                        showPositiveRegisterAlert()
-                    }
-                    else{
-                        showNegativeAlert()
+            try {
+                val account = task.getResult(ApiException::class.java)
+                if (account != null){
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+                        if (it.isSuccessful){
+                            showPositiveRegisterAlert()
+                        }
+                        else{
+                            showNegativeAlert()
+                        }
                     }
                 }
+            } catch (e: ApiException){
+                showNegativeAlert()
             }
         }
     }
