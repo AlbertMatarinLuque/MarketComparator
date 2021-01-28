@@ -12,19 +12,43 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="cat.copernic.daniel.marketcomparator.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="cat.copernic.daniel.marketcomparator.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
         android:id="@+id/authActivity"
         android:name="cat.copernic.daniel.marketcomparator.AuthActivity"
         android:label="fragment_auth_activity"
         tools:layout="@layout/fragment_auth_activity" />
+    <fragment
+        android:id="@+id/searchFragment2"
+        android:name="cat.copernic.daniel.marketcomparator.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="cat.copernic.daniel.marketcomparator.ui.products.productFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
+    <fragment
+        android:id="@+id/shoppingListFragment"
+        android:name="cat.copernic.daniel.marketcomparator.ui.shoppingList.shoppingListFragment"
+        android:label="fragment_shopping_list"
+        tools:layout="@layout/fragment_shopping_list" />
+    <fragment
+        android:id="@+id/trendsFragment2"
+        android:name="cat.copernic.daniel.marketcomparator.ui.class.TrendsFragment"
+        android:label="fragment_class"
+        tools:layout="@layout/fragment_class" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="cat.copernic.daniel.marketcomparator.ui.configuration.users.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="cat.copernic.daniel.marketcomparator.ui.configuration.users.settingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="cat.copernic.daniel.marketcomparator.ui.configuration.configuration.aboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>

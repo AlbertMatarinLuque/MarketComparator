@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import cat.copernic.daniel.marketcomparator.databinding.FragmentAuthActivityBinding
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,6 +39,7 @@ class AuthActivity : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Autentificarse"
          binding=  DataBindingUtil.inflate<FragmentAuthActivityBinding>(inflater,
                  R.layout.fragment_auth_activity, container, false)
         mAuth = FirebaseAuth.getInstance()
@@ -208,5 +211,6 @@ class AuthActivity : Fragment() {
             input.hideSoftInputFromWindow(vieww.windowToken, 0)
         }
     }
+
 
 }
