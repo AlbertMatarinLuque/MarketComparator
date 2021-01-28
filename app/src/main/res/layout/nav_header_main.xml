@@ -24,13 +24,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Bienvenido"
+        android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/nav_user_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="*AQUI VA EL NOMBRE*" />
+        android:text="CUENTA ANONIMA" />
 
 </LinearLayout>
