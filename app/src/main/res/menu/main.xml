@@ -2,10 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="always"
+        android:title="Buscar"/>
     <item
         android:id="@+id/trolley"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         app:showAsAction="always"
-        android:title="Item One"/>
+        android:title="Carrito"/>
+
 </menu>

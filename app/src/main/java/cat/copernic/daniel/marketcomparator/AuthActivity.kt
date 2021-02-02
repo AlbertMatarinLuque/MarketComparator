@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.databinding.FragmentAuthActivityBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -57,6 +58,7 @@ class AuthActivity : Fragment() {
                             binding.connectionClose.setVisibility(View.VISIBLE)
                             currentUser = mAuth.currentUser!!
                             updateNav(currentUser)
+                            requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
                         }else{
                             showNegativeRegisterAlert()
                         }
@@ -78,6 +80,7 @@ class AuthActivity : Fragment() {
                         binding.connectionClose.setVisibility(View.VISIBLE)
                         currentUser = mAuth.currentUser!!
                         updateNav(currentUser)
+                        requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
                     }else{
                         showNegativeAlert()
                     }
@@ -178,6 +181,7 @@ class AuthActivity : Fragment() {
                             binding.connectionClose.setVisibility(View.VISIBLE)
                             currentUser = mAuth.currentUser!!
                             updateNav(currentUser)
+                            requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
                         }
                         else{
                             showNegativeAlert()

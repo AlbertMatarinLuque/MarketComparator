@@ -5,14 +5,7 @@
 
     <group android:checkableBehavior="single">
 
-        <item android:title="Usuari">
-            <menu>
-                <item
-                    android:id="@+id/authActivity"
-                    android:icon="@drawable/common_full_open_on_phone"
-                    android:title="@string/menu_login" />
-            </menu>
-        </item>
+
         <item android:title="Nevegació">
             <menu>
         <item
@@ -20,13 +13,31 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/productFragment"
+            android:icon="@drawable/ic_food_basket"
+            android:title="@string/categorias" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
+            </menu>
+        </item>
+
+
+        <item android:title="Usuari">
+            <menu>
+                <item
+                    android:id="@+id/authActivity"
+                    android:icon="@drawable/common_full_open_on_phone"
+                    android:title="@string/menu_login" />
+                <item
+                    android:id="@+id/settingsFragment"
+                    android:icon="@drawable/ic_settings"
+                    android:title="@string/ajustes" />
+                <item
+                    android:id="@+id/aboutFragment"
+                    android:icon="@drawable/ic_about"
+                    android:title="@string/acerca_de" />
             </menu>
         </item>
     </group>

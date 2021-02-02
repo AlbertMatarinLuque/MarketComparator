@@ -1,14 +1,13 @@
 package cat.copernic.daniel.marketcomparator.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.R
 
 class HomeFragment : Fragment() {
@@ -28,7 +27,20 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = "MarketComparator"
-
+        setHasOptionsMenu(true)
         return root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        when(id){
+            R.id.trolley ->   requireView().findNavController().navigate(R.id.action_nav_home_to_shoppingListFragment)
+            R.id.search ->   requireView().findNavController().navigate(R.id.action_nav_home_to_searchFragment2)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
