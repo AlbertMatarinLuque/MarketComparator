@@ -126,7 +126,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="categorias">Categories</string>
-    <string name="ajustes">Ajustaments</string>
+    <string name="ajustes">Ajustos</string>
     <string name="acerca_de">Sobre nosaltres</string>
 
 </resources>
