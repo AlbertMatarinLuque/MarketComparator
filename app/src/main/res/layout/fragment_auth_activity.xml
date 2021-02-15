@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="52dp"
             android:layout_marginBottom="140dp"
-            android:backgroundTint="#FFFFFF"
+            android:background="@android:color/transparent"
             android:text="¿No estas registrado? Registrate!"
             android:textColor="#3F51B5"
             app:layout_constraintBottom_toBottomOf="parent"
