@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="220dp"
-            android:text="Inicia Sessió!"
+            android:text="@string/inicia_sessio"
             android:textColor="#FFFFFF"
             android:textColorHighlight="#000000"
             android:textColorLink="#FFFFFF"
@@ -61,32 +61,36 @@
             app:rippleColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="130dp"
-            android:layout_height="31dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:text="Bienvenido"
-            android:textSize="25sp"
+            android:text="@string/welcomeMessage"
+            android:textColor="#000000"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.519"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="44dp"
-            android:layout_height="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"
-            android:text="GMAIL"
+            android:text="@string/mail"
+            android:textColor="#000000"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/emailEditText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:layout_width="89dp"
-            android:layout_height="21dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:text="PASSWORD"
+            android:text="@string/contrasenya"
+            android:textColor="#000000"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/PasswordEditText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -103,11 +107,11 @@
 
         <Button
             android:id="@+id/connectionClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="155dp"
+            android:layout_height="46dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="28dp"
-            android:text="Tanca sessió"
+            android:text="@string/tanca_sessio"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PasswordEditText" />
 

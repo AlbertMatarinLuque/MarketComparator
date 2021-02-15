@@ -4,13 +4,16 @@ import android.app.AlertDialog
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.Query
 
 class AddProductViewModel : ViewModel(){
-    var options : Array<String> = arrayOf("Verde","Azul","Amarillo","Marron","Gris")
+    var options : Array<String> = arrayOf(context.getString(R.string.greenContainer),context.getString(
+            R.string.blueContainer),context.getString(R.string.yellowContainer),context.getString(R.string.brownContainer),context.getString(
+                    R.string.greyContainer))
     var numid : Long = 0
     var idProducto : String
     var product : ProductsDTO = ProductsDTO("","",0.0,"")
@@ -46,18 +49,18 @@ class AddProductViewModel : ViewModel(){
 
     private fun showPositiveProductRegisterAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Correcte!")
-        builder.setMessage("El producte s'ha afeguit correctament")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setTitle(context.getString(R.string.rightMessage))
+        builder.setMessage(context.getString(R.string.verifyC))
+        builder.setPositiveButton(context.getString(R.string.acceptMessage), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
 
     private fun showNegativeProductRegisterAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Error!")
-        builder.setMessage("El producte no s'ha afegit correctament")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setTitle(context.getString(R.string.wrongMessage))
+        builder.setMessage(context.getString(R.string.verifyF))
+        builder.setPositiveButton(context.getString(R.string.acceptMessage), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }

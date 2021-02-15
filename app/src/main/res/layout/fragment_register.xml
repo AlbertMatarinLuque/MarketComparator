@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="50dp"
-                    android:text="Registro"
+                    android:text="@string/registro"
                     android:textColor="#000000"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -36,9 +36,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="30dp"
-                    android:text="Nombre de usuario:"
+                    android:text="@string/nombre_de_usuario"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
@@ -56,9 +56,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="20dp"
-                    android:text="Correo Electrónico:"
+                    android:text="@string/correo_electronico"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
@@ -76,9 +76,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="20dp"
-                    android:text="Contraseña:"
+                    android:text="@string/contraseña"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
@@ -100,7 +100,18 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="20dp"
-                    android:text="Registrarse" />
+                    android:text="@string/registrarse" />
+
+                <ImageView
+                    android:id="@+id/googleImageRegister"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="50dp"
+                    app:layout_constraintBottom_toTopOf="@+id/singUpButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@mipmap/google_icon" />
 
             </LinearLayout>
         </ScrollView>

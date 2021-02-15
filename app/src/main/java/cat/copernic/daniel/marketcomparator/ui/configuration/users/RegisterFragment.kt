@@ -2,6 +2,7 @@ package cat.copernic.daniel.marketcomparator.ui.configuration.users
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +12,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentRegisterBinding
 import cat.copernic.daniel.marketcomparator.updateNav
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 
 
 class RegisterFragment : Fragment() {
@@ -26,13 +32,14 @@ class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
+    private lateinit var  viewModel: RegisterFragmetVM
     private val GOOGLE_SIGN_IN = 100
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Registre"
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.titleRegister)
         binding = DataBindingUtil.inflate<FragmentRegisterBinding>(
             inflater,
             R.layout.fragment_register,
@@ -40,8 +47,10 @@ class RegisterFragment : Fragment() {
             false
         )
         mAuth = FirebaseAuth.getInstance()
+        viewModel = ViewModelProvider(this).get(RegisterFragmetVM::class.java)
         var emailEditText = binding.etMail
         var passwordEditText = binding.ptPassword
+
         binding.signUpButton.setOnClickListener {
             if(emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()){
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(
@@ -49,6 +58,9 @@ class RegisterFragment : Fragment() {
                     passwordEditText.text.toString()
                 ).addOnCompleteListener{
                     if(it.isSuccessful){
+                        viewModel.usuari.nomUsuari = binding.ptUser.text.toString()
+                        viewModel.usuari.mail = binding.etMail.text.toString()
+                        viewModel.insertDataBBDD()
                         showPositiveRegisterAlert()
                         currentUser = mAuth.currentUser!!
                         updateNav(currentUser)
@@ -59,38 +71,85 @@ class RegisterFragment : Fragment() {
                 }
             }
             else{
-                showEmptyAlert()
+                Snackbar.make(requireView(),getString(R.string.emptyFields),Snackbar.LENGTH_SHORT).show()
             }
+        }
+
+        binding.googleImageRegister.setOnClickListener {
+            val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+            val googleClient = GoogleSignIn.getClient(requireContext(), googleConf)
+            googleClient.signOut()
+            startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
         }
 
         return binding.root
     }
 
-    private fun showNegativeRegisterAlert(){
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Error!")
-        builder.setMessage("S'ha produit un error al registrarse.")
-        builder.setPositiveButton("Aceptar", null)
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == GOOGLE_SIGN_IN){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                if (account != null){
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+                        if (it.isSuccessful){
+                            showPositiveGoogleAlert()
+                            currentUser = mAuth.currentUser!!
+                            viewModel.usuari.nomUsuari = currentUser.displayName!!
+                            viewModel.usuari.mail = currentUser.email!!
+                            viewModel.insertDataBBDD()
+                            updateNav(currentUser)
+                            requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
+                        }
+                        else{
+                            showNegativeAlert()
+                        }
+                    }
+                }
+            } catch (e: ApiException){
+                showNegativeAlert()
+            }
+        }
     }
 
-    private fun showEmptyAlert(){
+    private fun showNegativeRegisterAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Error!")
-        builder.setMessage("Falten dades per emplenar.")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setTitle(context?.getString(R.string.wrongMessage))
+        builder.setMessage(getString(R.string.verifyFR))
+        builder.setPositiveButton(context?.getString(R.string.acceptMessage), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
 
     private fun showPositiveRegisterAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Correcte!")
-        builder.setMessage("T'has registrat correctament.")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setTitle(context?.getString(R.string.rightMessage))
+        builder.setMessage(getString(R.string.verifyCR))
+        builder.setPositiveButton(context?.getString(R.string.acceptMessage), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
 
+    private fun showNegativeAlert(){
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(context?.getString(R.string.wrongMessage))
+        builder.setMessage(getString(R.string.verifyFRG))
+        builder.setPositiveButton(context?.getString(R.string.acceptMessage), null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
+    private fun showPositiveGoogleAlert(){
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(getString(R.string.perfectMessage))
+        builder.setMessage(getString(R.string.verifyCRG))
+        builder.setPositiveButton(context?.getString(R.string.acceptMessage), null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
 }

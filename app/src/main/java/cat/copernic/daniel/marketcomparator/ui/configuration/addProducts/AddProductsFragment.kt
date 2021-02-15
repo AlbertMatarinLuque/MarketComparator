@@ -44,7 +44,7 @@ class AddProductsFragment : Fragment() {
         binding.btnInsert.setOnClickListener {
             if(binding.edProductName.text.isEmpty() || binding.edDescription.text.isEmpty() ||
                     binding.edPrice.text.isEmpty()) {
-                Snackbar.make(requireView(),"No pueden exsistir campos vacios",Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(requireView(),getString(R.string.emptyFields),Snackbar.LENGTH_SHORT).show()
 
             }else {
                 viewModel.product.nombreProducto = binding.edProductName.text.toString()
