@@ -128,5 +128,6 @@
     <string name="categorias">Categories</string>
     <string name="ajustes">Ajustos</string>
     <string name="acerca_de">Sobre nosaltres</string>
+    <string name="administrar_productes">Administrar Productes</string>
 
 </resources>
