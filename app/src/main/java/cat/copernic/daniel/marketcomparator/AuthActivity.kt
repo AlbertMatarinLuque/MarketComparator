@@ -23,19 +23,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
 class AuthActivity : Fragment() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
     private lateinit var MainActivity: Intent
     private lateinit var main : MainActivity
     private lateinit var binding: FragmentAuthActivityBinding
-            private val GOOGLE_SIGN_IN = 100
+    private val GOOGLE_SIGN_IN = 100
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -48,26 +42,9 @@ class AuthActivity : Fragment() {
       //  MainActivity = Intent(context, cat.copernic.daniel.marketcomparator.MainActivity::class.java)
         var emailEditText = binding.emailEditText
         var passwordEditText = binding.PasswordEditText
+
         binding.singUpButton.setOnClickListener {
-            if(emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()){
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailEditText.text.toString(),
-                        passwordEditText.text.toString()).addOnCompleteListener{
-                        if(it.isSuccessful){
-                            showPositiveRegisterAlert()
-                            binding.loginButton.setVisibility(View.GONE)
-                            binding.connectionClose.setVisibility(View.VISIBLE)
-                            currentUser = mAuth.currentUser!!
-                            updateNav(currentUser)
-                            requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
-                        }else{
-                            showNegativeRegisterAlert()
-                        }
-                }
-            }
-            else{
-                showEmptyAlert()
-            }
-            ocultar()
+            view?.findNavController()?.navigate(R.id.action_authActivity_to_registerFragment)
         }
 
         binding.loginButton.setOnClickListener {
@@ -122,28 +99,10 @@ class AuthActivity : Fragment() {
         dialog.show()
     }
 
-    private fun showNegativeRegisterAlert(){
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Error!")
-        builder.setMessage("S'ha produit un error al registrarse.")
-        builder.setPositiveButton("Aceptar", null)
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
-    }
-
     private fun showEmptyAlert(){
         val builder = AlertDialog.Builder(context)
         builder.setTitle("¡Error!")
         builder.setMessage("Falten dades per emplenar.")
-        builder.setPositiveButton("Aceptar", null)
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
-    }
-
-    private fun showPositiveRegisterAlert(){
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Correcte!")
-        builder.setMessage("T'has registrat correctament.")
         builder.setPositiveButton("Aceptar", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()

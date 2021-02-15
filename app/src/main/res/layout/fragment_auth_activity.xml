@@ -6,7 +6,6 @@
         android:id="@+id/authActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg"
         android:weightSum="4">
 
 
@@ -38,9 +37,11 @@
             android:id="@+id/singUpButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:layout_marginBottom="184dp"
-            android:text="Registrar-se!"
+            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="140dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="¿No estas registrado? Registrate!"
+            android:textColor="#3F51B5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -48,14 +49,14 @@
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="184dp"
+            android:layout_marginBottom="220dp"
             android:text="Inicia Sessió!"
             android:textColor="#FFFFFF"
             android:textColorHighlight="#000000"
             android:textColorLink="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.152"
             app:layout_constraintStart_toStartOf="parent"
             app:rippleColor="#FFFFFF" />
 
@@ -72,7 +73,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="44dp"
             android:layout_height="15dp"
             android:layout_marginBottom="60dp"
@@ -83,7 +83,6 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView4"
             android:layout_width="89dp"
             android:layout_height="21dp"
             android:layout_marginBottom="12dp"
@@ -96,18 +95,18 @@
             android:id="@+id/googleImage"
             android:layout_width="55dp"
             android:layout_height="50dp"
-            android:layout_marginStart="172dp"
-            android:layout_marginTop="68dp"
+            android:layout_marginStart="276dp"
+            android:layout_marginBottom="31dp"
+            app:layout_constraintBottom_toTopOf="@+id/singUpButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/singUpButton"
             app:srcCompat="@mipmap/google_icon" />
 
         <Button
             android:id="@+id/connectionClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="28dp"
             android:text="Tanca sessió"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PasswordEditText" />
