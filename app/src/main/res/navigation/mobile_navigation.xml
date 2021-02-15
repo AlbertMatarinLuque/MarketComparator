@@ -77,4 +77,9 @@
         android:name="cat.copernic.daniel.marketcomparator.ui.configuration.configuration.aboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/addProductsFragment"
+        android:name="cat.copernic.daniel.marketcomparator.ui.configuration.addProducts.AddProductsFragment"
+        android:label="fragment_add_products"
+        tools:layout="@layout/fragment_add_products" />
 </navigation>

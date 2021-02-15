@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="opciones">
+        <item>Verde</item>
+        <item>Amarillo</item>
+        <item>Azul</item>
+        <item>Marron</item>
+        <item>Gris</item>
+    </string-array>
+</resources>

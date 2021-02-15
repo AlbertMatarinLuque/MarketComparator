@@ -36,6 +36,15 @@
                     android:title="@string/acerca_de" />
             </menu>
         </item>
+
+        <item android:title="Adminitracio">
+            <menu>
+                <item
+                    android:id="@+id/addProductsFragment"
+                    android:icon="@drawable/ic_diseno_de_producto"
+                    android:title="@string/administrar_productes"/>
+            </menu>
+        </item>
     </group>
 
 </menu>
