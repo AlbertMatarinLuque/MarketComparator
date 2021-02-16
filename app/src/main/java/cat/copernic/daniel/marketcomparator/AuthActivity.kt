@@ -11,8 +11,10 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.databinding.FragmentAuthActivityBinding
+import cat.copernic.daniel.marketcomparator.ui.configuration.users.RegisterFragmetVM
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -23,48 +25,29 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-
-
-
 class AuthActivity : Fragment() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
     private lateinit var MainActivity: Intent
     private lateinit var main : MainActivity
     private lateinit var binding: FragmentAuthActivityBinding
-            private val GOOGLE_SIGN_IN = 100
+    private lateinit var  viewModel: RegisterFragmetVM
+    private val GOOGLE_SIGN_IN = 100
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Autentificarse"
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.titleAuthentication)
          binding=  DataBindingUtil.inflate<FragmentAuthActivityBinding>(inflater,
                  R.layout.fragment_auth_activity, container, false)
         mAuth = FirebaseAuth.getInstance()
+        viewModel = ViewModelProvider(this).get(RegisterFragmetVM::class.java)
         val vieww = requireActivity().currentFocus
-      //  MainActivity = Intent(context, cat.copernic.daniel.marketcomparator.MainActivity::class.java)
         var emailEditText = binding.emailEditText
         var passwordEditText = binding.PasswordEditText
+
         binding.singUpButton.setOnClickListener {
-            if(emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()){
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailEditText.text.toString(),
-                        passwordEditText.text.toString()).addOnCompleteListener{
-                        if(it.isSuccessful){
-                            showPositiveRegisterAlert()
-                            binding.loginButton.setVisibility(View.GONE)
-                            binding.connectionClose.setVisibility(View.VISIBLE)
-                            currentUser = mAuth.currentUser!!
-                            updateNav(currentUser)
-                            requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
-                        }else{
-                            showNegativeRegisterAlert()
-                        }
-                }
-            }
-            else{
-                showEmptyAlert()
-            }
-            ocultar()
+            view?.findNavController()?.navigate(R.id.action_authActivity_to_registerFragment)
         }
 
         binding.loginButton.setOnClickListener {
@@ -111,54 +94,35 @@ class AuthActivity : Fragment() {
 
     private fun showNegativeAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Error!")
-        builder.setMessage("S'ha produit un error a l'inicar sessió.")
-
-        builder.setPositiveButton("Aceptar", null)
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
-    }
-
-    private fun showNegativeRegisterAlert(){
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Error!")
-        builder.setMessage("S'ha produit un error al registrarse.")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setTitle(context?.getString(R.string.wrongMessage))
+        builder.setMessage(getString(R.string.verifyFI))
+        builder.setPositiveButton(context?.getString(R.string.acceptMessage), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
 
     private fun showEmptyAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Error!")
-        builder.setMessage("Falten dades per emplenar.")
-        builder.setPositiveButton("Aceptar", null)
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
-    }
-
-    private fun showPositiveRegisterAlert(){
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Correcte!")
-        builder.setMessage("T'has registrat correctament.")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setTitle(context?.getString(R.string.wrongMessage))
+        builder.setMessage(getString(R.string.verifyE))
+        builder.setPositiveButton(context?.getString(R.string.acceptMessage), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
 
     private fun showPositiveLoginAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Perfecte!")
-        builder.setMessage("Has iniciat sessió correctament.")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setTitle(getString(R.string.perfectMessage))
+        builder.setMessage(getString(R.string.verifyCI))
+        builder.setPositiveButton(context?.getString(R.string.acceptMessage), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
     private fun showPositiveGoogleAlert(){
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Perfecte!")
-        builder.setMessage("Ja pots utiltzar la teva compte de Google.")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setTitle(getString(R.string.perfectMessage))
+        builder.setMessage(getString(R.string.verifyCIG))
+        builder.setPositiveButton(context?.getString(R.string.acceptMessage), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
@@ -197,9 +161,9 @@ class AuthActivity : Fragment() {
         binding.loginButton.setVisibility(View.VISIBLE)
         binding.connectionClose.setVisibility(View.GONE)
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("¡Perfecte!")
-        builder.setMessage("Has tancat la ssesió")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setTitle(getString(R.string.perfectMessage))
+        builder.setMessage(getString(R.string.logOut))
+        builder.setPositiveButton(context?.getString(R.string.acceptMessage), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }

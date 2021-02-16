@@ -38,7 +38,7 @@ fun updateNavAnonimo(){
     headerUserMail = headerView.findViewById(R.id.nav_user_mail)
     // headerUserPhoto = headerView.findViewById(R.id.nav_user_photo)
 
-    headerUserMail.setText("CUENTA ANONIMA")
+    headerUserMail.setText("COMPTE ANÒNIMA")
     headerUserName.setText("")
     //  headerUserPhoto
 }

@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
 
 
-        <item android:title="Nevegació">
+        <item android:title="Navegació">
             <menu>
         <item
             android:id="@+id/nav_home"
@@ -34,6 +34,15 @@
                     android:id="@+id/aboutFragment"
                     android:icon="@drawable/ic_about"
                     android:title="@string/acerca_de" />
+            </menu>
+        </item>
+
+        <item android:title="Administració">
+            <menu>
+                <item
+                    android:id="@+id/addProductsFragment"
+                    android:icon="@drawable/ic_diseno_de_producto"
+                    android:title="@string/administrar_productes"/>
             </menu>
         </item>
     </group>

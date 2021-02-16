@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "MarketComparator"
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.title)
         setHasOptionsMenu(true)
         return root
     }
