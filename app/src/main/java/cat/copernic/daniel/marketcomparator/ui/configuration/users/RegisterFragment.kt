@@ -104,7 +104,7 @@ class RegisterFragment : Fragment() {
                             viewModel.usuari.mail = currentUser.email!!
                             viewModel.insertDataBBDD()
                             updateNav(currentUser)
-                            requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
+                            requireView().findNavController().navigate(R.id.action_registerFragment_to_nav_home)
                         }
                         else{
                             showNegativeAlert()
