@@ -11,9 +11,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.Query
 
 class AddProductViewModel : ViewModel(){
-    var options : Array<String> = arrayOf(context.getString(R.string.greenContainer),context.getString(
-            R.string.blueContainer),context.getString(R.string.yellowContainer),context.getString(R.string.brownContainer),context.getString(
-                    R.string.greyContainer))
+    var options : Array<String> = arrayOf("Verd","Blau", "Groc", "Marró", "Gris")
     var numid : Long = 0
     var idProducto : String
     var product : ProductsDTO = ProductsDTO("","",0.0,"")
