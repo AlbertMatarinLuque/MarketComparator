@@ -6,33 +6,34 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.Query
+import com.google.firebase.database.*
+import java.lang.Double.parseDouble
 
 class AddProductViewModel : ViewModel(){
-    var options : Array<String> = arrayOf("Verd","Blau", "Groc", "Marró", "Gris")
+    var options : Array<String> = arrayOf("Azul","Verde","Amarillo","Marron","Gris")
     var numid : Long = 0
     var idProducto : String
     var product : ProductsDTO = ProductsDTO("","",0.0,"")
 
     private var database: DatabaseReference = FirebaseDatabase.getInstance().getReference("products")
-   // private var lastKey : Query = FirebaseDatabase.getInstance().getReference("products").limitToLast(1)
+
     private lateinit var context : Context
 
-    // Añadir metodo para saber ultimo producto y aumentar su ID
     init {
         idProducto = "product$numid"
-
+        getLastIDFirebase()
     }
+
     fun insertarDatosBBDD(){
-        database.child(idProducto).setValue(product).addOnSuccessListener {
+        database.child(idProducto).setValue(product)
+                .addOnSuccessListener {
             showPositiveProductRegisterAlert()
-           // Log.i("BBDD", lastKey.)
+
+
         }.addOnFailureListener {
             showNegativeProductRegisterAlert()
         }
-        incrementarid()
+
     }
 
     fun setContext(con: Context){
@@ -45,7 +46,50 @@ class AddProductViewModel : ViewModel(){
         idProducto = "product$numid"
     }
 
-    private fun showPositiveProductRegisterAlert(){
+    fun getLastIDFirebase(){
+        val querry = FirebaseDatabase.getInstance().reference.child("products").limitToLast(1)
+
+        querry.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (products in snapshot.children) {
+                    numid = getNumericValues(products.key.toString()).toLong()
+                    Log.d("Querry","$idProducto")
+                    incrementarid()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
+
+    fun getNumericValues(cadena: String): String {
+
+        val sb = StringBuilder()
+
+        for (i in cadena.indices) {
+            var numeric = true
+            try {
+                val num = parseDouble(cadena[i].toString())
+            } catch (e: NumberFormatException) {
+                numeric = false
+            }
+
+            if (numeric) {
+                //es un valor numerico.
+                sb.append(cadena[i].toString())
+            } else {
+                //no es valor numerico.
+            }
+
+        }
+
+        return sb.toString();
+    }
+
+    private fun showPositiveProductRegisterAlert() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(context.getString(R.string.rightMessage))
         builder.setMessage(context.getString(R.string.verifyC))
