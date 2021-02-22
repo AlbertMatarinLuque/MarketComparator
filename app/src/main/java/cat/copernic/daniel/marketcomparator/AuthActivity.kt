@@ -84,6 +84,7 @@ class AuthActivity : Fragment() {
         binding.connectionClose.setOnClickListener {
             closeConnection()
             updateNavAnonimo()
+            requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
         }
         binding.connectionClose.setVisibility(View.GONE)
         var user = mAuth.currentUser

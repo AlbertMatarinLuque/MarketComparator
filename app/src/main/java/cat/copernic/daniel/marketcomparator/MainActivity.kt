@@ -42,16 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
         setupFirebaseAuth()
-        currentUser = mAuth.currentUser!!
-        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-
-        /* val fab: FloatingActionButton = findViewById(R.id.fab)
-         fab.setOnClickListener { view ->
-             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                     .setAction("Action", null).show()
-         }*/
         title = "MarketComparator"
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -64,7 +55,11 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         setnavView(navView)
-        //  updateNav(currentUser)
+
+        if (mAuth.currentUser != null){
+            currentUser = mAuth.currentUser!!
+            updateNav(currentUser)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -90,10 +85,9 @@ class MainActivity : AppCompatActivity() {
             override fun onAuthStateChanged(@NonNull firebaseAuth:FirebaseAuth) {
                 val user = firebaseAuth.getCurrentUser()
                 if (user != null) {
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid())
-                    updateNav(currentUser)
+                    Log.d(TAG, "onAuthStateChanged: signed_in: " + user.getUid())
                 } else {
-                    Log.d(TAG, "onAuthStateChanged:signed_out")
+                    Log.d(TAG, "onAuthStateChanged: signed_out")
                 }
             }
         }
