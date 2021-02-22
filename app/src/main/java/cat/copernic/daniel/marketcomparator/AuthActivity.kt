@@ -86,8 +86,14 @@ class AuthActivity : Fragment() {
             updateNavAnonimo()
         }
         binding.connectionClose.setVisibility(View.GONE)
-        return binding.root
+        var user = mAuth.currentUser
 
+        if (user != null){
+            binding.loginButton.setVisibility(View.GONE)
+            binding.connectionClose.setVisibility(View.VISIBLE)
+        }
+
+        return binding.root
     }
 
 
@@ -175,6 +181,11 @@ class AuthActivity : Fragment() {
             val input = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             input.hideSoftInputFromWindow(vieww.windowToken, 0)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
     }
 
 
