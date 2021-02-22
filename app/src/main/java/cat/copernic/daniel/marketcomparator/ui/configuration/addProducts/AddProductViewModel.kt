@@ -4,9 +4,13 @@ import android.app.AlertDialog
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import com.google.firebase.database.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.lang.Double.parseDouble
 
 class AddProductViewModel : ViewModel(){
@@ -25,14 +29,15 @@ class AddProductViewModel : ViewModel(){
     }
 
     fun insertarDatosBBDD(){
-        database.child(idProducto).setValue(product)
-                .addOnSuccessListener {
-            showPositiveProductRegisterAlert()
-
-
-        }.addOnFailureListener {
-            showNegativeProductRegisterAlert()
+        viewModelScope.launch(Dispatchers.IO) {
+            database.child(idProducto).setValue(product)
+                    .addOnSuccessListener {
+                        showPositiveProductRegisterAlert()
+                    }.addOnFailureListener {
+                        showNegativeProductRegisterAlert()
+                    }
         }
+
 
     }
 
@@ -47,22 +52,25 @@ class AddProductViewModel : ViewModel(){
     }
 
     fun getLastIDFirebase(){
-        val querry = FirebaseDatabase.getInstance().reference.child("products").limitToLast(1)
+        viewModelScope.launch(Dispatchers.Main) {
+            val querry = FirebaseDatabase.getInstance().reference.child("products").limitToLast(1)
 
-        querry.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (products in snapshot.children) {
-                    numid = getNumericValues(products.key.toString()).toLong()
-                    Log.d("Querry","$idProducto")
-                    incrementarid()
+            withContext(Dispatchers.IO) {
+            querry.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (products in snapshot.children) {
+                        numid = getNumericValues(products.key.toString()).toLong()
+                        incrementarid()
+                    }
                 }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
+                override fun onCancelled(error: DatabaseError) {
 
-            }
+                }
 
-        })
+            })
+        }
+        }
     }
 
     fun getNumericValues(cadena: String): String {
