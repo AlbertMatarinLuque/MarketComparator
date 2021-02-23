@@ -60,6 +60,7 @@ class RegisterFragment : Fragment() {
                     if(it.isSuccessful){
                         viewModel.usuari.nomUsuari = binding.ptUser.text.toString()
                         viewModel.usuari.mail = binding.etMail.text.toString()
+                        viewModel.currentUser = currentUser
                         viewModel.insertDataBBDD()
                         showPositiveRegisterAlert()
                         currentUser = mAuth.currentUser!!
@@ -100,10 +101,12 @@ class RegisterFragment : Fragment() {
                         if (it.isSuccessful){
                             showPositiveGoogleAlert()
                             currentUser = mAuth.currentUser!!
+                            viewModel.currentUser = currentUser
                             viewModel.usuari.nomUsuari = currentUser.displayName!!
                             viewModel.usuari.mail = currentUser.email!!
                             viewModel.insertDataBBDD()
                             updateNav(currentUser)
+                            requireView().findNavController().navigate(R.id.action_registerFragment_to_nav_home)
                         }
                         else{
                             showNegativeAlert()
