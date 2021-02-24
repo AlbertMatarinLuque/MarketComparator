@@ -13,7 +13,7 @@ fun setnavView(nav: NavigationView){
     navView = nav
 }
 
-fun updateNav(currentUser: FirebaseUser){
+fun updateNav(currentUser: FirebaseUser/*, name: String?*/){
     val headerView: View
     headerView = navView.getHeaderView(0)
     val headerUserName: TextView
@@ -22,7 +22,13 @@ fun updateNav(currentUser: FirebaseUser){
     headerUserName = headerView.findViewById(R.id.nav_username)
     headerUserMail = headerView.findViewById(R.id.nav_user_mail)
     // headerUserPhoto = headerView.findViewById(R.id.nav_user_photo)
-
+   /* if (currentUser.displayName == ""){
+        headerUserMail.setText(currentUser.email)
+        headerUserName.setText(name)
+    } else{
+        headerUserMail.setText(currentUser.email)
+        headerUserName.setText(currentUser.displayName)
+    }*/
     headerUserMail.setText(currentUser.email)
     headerUserName.setText(currentUser.displayName)
 

@@ -84,10 +84,17 @@ class AuthActivity : Fragment() {
         binding.connectionClose.setOnClickListener {
             closeConnection()
             updateNavAnonimo()
+            requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
         }
         binding.connectionClose.setVisibility(View.GONE)
-        return binding.root
+        var user = mAuth.currentUser
 
+        if (user != null){
+            binding.loginButton.setVisibility(View.GONE)
+            binding.connectionClose.setVisibility(View.VISIBLE)
+        }
+
+        return binding.root
     }
 
 
@@ -176,5 +183,11 @@ class AuthActivity : Fragment() {
             input.hideSoftInputFromWindow(vieww.windowToken, 0)
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+
+    }
+
 
 }
