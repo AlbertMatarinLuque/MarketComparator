@@ -22,9 +22,6 @@ class productViewModel: ViewModel() {
     }
 
 
-
-
-
     fun getAllProducts(): MutableList<ProductsDTO>{
         var products : MutableList<ProductsDTO> =  mutableListOf()
             val querry = FirebaseDatabase.getInstance().reference.child("products")
