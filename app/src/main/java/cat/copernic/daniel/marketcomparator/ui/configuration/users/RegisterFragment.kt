@@ -58,13 +58,13 @@ class RegisterFragment : Fragment() {
                     passwordEditText.text.toString()
                 ).addOnCompleteListener{
                     if(it.isSuccessful){
-                        viewModel.usuari.nomUsuari = binding.ptUser.text.toString()
-                        viewModel.usuari.mail = binding.etMail.text.toString()
-                        viewModel.currentUser = currentUser
-                        viewModel.insertDataBBDD()
                         showPositiveRegisterAlert()
                         currentUser = mAuth.currentUser!!
-                        updateNav(currentUser)
+                        viewModel.currentUser = currentUser
+                        viewModel.usuari.nomUsuari = binding.ptUser.text.toString()
+                        viewModel.usuari.mail = binding.etMail.text.toString()
+                        viewModel.insertDataBBDD()
+                        updateNav(currentUser/*, viewModel.getUsername()*/)
                         requireView().findNavController().navigate(R.id.action_registerFragment_to_nav_home)
                     }else{
                         showNegativeRegisterAlert()
@@ -105,7 +105,7 @@ class RegisterFragment : Fragment() {
                             viewModel.usuari.nomUsuari = currentUser.displayName!!
                             viewModel.usuari.mail = currentUser.email!!
                             viewModel.insertDataBBDD()
-                            updateNav(currentUser)
+                            updateNav(currentUser/*, null*/)
                             requireView().findNavController().navigate(R.id.action_registerFragment_to_nav_home)
                         }
                         else{
