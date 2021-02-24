@@ -25,7 +25,7 @@ class productViewModel: ViewModel() {
 
 
 
-    suspend fun getAllProducts(): MutableList<ProductsDTO>{
+    fun getAllProducts(): MutableList<ProductsDTO>{
         var products : MutableList<ProductsDTO> =  mutableListOf()
             val querry = FirebaseDatabase.getInstance().reference.child("products")
 
@@ -50,7 +50,6 @@ class productViewModel: ViewModel() {
                    }
                })
            }
-        querry.get().await()
             return products
     }
 

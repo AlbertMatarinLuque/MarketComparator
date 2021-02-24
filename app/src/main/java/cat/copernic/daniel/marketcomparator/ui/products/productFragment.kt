@@ -48,7 +48,7 @@ class productFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    suspend fun initRecycleView(){
+    fun initRecycleView(){
         recyclerView = binding.recycleView
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = linearLayoutManager
