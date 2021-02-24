@@ -25,6 +25,7 @@ fun updateNav(currentUser: FirebaseUser){
 
     headerUserMail.setText(currentUser.email)
     headerUserName.setText(currentUser.displayName)
+
     //  headerUserPhoto
 }
 

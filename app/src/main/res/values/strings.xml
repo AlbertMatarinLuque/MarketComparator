@@ -169,5 +169,6 @@
     <string name="correo_electronico">Correu electrònic:</string>
     <string name="contraseña">Contrasenya:</string>
     <string name="registrarse">Registrar-se</string>
+    <string name="tots_els_productes">Tots els productes</string>
 
 </resources>

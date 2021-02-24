@@ -1,21 +1,38 @@
 package cat.copernic.daniel.marketcomparator.ui.products
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.daniel.marketcomparator.R
+import cat.copernic.daniel.marketcomparator.databinding.FragmentCategoryBinding
+import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 
 
 class productFragment : Fragment() {
+    lateinit var viewModel: productViewModel
+    lateinit var binding: FragmentCategoryBinding
+    lateinit var recyclerView: RecyclerView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        binding = DataBindingUtil.inflate<FragmentCategoryBinding>(inflater,R.layout.fragment_category,container,false)
+        viewModel = ViewModelProvider(this).get(productViewModel::class.java)
         // Inflate the layout for this fragment
+
+        initRecycleView()
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.fragment_product, container, false)
+        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -29,6 +46,18 @@ class productFragment : Fragment() {
             R.id.search ->   requireView().findNavController().navigate(R.id.action_productFragment_to_searchFragment2)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    suspend fun initRecycleView(){
+        recyclerView = binding.recycleView
+        val linearLayoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = linearLayoutManager
+        val adapter = ProductsAdapter(viewModel.getAllProducts())
+            recyclerView.adapter = adapter
+
+
+        Log.d("initRecycleView","Prueba")
+
     }
 
 

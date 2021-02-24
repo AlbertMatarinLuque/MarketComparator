@@ -43,7 +43,7 @@
         android:id="@+id/productFragment"
         android:name="cat.copernic.daniel.marketcomparator.ui.products.productFragment"
         android:label="fragment_product"
-        tools:layout="@layout/fragment_product" >
+        tools:layout="@layout/fragment_category" >
         <action
             android:id="@+id/action_productFragment_to_searchFragment2"
             app:destination="@id/searchFragment2" />
