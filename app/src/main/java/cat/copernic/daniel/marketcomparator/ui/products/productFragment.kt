@@ -19,6 +19,7 @@ class productFragment : Fragment() {
     lateinit var viewModel: productViewModel
     lateinit var binding: FragmentCategoryBinding
     lateinit var recyclerView: RecyclerView
+    lateinit var adapter: ProductsAdapter
 
 
     override fun onCreateView(
@@ -28,9 +29,12 @@ class productFragment : Fragment() {
 
         binding = DataBindingUtil.inflate<FragmentCategoryBinding>(inflater,R.layout.fragment_category,container,false)
         viewModel = ViewModelProvider(this).get(productViewModel::class.java)
+        recyclerView = binding.recycleView
         // Inflate the layout for this fragment
-
-        initRecycleView()
+        adapter = ProductsAdapter(requireContext())
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = adapter
+        observeData()
         setHasOptionsMenu(true)
         return binding.root
     }
@@ -48,16 +52,23 @@ class productFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun initRecycleView(){
+    /*fun initRecycleView(){
         recyclerView = binding.recycleView
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = linearLayoutManager
-        val adapter = ProductsAdapter(viewModel.getAllProducts())
+        val adapter = ProductsAdapter(viewModel.products)
             recyclerView.adapter = adapter
 
 
         Log.d("initRecycleView","Prueba")
 
+    }*/
+
+    fun observeData(){
+        viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
+            adapter.setListData(it)
+            adapter.notifyDataSetChanged()
+        })
     }
 
 

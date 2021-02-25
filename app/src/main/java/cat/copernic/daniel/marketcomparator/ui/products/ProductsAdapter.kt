@@ -1,41 +1,48 @@
 package cat.copernic.daniel.marketcomparator.ui.products
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 
-class ProductsAdapter(val products: List<ProductsDTO>) : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>(){
+class ProductsAdapter(private val context: Context): RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>(){
 
-    init {
-        Log.d("Adapter", products.toString())
-    }
+    private var dataList = mutableListOf<ProductsDTO>()
 
-    inner class ProductsViewHolder: RecyclerView.ViewHolder{
-        val txtName : TextView
-        constructor(item: View):super(item){
-            txtName = item.findViewById(R.id.tvNameProduct)
-        }
+    fun setListData(data: MutableList<ProductsDTO>){
+        dataList = data
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
-
-        val view : View = LayoutInflater.from(parent.context).inflate(R.layout.item_product,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_product,parent,false)
         return ProductsViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
-        val item = products.get(position)
-        holder.txtName.setText(item?.nombreProducto)
+        val product = dataList[position]
+        holder.bindView(product)
     }
 
     override fun getItemCount(): Int {
-        return products.size!!
+        if (dataList.size > 0){
+            return dataList.size
+        }else{
+            return 0
+        }
     }
+
+    inner class ProductsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        fun bindView(product: ProductsDTO){
+            itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
+            itemView.findViewById<TextView>(R.id.tvDescriptionProduct).setText(product.descripcionProducto)
+            itemView.findViewById<TextView>(R.id.tvContainerProduct).setText(product.contenedorProducto)
+
+        }
+    }
+
 }

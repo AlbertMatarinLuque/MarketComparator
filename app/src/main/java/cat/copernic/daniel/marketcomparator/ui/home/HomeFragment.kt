@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.R
+import cat.copernic.daniel.marketcomparator.ui.products.productViewModel
 
 class HomeFragment : Fragment() {
 
