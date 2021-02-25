@@ -52,20 +52,12 @@ class productFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    /*fun initRecycleView(){
-        recyclerView = binding.recycleView
-        val linearLayoutManager = LinearLayoutManager(context)
-        recyclerView.layoutManager = linearLayoutManager
-        val adapter = ProductsAdapter(viewModel.products)
-            recyclerView.adapter = adapter
-
-
-        Log.d("initRecycleView","Prueba")
-
-    }*/
 
     fun observeData(){
+        binding.shimmerViewContainer.startShimmer()
         viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
+            binding.shimmerViewContainer.stopShimmer()
+            binding.shimmerViewContainer.visibility = View.GONE
             adapter.setListData(it)
             adapter.notifyDataSetChanged()
         })
