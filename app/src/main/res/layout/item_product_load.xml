@@ -5,20 +5,21 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginStart="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
             android:background="@color/placeholder_bg"
-            tools:background="@color/placeholder_bg" />
+            tools:background="@color/placeholder_bg"/>
 
         <View
             android:id="@+id/tvNameProduct"
@@ -30,39 +31,42 @@
             android:gravity="center_horizontal"
             android:textSize="14dp"
             android:textStyle="bold"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Prueba" />
+            tools:text="Prueba"/>
 
-        <View
-            android:id="@+id/tvDescriptionProduct"
+        <TextView
+            android:id="@+id/tvPriceProduct"
             android:layout_width="50dp"
-            android:layout_height="14dp"
-            android:layout_marginStart="128dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tvNameProduct"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="6dp"
             android:background="@color/placeholder_bg"
-            android:gravity="center_horizontal"
-            android:textSize="12dp"
-            android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/tvNameProduct"
-            tools:text="Prueba" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameProduct" />
 
-        <View
+        <TextView
             android:id="@+id/tvContainerProduct"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="15dp"
             android:layout_width="50dp"
             android:layout_height="16dp"
             android:layout_marginStart="216dp"
-            android:layout_marginTop="16dp"
             android:background="@color/placeholder_bg"
             android:textSize="16dp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.813"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Prueba" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

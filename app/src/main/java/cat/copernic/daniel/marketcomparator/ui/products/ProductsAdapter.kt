@@ -39,7 +39,7 @@ class ProductsAdapter(private val context: Context): RecyclerView.Adapter<Produc
     inner class ProductsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bindView(product: ProductsDTO){
             itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
-            itemView.findViewById<TextView>(R.id.tvDescriptionProduct).setText(product.descripcionProducto)
+            itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.precioProducto.toString() + "€")
             itemView.findViewById<TextView>(R.id.tvContainerProduct).setText(product.contenedorProducto)
 
         }

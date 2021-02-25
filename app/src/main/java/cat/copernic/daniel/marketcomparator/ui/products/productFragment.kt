@@ -32,7 +32,7 @@ class productFragment : Fragment() {
         recyclerView = binding.recycleView
         // Inflate the layout for this fragment
         adapter = ProductsAdapter(requireContext())
-        recyclerView.layoutManager = LinearLayoutManager(context)
+       // recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
         observeData()
         setHasOptionsMenu(true)
