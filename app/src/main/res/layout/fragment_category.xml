@@ -25,17 +25,18 @@
                 <include
                     android:id="@+id/include2"
                     layout="@layout/item_product_load"
-                    android:layout_width="202dp"
-                    android:layout_height="230dp"
+                    android:layout_width="206dp"
+                    android:layout_height="243dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:layout_editor_absoluteX="0dp" />
 
                 <include
                     android:id="@+id/include3"
                     layout="@layout/item_product_load"
-                    android:layout_width="202dp"
-                    android:layout_height="230dp"
+                    android:layout_width="206dp"
+                    android:layout_height="243dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -44,8 +45,8 @@
                 <include
                     android:id="@+id/include4"
                     layout="@layout/item_product_load"
-                    android:layout_width="202dp"
-                    android:layout_height="230dp"
+                    android:layout_width="206dp"
+                    android:layout_height="243dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/include3"
@@ -54,24 +55,24 @@
                 <include
                     android:id="@+id/include5"
                     layout="@layout/item_product_load"
-                    android:layout_width="202dp"
-                    android:layout_height="230dp"
+                    android:layout_width="206dp"
+                    android:layout_height="243dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/include2" />
 
                 <include
                     android:id="@+id/include6"
                     layout="@layout/item_product_load"
-                    android:layout_width="202dp"
-                    android:layout_height="230dp"
+                    android:layout_width="206dp"
+                    android:layout_height="243dp"
                     app:layout_constraintTop_toBottomOf="@+id/include5"
                     tools:layout_editor_absoluteX="0dp" />
 
                 <include
                     android:id="@+id/include8"
                     layout="@layout/item_product_load"
-                    android:layout_width="202dp"
-                    android:layout_height="230dp"
+                    android:layout_width="206dp"
+                    android:layout_height="243dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/include4" />
 
