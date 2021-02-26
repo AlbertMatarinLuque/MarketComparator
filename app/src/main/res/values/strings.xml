@@ -158,7 +158,7 @@
     <string name="description">Descripció:</string>
     <string name="price">Preu:</string>
     <string name="contenidor">Contenidor:</string>
-    <string name="insertar_producte">Insertar Producte</string>
+    <string name="insertar_producte">Insertar/Subir imagen Producte</string>
     <string name="mail">Correu electrònic</string>
     <string name="welcomeMessage">Benvingut</string>
     <string name="contrasenya">Contrasenya</string>

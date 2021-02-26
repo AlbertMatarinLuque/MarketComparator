@@ -15,7 +15,8 @@ class Repo {
                 val p: ProductsDTO = ProductsDTO(productsBD.child("nombreProducto").getValue().toString(),
                         productsBD.child("descripcionProducto").getValue().toString(),
                         productsBD.child("precioProducto").getValue().toString().toDouble(),
-                        productsBD.child("contenedorProducto").getValue().toString())
+                        productsBD.child("contenedorProducto").getValue().toString(),
+                         productsBD.child("imagenProducto").getValue().toString() )
                 listProducts.add(p)
 
             }
