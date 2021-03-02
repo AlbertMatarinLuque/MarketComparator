@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_productFragment_to_shoppingListFragment"
             app:destination="@id/shoppingListFragment" />
+        <action
+            android:id="@+id/action_productFragment_to_seeProductFragment"
+            app:destination="@id/seeProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/shoppingListFragment"
@@ -89,4 +92,9 @@
         android:name="cat.copernic.daniel.marketcomparator.ui.configuration.addProducts.AddProductsFragment"
         android:label="fragment_add_products"
         tools:layout="@layout/fragment_add_products" />
+    <fragment
+        android:id="@+id/seeProductFragment"
+        android:name="cat.copernic.daniel.marketcomparator.ui.products.seeProduct.SeeProductFragment"
+        android:label="fragment_see_product"
+        tools:layout="@layout/fragment_see_product" />
 </navigation>

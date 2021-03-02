@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
@@ -41,7 +42,9 @@ class ProductsAdapter(private val context: Context): RecyclerView.Adapter<Produc
             itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
             itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.precioProducto.toString() + "€")
             itemView.findViewById<TextView>(R.id.tvContainerProduct).setText(product.contenedorProducto)
-
+        itemView.setOnClickListener {
+            itemView.findNavController().navigate(R.id.action_productFragment_to_seeProductFragment)
+        }
         }
     }
 
