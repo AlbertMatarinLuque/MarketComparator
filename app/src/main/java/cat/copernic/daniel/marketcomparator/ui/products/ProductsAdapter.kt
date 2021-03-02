@@ -41,7 +41,6 @@ class ProductsAdapter(private val context: Context): RecyclerView.Adapter<Produc
             itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
             itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.precioProducto.toString() + "€")
             itemView.findViewById<TextView>(R.id.tvContainerProduct).setText(product.contenedorProducto)
-
         }
     }
 
