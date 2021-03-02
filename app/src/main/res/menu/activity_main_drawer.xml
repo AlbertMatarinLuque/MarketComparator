@@ -44,7 +44,7 @@
                     android:title="@string/administrar_productes"/>
                 <item
                     android:id="@+id/users"
-                    android:icon="@drawable/ic_diseno_de_producto"
+                    android:icon="@drawable/ic_usuario"
                     android:title="@string/administrar_usuaris"/>
             </menu>
         </item>
