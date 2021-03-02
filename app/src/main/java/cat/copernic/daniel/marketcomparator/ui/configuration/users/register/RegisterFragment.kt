@@ -1,22 +1,19 @@
-package cat.copernic.daniel.marketcomparator.ui.configuration.users
+package cat.copernic.daniel.marketcomparator.ui.configuration.users.register
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentRegisterBinding
+import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
 import cat.copernic.daniel.marketcomparator.updateNav
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -28,7 +25,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 
 class RegisterFragment : Fragment() {
-
+    private val repo = Repo()
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
@@ -64,7 +61,7 @@ class RegisterFragment : Fragment() {
                         viewModel.usuari.nomUsuari = binding.ptUser.text.toString()
                         viewModel.usuari.mail = binding.etMail.text.toString()
                         viewModel.insertDataBBDD()
-                        updateNav(currentUser/*, viewModel.getUsername()*/)
+                        updateNav(currentUser, repo.getUsername().value?.nomUsuari)
                         requireView().findNavController().navigate(R.id.action_registerFragment_to_nav_home)
                     }else{
                         showNegativeRegisterAlert()
@@ -105,7 +102,7 @@ class RegisterFragment : Fragment() {
                             viewModel.usuari.nomUsuari = currentUser.displayName!!
                             viewModel.usuari.mail = currentUser.email!!
                             viewModel.insertDataBBDD()
-                            updateNav(currentUser/*, null*/)
+                            updateNav(currentUser, null)
                             requireView().findNavController().navigate(R.id.action_registerFragment_to_nav_home)
                         }
                         else{

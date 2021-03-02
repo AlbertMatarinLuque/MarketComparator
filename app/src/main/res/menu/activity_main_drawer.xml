@@ -14,7 +14,7 @@
         <item
             android:id="@+id/productFragment"
             android:icon="@drawable/ic_food_basket"
-            android:title="@string/categorias" />
+            android:title="@string/products" />
             </menu>
         </item>
 
@@ -42,6 +42,10 @@
                     android:id="@+id/addProductsFragment"
                     android:icon="@drawable/ic_diseno_de_producto"
                     android:title="@string/administrar_productes"/>
+                <item
+                    android:id="@+id/users"
+                    android:icon="@drawable/ic_usuario"
+                    android:title="@string/administrar_usuaris"/>
             </menu>
         </item>
     </group>

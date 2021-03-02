@@ -1,4 +1,4 @@
-package cat.copernic.daniel.marketcomparator
+package cat.copernic.daniel.marketcomparator.ui.configuration.users.authentication
 
 import android.app.AlertDialog
 import android.content.Context
@@ -13,8 +13,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import cat.copernic.daniel.marketcomparator.MainActivity
+import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentAuthActivityBinding
-import cat.copernic.daniel.marketcomparator.ui.configuration.users.RegisterFragmetVM
+import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
+import cat.copernic.daniel.marketcomparator.ui.configuration.users.register.RegisterFragmetVM
+import cat.copernic.daniel.marketcomparator.updateNav
+import cat.copernic.daniel.marketcomparator.updateNavAnonimo
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -26,6 +31,7 @@ import com.google.firebase.ktx.Firebase
 
 
 class AuthActivity : Fragment() {
+    private val repo = Repo()
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
     private lateinit var MainActivity: Intent
@@ -39,7 +45,7 @@ class AuthActivity : Fragment() {
     ): View? {
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.titleAuthentication)
          binding=  DataBindingUtil.inflate<FragmentAuthActivityBinding>(inflater,
-                 R.layout.fragment_auth_activity, container, false)
+             R.layout.fragment_auth_activity, container, false)
         mAuth = FirebaseAuth.getInstance()
         viewModel = ViewModelProvider(this).get(RegisterFragmetVM::class.java)
         val vieww = requireActivity().currentFocus
@@ -59,7 +65,8 @@ class AuthActivity : Fragment() {
                         binding.loginButton.setVisibility(View.GONE)
                         binding.connectionClose.setVisibility(View.VISIBLE)
                         currentUser = mAuth.currentUser!!
-                        updateNav(currentUser)
+                        updateNav(currentUser, repo.getUsername().value?.nomUsuari)
+                        repo.getUsername()
                         requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
                     }else{
                         showNegativeAlert()
@@ -148,7 +155,7 @@ class AuthActivity : Fragment() {
                             binding.loginButton.setVisibility(View.GONE)
                             binding.connectionClose.setVisibility(View.VISIBLE)
                             currentUser = mAuth.currentUser!!
-                            updateNav(currentUser)
+                            updateNav(currentUser, null)
                             requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
                         }
                         else{
@@ -184,10 +191,13 @@ class AuthActivity : Fragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
 
-    }
+    /*fun observeData(){
+        viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
+            adapter.setListData(it)
+            adapter.notifyDataSetChanged()
+        })
+    }*/
 
 
 }

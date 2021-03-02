@@ -21,6 +21,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import cat.copernic.daniel.marketcomparator.databinding.ActivityMainBinding
+import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
 import cat.copernic.daniel.marketcomparator.ui.shoppingList.shoppingListFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
     private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
+    private val repo = Repo()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,14 +53,14 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.nav_home, R.id.productFragment, R.id.authActivity,
-            R.id.settingsFragment,R.id.aboutFragment,R.id.addProductsFragment), drawerLayout)
+            R.id.settingsFragment,R.id.aboutFragment,R.id.addProductsFragment, R.id.users), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         setnavView(navView)
 
         if (mAuth.currentUser != null){
             currentUser = mAuth.currentUser!!
-            updateNav(currentUser)
+            updateNav(currentUser, repo.getUsername().value?.nomUsuari)
         }
     }
 
