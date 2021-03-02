@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseUser
 
 private lateinit var navView:NavigationView
 var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
-var currentUser: FirebaseUser = mAuth.currentUser!!
+//var currentUser: FirebaseUser = mAuth.currentUser!!
 
 fun setnavView(nav: NavigationView){
     navView = nav

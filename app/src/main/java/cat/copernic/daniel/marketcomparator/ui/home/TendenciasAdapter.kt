@@ -1,7 +1,6 @@
-package cat.copernic.daniel.marketcomparator.ui.products
+package cat.copernic.daniel.marketcomparator.ui.home
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,22 +12,22 @@ import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import com.bumptech.glide.Glide
 
-class ProductsAdapter(private val context: Context): RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>(){
+class TendenciasAdapter(private val context : Context): RecyclerView.Adapter<TendenciasAdapter.TendenciaViewHolder>() {
 
     private var dataList = mutableListOf<ProductsDTO>()
 
-    fun setListData(data: MutableList<ProductsDTO>){
+    fun setListTendencias(data: MutableList<ProductsDTO>){
         dataList = data
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_product,parent,false)
-        return ProductsViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TendenciaViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.item_tendenciamasnuevo,parent,false)
+        return TendenciaViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
-        val product = dataList[position]
-        holder.bindView(product)
+    override fun onBindViewHolder(holder: TendenciaViewHolder, position: Int) {
+        val tend = dataList[position]
+        holder.bindView(tend)
     }
 
     override fun getItemCount(): Int {
@@ -38,8 +37,7 @@ class ProductsAdapter(private val context: Context): RecyclerView.Adapter<Produc
             return 0
         }
     }
-
-    inner class ProductsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class TendenciaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bindView(product: ProductsDTO){
             itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
             itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.precioProducto.toString() + "€")
@@ -48,10 +46,9 @@ class ProductsAdapter(private val context: Context): RecyclerView.Adapter<Produc
             Glide.with(itemView)
                 .load(media)
                 .into(itemView.findViewById<ImageView>(R.id.imageView) )
-        itemView.setOnClickListener {
-            itemView.findNavController().navigate(R.id.action_productFragment_to_seeProductFragment)
-        }
+            itemView.setOnClickListener {
+                itemView.findNavController().navigate(R.id.action_productFragment_to_seeProductFragment)
+            }
         }
     }
-
 }

@@ -8,5 +8,6 @@ data class ProductsDTO(
     var descripcionProducto : String ,
     var precioProducto : Double,
     var contenedorProducto : String,
+    var tendenciaProducto : Int,
     var imagenProducto : String
 )

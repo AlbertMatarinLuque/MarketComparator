@@ -28,8 +28,30 @@ class Repo {
                         productsBD.child("descripcionProducto").getValue().toString(),
                         productsBD.child("precioProducto").getValue().toString().toDouble(),
                         productsBD.child("contenedorProducto").getValue().toString(),
+                        productsBD.child("tendenciaProducto").getValue().toString().toInt(),
                         productsBD.child("imagenProducto").getValue().toString())
                 listProducts.add(p)
+
+            }
+            mutableData.value = listProducts
+        }
+        return mutableData
+    }
+
+    fun getProductsTendencia(): LiveData<MutableList<ProductsDTO>> {
+        Log.e("FFF","FFF")
+        val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
+        FirebaseDatabase.getInstance().reference.child("products").limitToFirst(8).get().addOnSuccessListener { result ->
+            val listProducts = mutableListOf<ProductsDTO>()
+            for (productsBD in result.children) {
+                val p: ProductsDTO = ProductsDTO(productsBD.child("nombreProducto").getValue().toString(),
+                    productsBD.child("descripcionProducto").getValue().toString(),
+                    productsBD.child("precioProducto").getValue().toString().toDouble(),
+                    productsBD.child("contenedorProducto").getValue().toString(),
+                    productsBD.child("tendenciaProducto").getValue().toString().toInt(),
+                    productsBD.child("imagenProducto").getValue().toString())
+                listProducts.add(p)
+                Log.e("order",p.toString())
 
             }
             mutableData.value = listProducts
