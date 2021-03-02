@@ -9,7 +9,7 @@
         android:id="@+id/nav_home"
         android:name="cat.copernic.daniel.marketcomparator.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_searchFragment2"
             app:destination="@id/searchFragment2" />
@@ -20,9 +20,9 @@
 
     <fragment
         android:id="@+id/authActivity"
-        android:name="cat.copernic.daniel.marketcomparator.AuthActivity"
+        android:name="cat.copernic.daniel.marketcomparator.ui.configuration.users.authentication.AuthActivity"
         android:label="fragment_auth_activity"
-        tools:layout="@layout/fragment_auth_activity" >
+        tools:layout="@layout/fragment_auth_activity">
         <action
             android:id="@+id/action_authActivity_to_nav_home"
             app:destination="@id/nav_home" />
@@ -34,7 +34,7 @@
         android:id="@+id/searchFragment2"
         android:name="cat.copernic.daniel.marketcomparator.ui.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment2_to_shoppingListFragment"
             app:destination="@id/shoppingListFragment" />
@@ -43,7 +43,7 @@
         android:id="@+id/productFragment"
         android:name="cat.copernic.daniel.marketcomparator.ui.products.productFragment"
         android:label="fragment_product"
-        tools:layout="@layout/fragment_category" >
+        tools:layout="@layout/fragment_category">
         <action
             android:id="@+id/action_productFragment_to_searchFragment2"
             app:destination="@id/searchFragment2" />
@@ -58,7 +58,7 @@
         android:id="@+id/shoppingListFragment"
         android:name="cat.copernic.daniel.marketcomparator.ui.shoppingList.shoppingListFragment"
         android:label="fragment_shopping_list"
-        tools:layout="@layout/fragment_shopping_list" >
+        tools:layout="@layout/fragment_shopping_list">
         <action
             android:id="@+id/action_shoppingListFragment_to_searchFragment2"
             app:destination="@id/searchFragment2" />
@@ -70,9 +70,9 @@
         tools:layout="@layout/fragment_class" />
     <fragment
         android:id="@+id/registerFragment"
-        android:name="cat.copernic.daniel.marketcomparator.ui.configuration.users.RegisterFragment"
+        android:name="cat.copernic.daniel.marketcomparator.ui.configuration.users.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_nav_home"
             app:destination="@id/nav_home" />
@@ -93,8 +93,12 @@
         android:label="fragment_add_products"
         tools:layout="@layout/fragment_add_products" />
     <fragment
+        android:id="@+id/users"
+        android:name="cat.copernic.daniel.marketcomparator.ui.showUsers.users"
+        android:label="fragment_users"
+        tools:layout="@layout/fragment_users" />
+    <fragment
         android:id="@+id/seeProductFragment"
         android:name="cat.copernic.daniel.marketcomparator.ui.products.seeProduct.SeeProductFragment"
-        android:label="fragment_see_product"
-        tools:layout="@layout/fragment_see_product" />
+        android:label="SeeProductFragment" />
 </navigation>
