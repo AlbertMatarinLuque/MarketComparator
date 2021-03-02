@@ -18,7 +18,7 @@ class UsersAdapter(private val context: Context): RecyclerView.Adapter<UsersAdap
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersAdapter.UsersViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_product,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_user,parent,false)
         return UsersViewHolder(view)
     }
 
@@ -37,8 +37,8 @@ class UsersAdapter(private val context: Context): RecyclerView.Adapter<UsersAdap
 
     inner class UsersViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bindView(user: UsuariDTO){
-            itemView.findViewById<TextView>(R.id.tvNameProduct).setText(user.mail)
-            itemView.findViewById<TextView>(R.id.tvContainerProduct).setText(user.nomUsuari)
+            itemView.findViewById<TextView>(R.id.mailTV).setText(user.mail)
+            itemView.findViewById<TextView>(R.id.usernameTV).setText(user.nomUsuari)
         }
     }
 }

@@ -171,5 +171,7 @@
     <string name="registrarse">Registrar-se</string>
     <string name="tots_els_productes">Tots els productes</string>
     <string name="administrar_usuaris">Administrar Usuaris</string>
+    <string name="borrar">Borrar</string>
+    <string name="modificar">Modificar</string>
 
 </resources>

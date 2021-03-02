@@ -23,7 +23,12 @@ class users : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<FragmentUsersBinding>(inflater, R.layout.fragment_users, container, false)
+        binding = DataBindingUtil.inflate<FragmentUsersBinding>(
+            inflater,
+            R.layout.fragment_users,
+            container,
+            false
+        )
         viewModel = ViewModelProvider(this).get(UsersVM::class.java)
         recyclerView = binding.recycleView2
         adapter = UsersAdapter(requireContext())
@@ -39,16 +44,21 @@ class users : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        when(id){
-            R.id.trolley ->   requireView().findNavController().navigate(R.id.action_productFragment_to_shoppingListFragment)
-            R.id.search ->   requireView().findNavController().navigate(R.id.action_productFragment_to_searchFragment2)
+        when (id) {
+            R.id.trolley -> requireView().findNavController()
+                .navigate(R.id.action_productFragment_to_shoppingListFragment)
+            R.id.search -> requireView().findNavController()
+                .navigate(R.id.action_productFragment_to_searchFragment2)
         }
         return super.onOptionsItemSelected(item)
     }
 
 
-    fun observeData(){
+    fun observeData() {
+        binding.shimmerViewContainerUser.startShimmer()
         viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
+            binding.shimmerViewContainerUser.stopShimmer()
+            binding.shimmerViewContainerUser.visibility = View.GONE
             adapter.setListData(it)
             adapter.notifyDataSetChanged()
         })
