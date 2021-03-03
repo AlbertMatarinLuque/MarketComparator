@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MarketComparator</string>
+    <string name="btn_register">Are you not registered? Sign up!</string>
+    <string name="modificar">Modify</string>
+    <string name="borrar">Delete</string>
+    <string name="administrar_usuaris">Manage Users</string>
+    <string name="tots_els_productes">All products</string>
+    <string name="registrarse">Sign in</string>
+    <string name="contraseña">Password:</string>
+    <string name="correo_electronico">Email:</string>
+    <string name="nombre_de_usuario">Username:</string>
+    <string name="registro">Registration</string>
+    <string name="inicia_sessio">Log in</string>
+    <string name="tanca_sessio">Sign off</string>
+    <string name="contrasenya">Password</string>
+    <string name="welcomeMessage">Welcome</string>
+    <string name="mail">Email</string>
+    <string name="insertar_producte">Insert product</string>
+    <string name="contenidor">Container:</string>
+    <string name="price">Price:</string>
+    <string name="description">Description:</string>
+    <string name="nom_producte">Product name:</string>
+    <string name="nous_producte">New products</string>
+    <string name="logOut">You have logged out</string>
+    <string name="verifyCIG">You can now use your Google account.</string>
+    <string name="verifyCI">You have successfully logged in.</string>
+    <string name="verifyE">Missing data to fill in.</string>
+    <string name="verifyFI">Login failed.</string>
+    <string name="titleAuthentication">Authenticate</string>
+    <string name="verifyCRG">You have already registered your Google account.</string>
+    <string name="verifyFRG">There was an error registering with your Google account.</string>
+    <string name="verifyCR">You have successfully registered.</string>
+    <string name="verifyFR">There was an error registering.</string>
+    <string name="perfectMessage">Perfect!</string>
+    <string name="titleRegister">Registration</string>
+    <string name="verifyF">The product has not been added correctly</string>
+    <string name="wrongMessage">Error!</string>
+    <string name="acceptMessage">Accept</string>
+    <string name="verifyC">The product has been added successfully</string>
+    <string name="rightMessage">Correct!</string>
+    <string name="emptyFields">Empty mandatory fields</string>
+    <string name="administrar_productes">Manage Products</string>
+    <string name="acerca_de">About us</string>
+    <string name="ajustes">Settings</string>
+    <string name="products">Products</string>
+</resources>

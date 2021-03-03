@@ -10,7 +10,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentUsersBinding
-import cat.copernic.daniel.marketcomparator.ui.products.productViewModel
 
 
 class users : Fragment() {

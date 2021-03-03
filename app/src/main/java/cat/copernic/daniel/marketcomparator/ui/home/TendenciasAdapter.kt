@@ -12,16 +12,18 @@ import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import com.bumptech.glide.Glide
 
-class TendenciasAdapter(private val context : Context): RecyclerView.Adapter<TendenciasAdapter.TendenciaViewHolder>() {
+class TendenciasAdapter(private val context: Context) :
+    RecyclerView.Adapter<TendenciasAdapter.TendenciaViewHolder>() {
 
     private var dataList = mutableListOf<ProductsDTO>()
 
-    fun setListTendencias(data: MutableList<ProductsDTO>){
+    fun setListTendencias(data: MutableList<ProductsDTO>) {
         dataList = data
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TendenciaViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_tendenciamasnuevo,parent,false)
+        val view =
+            LayoutInflater.from(context).inflate(R.layout.item_tendenciamasnuevo, parent, false)
         return TendenciaViewHolder(view)
     }
 
@@ -31,21 +33,24 @@ class TendenciasAdapter(private val context : Context): RecyclerView.Adapter<Ten
     }
 
     override fun getItemCount(): Int {
-        if (dataList.size > 0){
+        if (dataList.size > 0) {
             return dataList.size
-        }else{
+        } else {
             return 0
         }
     }
-    inner class TendenciaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bindView(product: ProductsDTO){
+
+    inner class TendenciaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bindView(product: ProductsDTO) {
             itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
-            itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.precioProducto.toString() + "€")
-            itemView.findViewById<TextView>(R.id.tvContainerProduct).setText(product.contenedorProducto)
+            itemView.findViewById<TextView>(R.id.tvPriceProduct)
+                .setText(product.precioProducto.toString() + "€")
+            itemView.findViewById<TextView>(R.id.tvContainerProduct)
+                .setText(product.contenedorProducto)
             val media = product.imagenProducto
             Glide.with(itemView)
                 .load(media)
-                .into(itemView.findViewById<ImageView>(R.id.imageView) )
+                .into(itemView.findViewById<ImageView>(R.id.imageView))
             itemView.setOnClickListener {
                 itemView.findNavController().navigate(R.id.action_nav_home_to_seeProductFragment)
             }

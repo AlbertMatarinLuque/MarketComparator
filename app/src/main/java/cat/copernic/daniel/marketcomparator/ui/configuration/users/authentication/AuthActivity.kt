@@ -13,7 +13,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import cat.copernic.daniel.marketcomparator.MainActivity
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentAuthActivityBinding
 import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
@@ -31,21 +30,24 @@ import com.google.firebase.ktx.Firebase
 
 
 class AuthActivity : Fragment() {
+
     private val repo = Repo()
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
-    private lateinit var MainActivity: Intent
-    private lateinit var main : MainActivity
     private lateinit var binding: FragmentAuthActivityBinding
-    private lateinit var  viewModel: RegisterFragmetVM
+    private lateinit var viewModel: RegisterFragmetVM
     private val GOOGLE_SIGN_IN = 100
+
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.titleAuthentication)
-         binding=  DataBindingUtil.inflate<FragmentAuthActivityBinding>(inflater,
-             R.layout.fragment_auth_activity, container, false)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title =
+            getString(R.string.titleAuthentication)
+        binding = DataBindingUtil.inflate<FragmentAuthActivityBinding>(
+            inflater,
+            R.layout.fragment_auth_activity, container, false
+        )
         mAuth = FirebaseAuth.getInstance()
         viewModel = ViewModelProvider(this).get(RegisterFragmetVM::class.java)
         val vieww = requireActivity().currentFocus
@@ -57,32 +59,34 @@ class AuthActivity : Fragment() {
         }
 
         binding.loginButton.setOnClickListener {
-            if(emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()){
-                FirebaseAuth.getInstance().signInWithEmailAndPassword(emailEditText.text.toString(),
-                        passwordEditText.text.toString()).addOnCompleteListener{
-                    if(it.isSuccessful){
+            if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()) {
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    emailEditText.text.toString(),
+                    passwordEditText.text.toString()
+                ).addOnCompleteListener {
+                    if (it.isSuccessful) {
                         showPositiveLoginAlert()
                         binding.loginButton.setVisibility(View.GONE)
                         binding.connectionClose.setVisibility(View.VISIBLE)
                         currentUser = mAuth.currentUser!!
                         updateNav(currentUser, repo.getUsername().value?.nomUsuari)
                         repo.getUsername()
-                        requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
-                    }else{
+                        requireView().findNavController()
+                            .navigate(R.id.action_authActivity_to_nav_home)
+                    } else {
                         showNegativeAlert()
                     }
                 }
-            }
-            else{
+            } else {
                 showEmptyAlert()
             }
             ocultar()
         }
         binding.googleImage.setOnClickListener {
             val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(getString(R.string.default_web_client_id))
-                    .requestEmail()
-                    .build()
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
             val googleClient = GoogleSignIn.getClient(requireContext(), googleConf)
             googleClient.signOut()
             startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
@@ -96,7 +100,7 @@ class AuthActivity : Fragment() {
         binding.connectionClose.setVisibility(View.GONE)
         var user = mAuth.currentUser
 
-        if (user != null){
+        if (user != null) {
             binding.loginButton.setVisibility(View.GONE)
             binding.connectionClose.setVisibility(View.VISIBLE)
         }
@@ -105,8 +109,7 @@ class AuthActivity : Fragment() {
     }
 
 
-
-    private fun showNegativeAlert(){
+    private fun showNegativeAlert() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(context?.getString(R.string.wrongMessage))
         builder.setMessage(getString(R.string.verifyFI))
@@ -115,7 +118,7 @@ class AuthActivity : Fragment() {
         dialog.show()
     }
 
-    private fun showEmptyAlert(){
+    private fun showEmptyAlert() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(context?.getString(R.string.wrongMessage))
         builder.setMessage(getString(R.string.verifyE))
@@ -124,7 +127,7 @@ class AuthActivity : Fragment() {
         dialog.show()
     }
 
-    private fun showPositiveLoginAlert(){
+    private fun showPositiveLoginAlert() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(getString(R.string.perfectMessage))
         builder.setMessage(getString(R.string.verifyCI))
@@ -132,7 +135,8 @@ class AuthActivity : Fragment() {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
-    private fun showPositiveGoogleAlert(){
+
+    private fun showPositiveGoogleAlert() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(getString(R.string.perfectMessage))
         builder.setMessage(getString(R.string.verifyCIG))
@@ -143,34 +147,35 @@ class AuthActivity : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == GOOGLE_SIGN_IN){
+        if (requestCode == GOOGLE_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                if (account != null){
+                if (account != null) {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
-                        if (it.isSuccessful){
-                            showPositiveGoogleAlert()
-                            binding.loginButton.setVisibility(View.GONE)
-                            binding.connectionClose.setVisibility(View.VISIBLE)
-                            currentUser = mAuth.currentUser!!
-                            updateNav(currentUser, null)
-                            requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
+                    FirebaseAuth.getInstance().signInWithCredential(credential)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                showPositiveGoogleAlert()
+                                binding.loginButton.setVisibility(View.GONE)
+                                binding.connectionClose.setVisibility(View.VISIBLE)
+                                currentUser = mAuth.currentUser!!
+                                updateNav(currentUser, null)
+                                requireView().findNavController()
+                                    .navigate(R.id.action_authActivity_to_nav_home)
+                            } else {
+                                showNegativeAlert()
+                            }
                         }
-                        else{
-                            showNegativeAlert()
-                        }
-                    }
                 }
-            } catch (e: ApiException){
+            } catch (e: ApiException) {
                 showNegativeAlert()
             }
         }
     }
 
 
-    fun closeConnection(){
+    fun closeConnection() {
         Firebase.auth.signOut()
         binding.loginButton.setVisibility(View.VISIBLE)
         binding.connectionClose.setVisibility(View.GONE)
@@ -186,18 +191,10 @@ class AuthActivity : Fragment() {
         val vieww: View? = requireActivity().getCurrentFocus()
         if (vieww != null) {
             //Aquí esta la magia
-            val input = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val input =
+                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             input.hideSoftInputFromWindow(vieww.windowToken, 0)
         }
     }
-
-
-    /*fun observeData(){
-        viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
-            adapter.setListData(it)
-            adapter.notifyDataSetChanged()
-        })
-    }*/
-
 
 }

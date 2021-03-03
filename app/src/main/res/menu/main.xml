@@ -4,13 +4,13 @@
 
     <item
         android:id="@+id/search"
-        android:icon="@drawable/ic_settings"
+        android:icon="@drawable/ic_search"
         app:showAsAction="always"
-        android:title="Buscar"/>
+        android:title="Buscar" />
     <item
         android:id="@+id/trolley"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         app:showAsAction="always"
-        android:title="Carrito"/>
+        android:title="Carrito" />
 
 </menu>

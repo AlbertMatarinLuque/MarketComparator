@@ -1,19 +1,12 @@
 package cat.copernic.daniel.marketcomparator.domain.data.network
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import cat.copernic.daniel.marketcomparator.model.UsuariDTO
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class Repo {
     private lateinit var mAuth: FirebaseAuth
@@ -43,7 +36,8 @@ class Repo {
 
     fun getProductsTendencia(): LiveData<MutableList<ProductsDTO>> {
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
-        FirebaseDatabase.getInstance().reference.child("products").orderByChild("tendenciaProducto").limitToFirst(8)
+        FirebaseDatabase.getInstance().reference.child("products").orderByChild("tendenciaProducto")
+            .limitToFirst(8)
             .get().addOnSuccessListener { result ->
                 val listProducts = mutableListOf<ProductsDTO>()
                 for (productsBD in result.children) {
@@ -81,7 +75,7 @@ class Repo {
                     )
                     listProducts.add(p)
                 }
-             //   listProducts.sortByDescending { it.tendenciaProducto }
+                //   listProducts.sortByDescending { it.tendenciaProducto }
                 mutableData.value = listProducts
             }
         return mutableData

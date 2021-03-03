@@ -16,14 +16,16 @@ class shoppingListFragment : Fragment() {
         setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_shopping_list, container, false)
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        when(id){
-            R.id.trolley ->   requireView().findNavController().navigate(R.id.action_shoppingListFragment_to_searchFragment2)
+        when (id) {
+            R.id.trolley -> requireView().findNavController()
+                .navigate(R.id.action_shoppingListFragment_to_searchFragment2)
         }
         return super.onOptionsItemSelected(item)
     }

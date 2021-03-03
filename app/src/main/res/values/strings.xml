@@ -1,169 +1,169 @@
 <resources>
     <string name="app_name">MarketComparator</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Settings</string>
 
-    <string name="menu_home">Pàgina d\'inici</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_login">Iniciar Sessió</string>
+    <string name="menu_home" translatable="false">Pàgina d\'inici</string>
+    <string name="menu_gallery" translatable="false">Gallery</string>
+    <string name="menu_slideshow" translatable="false">Slideshow</string>
+    <string name="menu_login" translatable="false">Iniciar Sessió</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome!"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password" translatable="false">Password</string>
+    <string name="action_sign_in" translatable="false">Sign in or register</string>
+    <string name="action_sign_in_short" translatable="false">Sign in</string>
+    <string name="welcome" translatable="false">"Welcome!"</string>
+    <string name="invalid_username" translatable="false">Not a valid username</string>
+    <string name="invalid_password" translatable="false">Password must be >5 characters</string>
+    <string name="login_failed" translatable="false">"Login failed"</string>
 
 
-    <string name="label_google_sign_in">Firebase + Google Sign In</string>
-    <string name="desc_google_sign_in">Use a Google Sign In credential to authenticate with Firebase.</string>
+    <string name="label_google_sign_in" translatable="false">Firebase + Google Sign In</string>
+    <string name="desc_google_sign_in" translatable="false">Use a Google Sign In credential to authenticate with Firebase.</string>
 
-    <string name="label_facebook_login">Firebase + Facebook Login</string>
-    <string name="desc_facebook_login">Use a Facebook Login credential to authenticate with Firebase.</string>
+    <string name="label_facebook_login" translatable="false">Firebase + Facebook Login</string>
+    <string name="desc_facebook_login" translatable="false">Use a Facebook Login credential to authenticate with Firebase.</string>
 
-    <string name="label_emailpassword">Email/Password Authentication</string>
-    <string name="desc_emailpassword">Use an email and password to authenticate with Firebase.</string>
+    <string name="label_emailpassword" translatable="false">Email/Password Authentication</string>
+    <string name="desc_emailpassword" translatable="false">Use an email and password to authenticate with Firebase.</string>
 
-    <string name="label_passwordless">Passwordless Authentication</string>
-    <string name="desc_passwordless">Use only an email to authenticate with Firebase.</string>
+    <string name="label_passwordless" translatable="false">Passwordless Authentication</string>
+    <string name="desc_passwordless" translatable="false">Use only an email to authenticate with Firebase.</string>
 
-    <string name="label_phone_auth">Phone Number Authentication</string>
-    <string name="desc_phone_auth">Use a phone number to authenticate with Firebase.</string>
+    <string name="label_phone_auth" translatable="false">Phone Number Authentication</string>
+    <string name="desc_phone_auth" translatable="false">Use a phone number to authenticate with Firebase.</string>
 
-    <string name="label_anonymous_auth">Anonymous Authentication</string>
-    <string name="desc_anonymous_auth">Sign in anonymously and then later upgrade to a full Firebase Auth user.</string>
+    <string name="label_anonymous_auth" translatable="false">Anonymous Authentication</string>
+    <string name="desc_anonymous_auth" translatable="false">Sign in anonymously and then later upgrade to a full Firebase Auth user.</string>
 
-    <string name="label_custom_auth">Custom Authentication</string>
-    <string name="desc_custom_auth">Use a custom token signed by your own server to authenticate with Firebase.</string>
+    <string name="label_custom_auth" translatable="false">Custom Authentication</string>
+    <string name="desc_custom_auth" translatable="false">Use a custom token signed by your own server to authenticate with Firebase.</string>
 
-    <string name="label_firebase_ui">FirebaseUI Auth</string>
-    <string name="desc_firebase_ui">Use the FirebaseUI-Android library to authenticate with Firebase.</string>
+    <string name="label_firebase_ui" translatable="false">FirebaseUI Auth</string>
+    <string name="desc_firebase_ui" translatable="false">Use the FirebaseUI-Android library to authenticate with Firebase.</string>
 
-    <string name="label_generic_idp">Generic OAuth</string>
-    <string name="desc_generic_idp">Use a generic OAuth identity provider, like Apple, Microsoft, Yahoo, or Twitter to authenticate with Firebase.</string>
+    <string name="label_generic_idp" translatable="false">Generic OAuth</string>
+    <string name="desc_generic_idp" translatable="false">Use a generic OAuth identity provider, like Apple, Microsoft, Yahoo, or Twitter to authenticate with Firebase.</string>
 
-    <string name="label_multi_factor">Multi-Factor Authentication</string>
-    <string name="desc_multi_factor">Use SMS for two-factor authentication. Note: this feature is only available for Cloud Identity Platform.</string>
+    <string name="label_multi_factor" translatable="false">Multi-Factor Authentication</string>
+    <string name="desc_multi_factor" translatable="false">Use SMS for two-factor authentication. Note: this feature is only available for Cloud Identity Platform.</string>
 
-    <string name="hint_user_id">User ID</string>
-    <string name="get_custom_token">Get Token</string>
-    <string name="sign_in">Sign In</string>
-    <string name="create_account">Create Account</string>
-    <string name="send_link">Send Link</string>
-    <string name="sign_out">Sign Out</string>
-    <string name="verify_email">Verify</string>
-    <string name="disconnect">Disconnect</string>
-    <string name="loading">Loading…</string>
-    <string name="custom_token">Custom Token</string>
-    <string name="signed_in">Signed In</string>
-    <string name="signed_out">Signed Out</string>
-    <string name="token_null">Token: null</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
-    <string name="desc_firebase_lockup">Firebase logo and name</string>
-    <string name="auth_failed">Authentication failed</string>
-    <string name="start_phone_auth">Start</string>
-    <string name="verify_phone_auth">Verify</string>
-    <string name="resend_phone_auth">Resend</string>
-    <string name="hint_phone_number">Phone Number</string>
-    <string name="hint_verification_code">Verification Code</string>
-    <string name="status_code_sent">Code Sent</string>
-    <string name="status_verification_failed">Verification failed</string>
-    <string name="status_verification_succeeded">Verification succeeded</string>
-    <string name="status_sign_in_failed">Sign-in failed</string>
-    <string name="instant_validation">(instant validation)</string>
+    <string name="hint_user_id" translatable="false">User ID</string>
+    <string name="get_custom_token" translatable="false">Get Token</string>
+    <string name="sign_in" translatable="false">Sign In</string>
+    <string name="create_account" translatable="false">Create Account</string>
+    <string name="send_link" translatable="false">Send Link</string>
+    <string name="sign_out" translatable="false">Sign Out</string>
+    <string name="verify_email" translatable="false">Verify</string>
+    <string name="disconnect" translatable="false">Disconnect</string>
+    <string name="loading" translatable="false">Loading…</string>
+    <string name="custom_token" translatable="false">Custom Token</string>
+    <string name="signed_in" translatable="false">Signed In</string>
+    <string name="signed_out" translatable="false">Signed Out</string>
+    <string name="token_null" translatable="false">Token: null</string>
+    <string name="hint_email" translatable="false">Email</string>
+    <string name="hint_password" translatable="false">Password</string>
+    <string name="desc_firebase_lockup" translatable="false">Firebase logo and name</string>
+    <string name="auth_failed" translatable="false">Authentication failed</string>
+    <string name="start_phone_auth" translatable="false">Start</string>
+    <string name="verify_phone_auth" translatable="false">Verify</string>
+    <string name="resend_phone_auth" translatable="false">Resend</string>
+    <string name="hint_phone_number" translatable="false">Phone Number</string>
+    <string name="hint_verification_code" translatable="false">Verification Code</string>
+    <string name="status_code_sent" translatable="false">Code Sent</string>
+    <string name="status_verification_failed" translatable="false">Verification failed</string>
+    <string name="status_verification_succeeded" translatable="false">Verification succeeded</string>
+    <string name="status_sign_in_failed" translatable="false">Sign-in failed</string>
+    <string name="instant_validation" translatable="false">(instant validation)</string>
 
-    <string name="firebase_status_fmt">Firebase UID: %s</string>
-    <string name="firebase_user_management">Firebase User Management</string>
+    <string name="firebase_status_fmt" translatable="false">Firebase UID: %s</string>
+    <string name="firebase_user_management" translatable="false">Firebase User Management</string>
 
-    <string name="google_status_fmt">Google User: %s</string>
-    <string name="google_title_text">Google Sign In</string>
+    <string name="google_status_fmt" translatable="false">Google User: %s</string>
+    <string name="google_title_text" translatable="false">Google Sign In</string>
 
-    <string name="facebook_status_fmt">Facebook User: %s</string>
-    <string name="facebook_title_text">Facebook Login</string>
+    <string name="facebook_status_fmt" translatable="false">Facebook User: %s</string>
+    <string name="facebook_title_text" translatable="false">Facebook Login</string>
 
-    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
-    <string name="emailpassword_title_text">Email and Password</string>
+    <string name="emailpassword_status_fmt" translatable="false">Email User: %1$s (verified: %2$b)</string>
+    <string name="emailpassword_title_text" translatable="false">Email and Password</string>
 
-    <string name="passwordless_status_fmt">Email User: %1$s (verified: %2$b)</string>
-    <string name="passwordless_title_text">Passwordless Sign In</string>
-    <string name="status_email_not_sent">Send link to your email to get started.</string>
-    <string name="status_email_sent">Link sent, check your email to continue.</string>
-    <string name="status_link_found">Link received, enter email to sign in.</string>
+    <string name="passwordless_status_fmt" translatable="false">Email User: %1$s (verified: %2$b)</string>
+    <string name="passwordless_title_text" translatable="false">Passwordless Sign In</string>
+    <string name="status_email_not_sent" translatable="false">Send link to your email to get started.</string>
+    <string name="status_email_sent" translatable="false">Link sent, check your email to continue.</string>
+    <string name="status_link_found" translatable="false">Link received, enter email to sign in.</string>
 
-    <string name="phone_title_text">Phone Number</string>
+    <string name="phone_title_text" translatable="false">Phone Number</string>
 
-    <string name="twitter_status_fmt">Twitter User: %s</string>
-    <string name="twitter_title_text">Twitter Login</string>
+    <string name="twitter_status_fmt" translatable="false">Twitter User: %s</string>
+    <string name="twitter_title_text" translatable="false">Twitter Login</string>
 
-    <string name="firebaseui_status_fmt">Firebase User: %s</string>
-    <string name="firebaseui_title_text">FirebaseUI Auth</string>
+    <string name="firebaseui_status_fmt" translatable="false">Firebase User: %s</string>
+    <string name="firebaseui_title_text" translatable="false">FirebaseUI Auth</string>
 
-    <string name="generic_title_text">OAuth Sign In</string>
-    <string name="generic_signin_fmt">Sign In with %s</string>
-    <string name="generic_status_fmt">User: %s (%s)</string>
-    <string name="generic_label_provider">Provider:</string>
+    <string name="generic_title_text" translatable="false">OAuth Sign In</string>
+    <string name="generic_signin_fmt" translatable="false">Sign In with %s</string>
+    <string name="generic_status_fmt" translatable="false">User: %s (%s)</string>
+    <string name="generic_label_provider" translatable="false">Provider:</string>
 
-    <string name="id_fmt">User ID: %s</string>
-    <string name="email_fmt">Email: %s</string>
+    <string name="id_fmt" translatable="false">User ID: %s</string>
+    <string name="email_fmt" translatable="false">Email: %s</string>
 
-    <string name="enroll_mfa">Enroll MFA</string>
-    <string name="unenroll_mfa">Unenroll MFA</string>
-    <string name="reload">Reload</string>
+    <string name="enroll_mfa" translatable="false">Enroll MFA</string>
+    <string name="unenroll_mfa" translatable="false">Unenroll MFA</string>
+    <string name="reload" translatable="false">Reload</string>
 
-    <string name="custom_auth_signin_status_user">User ID: %s</string>
-    <string name="custom_auth_signin_status_failed">Error: sign in failed</string>
+    <string name="custom_auth_signin_status_user" translatable="false">User ID: %s</string>
+    <string name="custom_auth_signin_status_failed" translatable="false">Error: sign in failed</string>
 
-    <string name="error_sign_in_failed">Sign in failed, see logs for details.</string>
-    <string name="multi_factor_signed_out">You are not signed in. To use this sample, first navigate to the Email/Password example to sign in and then return here to enroll in multi-factor auth.</string>
+    <string name="error_sign_in_failed" translatable="false">Sign in failed, see logs for details.</string>
+    <string name="multi_factor_signed_out" translatable="false">You are not signed in. To use this sample, first navigate to the Email/Password example to sign in and then return here to enroll in multi-factor auth.</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="products">Productes</string>
     <string name="ajustes">Ajustos</string>
     <string name="acerca_de">Sobre nosaltres</string>
     <string name="administrar_productes">Administrar Productes</string>
-    <string name="emptyFields">Camps obligatoris buïts</string>
+    <string name="emptyFields">Camps obligatoris buits</string>
     <string name="rightMessage">¡Correcte!</string>
-    <string name="verifyC">El producte s\'ha afeguit correctament</string>
-    <string name="acceptMessage">Aceptar</string>
-    <string name="wrongMessage">¡Error!</string>
+    <string name="verifyC">El producte s\'ha afegit correctament</string>
+    <string name="acceptMessage">Acceptar</string>
+    <string name="wrongMessage">Error!</string>
     <string name="verifyF">El producte no s\'ha afegit correctament</string>
     <string name="titleRegister">Registre</string>
-    <string name="perfectMessage">¡Perfecte!</string>
-    <string name="verifyFR">S\'ha produit un error al registrar-se.</string>
+    <string name="perfectMessage">Perfecte!</string>
+    <string name="verifyFR">S\'ha produït un error en registrar-se.</string>
     <string name="verifyCR">T\'has registrat correctament.</string>
-    <string name="verifyFRG">S\'ha produit un error al registrar-se amb la teva compte de google.</string>
-    <string name="verifyCRG">Ja has registrat la teva compte de Google.</string>
-    <string name="title">MarketComparator</string>
+    <string name="verifyFRG">S\'ha produït un error en registrar-se amb el teu compte de Google.</string>
+    <string name="verifyCRG">Ja has registrat el teu compte de Google.</string>
+    <string name="title" translatable="false">MarketComparator</string>
     <string name="titleAuthentication">Autenticar-se</string>
-    <string name="greenContainer">Verde</string>
-    <string name="blueContainer">Azul</string>
-    <string name="yellowContainer">Amarillo</string>
-    <string name="brownContainer">Marron</string>
-    <string name="greyContainer">Gris</string>
-    <string name="verifyFI">S\'ha produit un error a l\'inicar sessió.</string>
+    <string name="greenContainer" translatable="false">Verde</string>
+    <string name="blueContainer" translatable="false">Azul</string>
+    <string name="yellowContainer" translatable="false">Amarillo</string>
+    <string name="brownContainer" translatable="false">Marron</string>
+    <string name="greyContainer" translatable="false">Gris</string>
+    <string name="verifyFI">S\'ha produït un error en iniciar sessió.</string>
     <string name="verifyE">Falten dades per emplenar.</string>
     <string name="verifyCI">Has iniciat sessió correctament.</string>
-    <string name="verifyCIG">Ja pots utiltzar la teva compte de Google.</string>
-    <string name="logOut">Has tancat la sessió</string>
-    <string name="nous_producte">Nous producte</string>
+    <string name="verifyCIG">Ja pots utilitzar el teu compte de Google.</string>
+    <string name="logOut">Has tancat sessió</string>
+    <string name="nous_producte">Nous productes</string>
     <string name="nom_producte">Nom producte:</string>
     <string name="description">Descripció:</string>
     <string name="price">Preu:</string>
     <string name="contenidor">Contenidor:</string>
-    <string name="insertar_producte">Insertar/Subir imagen Producte</string>
+    <string name="insertar_producte">Inserir producte</string>
     <string name="mail">Correu electrònic</string>
     <string name="welcomeMessage">Benvingut</string>
     <string name="contrasenya">Contrasenya</string>
     <string name="tanca_sessio">Tanca sessió</string>
-    <string name="inicia_sessio">Iniciar Sessió!</string>
+    <string name="inicia_sessio">Iniciar sessió</string>
     <string name="registro">Registre</string>
     <string name="nombre_de_usuario">Nom d\'usuari:</string>
     <string name="correo_electronico">Correu electrònic:</string>
@@ -173,6 +173,6 @@
     <string name="administrar_usuaris">Administrar Usuaris</string>
     <string name="borrar">Borrar</string>
     <string name="modificar">Modificar</string>
-    <string name="btn_register">¿No estas registrado? Registrate!</string>
+    <string name="btn_register">No hi esteu registrat? Inscriu-te!</string>
 
 </resources>

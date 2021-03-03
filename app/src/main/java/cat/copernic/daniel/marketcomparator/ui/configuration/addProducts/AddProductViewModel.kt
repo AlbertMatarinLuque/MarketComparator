@@ -2,7 +2,6 @@ package cat.copernic.daniel.marketcomparator.ui.configuration.addProducts
 
 import android.app.AlertDialog
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cat.copernic.daniel.marketcomparator.R
@@ -13,63 +12,59 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Double.parseDouble
 
-class AddProductViewModel : ViewModel(){
-    var options : Array<String> = arrayOf("Azul","Verde","Amarillo","Marron","Gris")
-    var numid : Long = 0
-    var idProducto : String
-    var product : ProductsDTO = ProductsDTO("","",0.0,"",0,"")
+class AddProductViewModel : ViewModel() {
+    var options: Array<String> = arrayOf("Azul", "Verde", "Amarillo", "Marron", "Gris")
+    var numid: Long = 0
+    var idProducto: String
+    var product: ProductsDTO = ProductsDTO("", "", 0.0, "", 0, "")
 
-    private var database: DatabaseReference = FirebaseDatabase.getInstance().getReference("products")
+    private var database: DatabaseReference =
+        FirebaseDatabase.getInstance().getReference("products")
 
-    private lateinit var context : Context
+    private lateinit var context: Context
 
     init {
         idProducto = "product$numid"
         getLastIDFirebase()
     }
 
-    fun insertarDatosBBDD(){
+    fun insertarDatosBBDD() {
         viewModelScope.launch(Dispatchers.IO) {
             database.child(idProducto).setValue(product)
-                    .addOnSuccessListener {
-                        showPositiveProductRegisterAlert()
-                    }.addOnFailureListener {
-                        showNegativeProductRegisterAlert()
-                    }
+                .addOnSuccessListener {
+                    showPositiveProductRegisterAlert()
+                }.addOnFailureListener {
+                    showNegativeProductRegisterAlert()
+                }
         }
-
-
     }
 
-    fun setContext(con: Context){
+    fun setContext(con: Context) {
         context = con
     }
 
 
-    fun incrementarid(){
+    fun incrementarid() {
         numid++
         idProducto = "product$numid"
     }
 
-    fun getLastIDFirebase(){
+    fun getLastIDFirebase() {
         viewModelScope.launch(Dispatchers.Main) {
             val querry = FirebaseDatabase.getInstance().reference.child("products").limitToLast(1)
 
             withContext(Dispatchers.IO) {
-            querry.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for (products in snapshot.children) {
-                        numid = getNumericValues(products.key.toString()).toLong()
-                        incrementarid()
+                querry.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (products in snapshot.children) {
+                            numid = getNumericValues(products.key.toString()).toLong()
+                            incrementarid()
+                        }
                     }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-
-            })
-        }
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
+            }
         }
     }
 
@@ -106,7 +101,7 @@ class AddProductViewModel : ViewModel(){
         dialog.show()
     }
 
-    private fun showNegativeProductRegisterAlert(){
+    private fun showNegativeProductRegisterAlert() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(context.getString(R.string.wrongMessage))
         builder.setMessage(context.getString(R.string.verifyF))

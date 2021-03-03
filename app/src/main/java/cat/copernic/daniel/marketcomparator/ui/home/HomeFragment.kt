@@ -20,13 +20,18 @@ class HomeFragment : Fragment() {
     lateinit var adapter: TendenciasAdapter
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,R.layout.fragment_home,container,false)
+        binding = DataBindingUtil.inflate<FragmentHomeBinding>(
+            inflater,
+            R.layout.fragment_home,
+            container,
+            false
+        )
 
-        homeViewModel =ViewModelProvider(this).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         recyclerView = binding.recycleView
@@ -44,14 +49,16 @@ class HomeFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        when(id){
-            R.id.trolley ->   requireView().findNavController().navigate(R.id.action_nav_home_to_shoppingListFragment)
-            R.id.search ->   requireView().findNavController().navigate(R.id.action_nav_home_to_searchFragment2)
+        when (id) {
+            R.id.trolley -> requireView().findNavController()
+                .navigate(R.id.action_nav_home_to_shoppingListFragment)
+            R.id.search -> requireView().findNavController()
+                .navigate(R.id.action_nav_home_to_searchFragment2)
         }
         return super.onOptionsItemSelected(item)
     }
 
-    fun observeData(){
+    fun observeData() {
         binding.shimmerViewContainer.startShimmer()
         viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
             binding.shimmerViewContainer.stopShimmer()

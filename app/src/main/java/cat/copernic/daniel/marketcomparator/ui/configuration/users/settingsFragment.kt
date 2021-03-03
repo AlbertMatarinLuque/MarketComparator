@@ -18,6 +18,7 @@ class settingsFragment : Fragment() {
         setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
+
     override fun onPrepareOptionsMenu(menu: Menu) {
         super.onPrepareOptionsMenu(menu)
         menu.findItem(R.id.search).setVisible(false)

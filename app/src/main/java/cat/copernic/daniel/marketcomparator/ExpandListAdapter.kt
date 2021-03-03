@@ -9,11 +9,15 @@ import android.widget.TextView
 
 class ExpandListAdapter : BaseExpandableListAdapter() {
 
-    private lateinit var _context : Context
-    private lateinit var _listDataHeader : List<String>
-    private lateinit var _listDataChild : HashMap<String, List<String>>
+    private lateinit var _context: Context
+    private lateinit var _listDataHeader: List<String>
+    private lateinit var _listDataChild: HashMap<String, List<String>>
 
-    fun ExpandListAdapter(context : Context,listDataHeader : List<String>, listChildData : HashMap<String, List<String>> ){
+    fun ExpandListAdapter(
+        context: Context,
+        listDataHeader: List<String>,
+        listChildData: HashMap<String, List<String>>
+    ) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -33,7 +37,7 @@ class ExpandListAdapter : BaseExpandableListAdapter() {
 
     override fun getChild(groupPosition: Int, childPosition: Int): Any {
         return this._listDataChild.get(this._listDataHeader.get(groupPosition))!!
-                    .get(childPosition)!!
+            .get(childPosition)!!
     }
 
     override fun getGroupId(groupPosition: Int): Long {
@@ -64,14 +68,14 @@ class ExpandListAdapter : BaseExpandableListAdapter() {
         convertView: View?,
         parent: ViewGroup?
     ): View {
-        val childText : String = getChild(groupPosition,childPosition) as String
+        val childText: String = getChild(groupPosition, childPosition) as String
 
-        if(convertView == null){
+        if (convertView == null) {
             var infalInflater = this._context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            var convertView = infalInflater.inflate(R.layout.list_item,null)
+            var convertView = infalInflater.inflate(R.layout.list_item, null)
         }
-        var txtListChild : TextView  = convertView!!.findViewById(R.id.lblListItem)
+        var txtListChild: TextView = convertView!!.findViewById(R.id.lblListItem)
 
         txtListChild.setText(childText)
         return convertView!!

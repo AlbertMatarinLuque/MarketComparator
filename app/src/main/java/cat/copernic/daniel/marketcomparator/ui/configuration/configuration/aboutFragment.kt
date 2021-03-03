@@ -3,14 +3,10 @@ package cat.copernic.daniel.marketcomparator.ui.configuration.configuration
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.R
 
 
-
 class aboutFragment : Fragment() {
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

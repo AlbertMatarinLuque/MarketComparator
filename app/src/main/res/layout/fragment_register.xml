@@ -30,7 +30,6 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="50dp"
                     android:text="@string/registro"
-                    android:textColor="#000000"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -40,7 +39,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/nombre_de_usuario"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <EditText
@@ -50,9 +48,10 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
+                    android:backgroundTint="@color/black"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:textColor="#000000" />
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -60,7 +59,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/correo_electronico"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <EditText
@@ -70,9 +68,10 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
+                    android:backgroundTint="@color/black"
                     android:ems="10"
                     android:inputType="textEmailAddress"
-                    android:textColor="#000000" />
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -80,7 +79,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/contraseña"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <EditText
@@ -90,9 +88,10 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
+                    android:backgroundTint="@color/black"
                     android:ems="10"
                     android:inputType="textPassword"
-                    android:textColor="#000000" />
+                    android:textColor="@color/black" />
 
                 <Button
                     android:id="@+id/signUpButton"

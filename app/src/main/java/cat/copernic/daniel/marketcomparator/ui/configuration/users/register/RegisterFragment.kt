@@ -23,20 +23,20 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
-
 class RegisterFragment : Fragment() {
     private val repo = Repo()
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
-    private lateinit var  viewModel: RegisterFragmetVM
+    private lateinit var viewModel: RegisterFragmetVM
     private val GOOGLE_SIGN_IN = 100
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.titleRegister)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title =
+            getString(R.string.titleRegister)
         binding = DataBindingUtil.inflate<FragmentRegisterBinding>(
             inflater,
             R.layout.fragment_register,
@@ -49,12 +49,12 @@ class RegisterFragment : Fragment() {
         var passwordEditText = binding.ptPassword
 
         binding.signUpButton.setOnClickListener {
-            if(emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()){
+            if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()) {
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                     emailEditText.text.toString(),
                     passwordEditText.text.toString()
-                ).addOnCompleteListener{
-                    if(it.isSuccessful){
+                ).addOnCompleteListener {
+                    if (it.isSuccessful) {
                         showPositiveRegisterAlert()
                         currentUser = mAuth.currentUser!!
                         viewModel.currentUser = currentUser
@@ -62,14 +62,15 @@ class RegisterFragment : Fragment() {
                         viewModel.usuari.mail = binding.etMail.text.toString()
                         viewModel.insertDataBBDD()
                         updateNav(currentUser, repo.getUsername().value?.nomUsuari)
-                        requireView().findNavController().navigate(R.id.action_registerFragment_to_nav_home)
-                    }else{
+                        requireView().findNavController()
+                            .navigate(R.id.action_registerFragment_to_nav_home)
+                    } else {
                         showNegativeRegisterAlert()
                     }
                 }
-            }
-            else{
-                Snackbar.make(requireView(),getString(R.string.emptyFields),Snackbar.LENGTH_SHORT).show()
+            } else {
+                Snackbar.make(requireView(), getString(R.string.emptyFields), Snackbar.LENGTH_SHORT)
+                    .show()
             }
         }
 
@@ -88,35 +89,36 @@ class RegisterFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == GOOGLE_SIGN_IN){
+        if (requestCode == GOOGLE_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                if (account != null){
+                if (account != null) {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
-                        if (it.isSuccessful){
-                            showPositiveGoogleAlert()
-                            currentUser = mAuth.currentUser!!
-                            viewModel.currentUser = currentUser
-                            viewModel.usuari.nomUsuari = currentUser.displayName!!
-                            viewModel.usuari.mail = currentUser.email!!
-                            viewModel.insertDataBBDD()
-                            updateNav(currentUser, null)
-                            requireView().findNavController().navigate(R.id.action_registerFragment_to_nav_home)
+                    FirebaseAuth.getInstance().signInWithCredential(credential)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                showPositiveGoogleAlert()
+                                currentUser = mAuth.currentUser!!
+                                viewModel.currentUser = currentUser
+                                viewModel.usuari.nomUsuari = currentUser.displayName!!
+                                viewModel.usuari.mail = currentUser.email!!
+                                viewModel.insertDataBBDD()
+                                updateNav(currentUser, null)
+                                requireView().findNavController()
+                                    .navigate(R.id.action_registerFragment_to_nav_home)
+                            } else {
+                                showNegativeAlert()
+                            }
                         }
-                        else{
-                            showNegativeAlert()
-                        }
-                    }
                 }
-            } catch (e: ApiException){
+            } catch (e: ApiException) {
                 showNegativeAlert()
             }
         }
     }
 
-    private fun showNegativeRegisterAlert(){
+    private fun showNegativeRegisterAlert() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(context?.getString(R.string.wrongMessage))
         builder.setMessage(getString(R.string.verifyFR))
@@ -125,7 +127,7 @@ class RegisterFragment : Fragment() {
         dialog.show()
     }
 
-    private fun showPositiveRegisterAlert(){
+    private fun showPositiveRegisterAlert() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(context?.getString(R.string.rightMessage))
         builder.setMessage(getString(R.string.verifyCR))
@@ -134,7 +136,7 @@ class RegisterFragment : Fragment() {
         dialog.show()
     }
 
-    private fun showNegativeAlert(){
+    private fun showNegativeAlert() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(context?.getString(R.string.wrongMessage))
         builder.setMessage(getString(R.string.verifyFRG))
@@ -143,7 +145,7 @@ class RegisterFragment : Fragment() {
         dialog.show()
     }
 
-    private fun showPositiveGoogleAlert(){
+    private fun showPositiveGoogleAlert() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(getString(R.string.perfectMessage))
         builder.setMessage(getString(R.string.verifyCRG))

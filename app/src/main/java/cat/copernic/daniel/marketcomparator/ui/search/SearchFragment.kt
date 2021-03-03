@@ -24,8 +24,9 @@ class SearchFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        when(id){
-            R.id.trolley ->   requireView().findNavController().navigate(R.id.action_searchFragment2_to_shoppingListFragment)
+        when (id) {
+            R.id.trolley -> requireView().findNavController()
+                .navigate(R.id.action_searchFragment2_to_shoppingListFragment)
         }
         return super.onOptionsItemSelected(item)
     }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btn_register">¿No estás registrado? ¡Regístrate!</string>
+    <string name="borrar">Borrar</string>
+    <string name="administrar_usuaris">Administrar Usuarios</string>
+    <string name="tots_els_productes">Todos los productos</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="modificar">Modificar</string>
+    <string name="contraseña">Contraseña:</string>
+    <string name="correo_electronico">Correo electrónico:</string>
+    <string name="nombre_de_usuario">Nombre de usuario:</string>
+    <string name="registro">Registro</string>
+    <string name="inicia_sessio">Iniciar sesión</string>
+    <string name="tanca_sessio">Cerrar sesión</string>
+    <string name="contrasenya">Contraseña</string>
+    <string name="welcomeMessage">Bienvenido</string>
+    <string name="mail">Correo electrónico</string>
+    <string name="insertar_producte">Insertar producto</string>
+    <string name="contenidor">Contenedor:</string>
+    <string name="price">Precio:</string>
+    <string name="description">Descripción:</string>
+    <string name="nom_producte">Nombre producto:</string>
+    <string name="nous_producte">Nuevos productos</string>
+    <string name="logOut">Has cerrado sesión</string>
+    <string name="verifyCIG">Ya puedes utilizar tu cuenta de Google.</string>
+    <string name="verifyCI">Has iniciado sesión correctamente.</string>
+    <string name="verifyE">Faltan datos para rellenar.</string>
+    <string name="verifyFI">Se ha producido un error en iniciar sesión.</string>
+    <string name="titleAuthentication">Autentificarse</string>
+    <string name="verifyCRG">Ya has registrado tu cuenta de Google.</string>
+    <string name="verifyFRG">Se ha producido un error al registrarse con su cuenta de Google.</string>
+    <string name="verifyCR">Te has registrado correctamente.</string>
+    <string name="verifyFR">Se ha producido un error en registrarse.</string>
+    <string name="perfectMessage">¡Perfecto!</string>
+    <string name="titleRegister">Registro</string>
+    <string name="verifyF">El producto no se ha añadido correctamente</string>
+    <string name="wrongMessage">¡Error!</string>
+    <string name="acceptMessage">Aceptar</string>
+    <string name="verifyC">El producto se ha añadido correctamente</string>
+    <string name="rightMessage">¡Correcto!</string>
+    <string name="emptyFields">Campos obligatorios vacíos</string>
+    <string name="administrar_productes">Administrar Productos</string>
+    <string name="acerca_de">Sobre nosotros</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="products">Productos</string>
+</resources>

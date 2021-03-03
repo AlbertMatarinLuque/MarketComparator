@@ -1,7 +1,6 @@
 package cat.copernic.daniel.marketcomparator.ui.products
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,16 +12,17 @@ import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import com.bumptech.glide.Glide
 
-class ProductsAdapter(private val context: Context): RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>(){
+class ProductsAdapter(private val context: Context) :
+    RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
 
     private var dataList = mutableListOf<ProductsDTO>()
 
-    fun setListData(data: MutableList<ProductsDTO>){
+    fun setListData(data: MutableList<ProductsDTO>) {
         dataList = data
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_product,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false)
         return ProductsViewHolder(view)
     }
 
@@ -32,25 +32,28 @@ class ProductsAdapter(private val context: Context): RecyclerView.Adapter<Produc
     }
 
     override fun getItemCount(): Int {
-        if (dataList.size > 0){
+        if (dataList.size > 0) {
             return dataList.size
-        }else{
+        } else {
             return 0
         }
     }
 
-    inner class ProductsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bindView(product: ProductsDTO){
+    inner class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bindView(product: ProductsDTO) {
             itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
-            itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.precioProducto.toString() + "€")
-            itemView.findViewById<TextView>(R.id.tvContainerProduct).setText(product.contenedorProducto)
+            itemView.findViewById<TextView>(R.id.tvPriceProduct)
+                .setText(product.precioProducto.toString() + "€")
+            itemView.findViewById<TextView>(R.id.tvContainerProduct)
+                .setText(product.contenedorProducto)
             val media = product.imagenProducto
             Glide.with(itemView)
                 .load(media)
-                .into(itemView.findViewById<ImageView>(R.id.imageView) )
-        itemView.setOnClickListener {
-            itemView.findNavController().navigate(R.id.action_productFragment_to_seeProductFragment)
-        }
+                .into(itemView.findViewById<ImageView>(R.id.imageView))
+            itemView.setOnClickListener {
+                itemView.findNavController()
+                    .navigate(R.id.action_productFragment_to_seeProductFragment)
+            }
         }
     }
 

@@ -4,10 +4,10 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 data class ProductsDTO(
-    var nombreProducto : String ,
-    var descripcionProducto : String ,
-    var precioProducto : Double,
-    var contenedorProducto : String,
-    var tendenciaProducto : Int,
-    var imagenProducto : String
+    var nombreProducto: String,
+    var descripcionProducto: String,
+    var precioProducto: Double,
+    var contenedorProducto: String,
+    var tendenciaProducto: Int,
+    var imagenProducto: String
 )
