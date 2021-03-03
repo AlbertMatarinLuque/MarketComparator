@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_nav_home_to_shoppingListFragment"
             app:destination="@id/shoppingListFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_seeProductFragment"
+            app:destination="@id/seeProductFragment" />
     </fragment>
 
     <fragment

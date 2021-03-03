@@ -42,29 +42,48 @@ class Repo {
     }
 
     fun getProductsTendencia(): LiveData<MutableList<ProductsDTO>> {
-
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
-        FirebaseDatabase.getInstance().reference.child("products").orderByChild("tendenciaProducto")
+        FirebaseDatabase.getInstance().reference.child("products").orderByChild("tendenciaProducto").limitToFirst(8)
             .get().addOnSuccessListener { result ->
-            val listProducts = mutableListOf<ProductsDTO>()
-            for (productsBD in result.children) {
+                val listProducts = mutableListOf<ProductsDTO>()
+                for (productsBD in result.children) {
 
-                val p: ProductsDTO = ProductsDTO(
-                    productsBD.child("nombreProducto").getValue().toString(),
-                    productsBD.child("descripcionProducto").getValue().toString(),
-                    productsBD.child("precioProducto").getValue().toString().toDouble(),
-                    productsBD.child("contenedorProducto").getValue().toString(),
-                    productsBD.child("tendenciaProducto").getValue().toString().toInt(),
-                    productsBD.child("imagenProducto").getValue().toString()
-                )
-                listProducts.add(p)
-
-
-
+                    val p: ProductsDTO = ProductsDTO(
+                        productsBD.child("nombreProducto").getValue().toString(),
+                        productsBD.child("descripcionProducto").getValue().toString(),
+                        productsBD.child("precioProducto").getValue().toString().toDouble(),
+                        productsBD.child("contenedorProducto").getValue().toString(),
+                        productsBD.child("tendenciaProducto").getValue().toString().toInt(),
+                        productsBD.child("imagenProducto").getValue().toString()
+                    )
+                    listProducts.add(p)
+                }
+                listProducts.sortByDescending { it.tendenciaProducto }
+                mutableData.value = listProducts
             }
-            listProducts.sortByDescending { it.tendenciaProducto }
-            mutableData.value = listProducts
-        }
+        return mutableData
+    }
+
+    fun getProductsMasNuevo(): LiveData<MutableList<ProductsDTO>> {
+        val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
+        FirebaseDatabase.getInstance().reference.child("products").limitToLast(8)
+            .get().addOnSuccessListener { result ->
+                val listProducts = mutableListOf<ProductsDTO>()
+                for (productsBD in result.children) {
+
+                    val p: ProductsDTO = ProductsDTO(
+                        productsBD.child("nombreProducto").getValue().toString(),
+                        productsBD.child("descripcionProducto").getValue().toString(),
+                        productsBD.child("precioProducto").getValue().toString().toDouble(),
+                        productsBD.child("contenedorProducto").getValue().toString(),
+                        productsBD.child("tendenciaProducto").getValue().toString().toInt(),
+                        productsBD.child("imagenProducto").getValue().toString()
+                    )
+                    listProducts.add(p)
+                }
+             //   listProducts.sortByDescending { it.tendenciaProducto }
+                mutableData.value = listProducts
+            }
         return mutableData
     }
 

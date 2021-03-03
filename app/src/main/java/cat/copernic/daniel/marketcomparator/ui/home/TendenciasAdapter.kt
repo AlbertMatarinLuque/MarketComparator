@@ -47,7 +47,7 @@ class TendenciasAdapter(private val context : Context): RecyclerView.Adapter<Ten
                 .load(media)
                 .into(itemView.findViewById<ImageView>(R.id.imageView) )
             itemView.setOnClickListener {
-                itemView.findNavController().navigate(R.id.action_productFragment_to_seeProductFragment)
+                itemView.findNavController().navigate(R.id.action_nav_home_to_seeProductFragment)
             }
         }
     }
