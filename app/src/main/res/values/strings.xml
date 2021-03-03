@@ -173,5 +173,6 @@
     <string name="administrar_usuaris">Administrar Usuaris</string>
     <string name="borrar">Borrar</string>
     <string name="modificar">Modificar</string>
+    <string name="btn_register">¿No estas registrado? Registrate!</string>
 
 </resources>

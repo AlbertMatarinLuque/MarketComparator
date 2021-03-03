@@ -41,10 +41,6 @@ class UsersAdapter(private val context: Context): RecyclerView.Adapter<UsersAdap
         fun bindView(user: UsuariDTO){
             itemView.findViewById<TextView>(R.id.mailTV).setText(user.mail)
             itemView.findViewById<TextView>(R.id.usernameTV).setText(user.nomUsuari)
-
-            itemView.findViewById<Button>(R.id.btnDelete).setOnClickListener {
-                Toast.makeText(context,user.nomUsuari,Toast.LENGTH_LONG).show()
-            }
         }
     }
 }
