@@ -21,39 +21,48 @@ class Repo {
 
     fun getProductsData(): LiveData<MutableList<ProductsDTO>> {
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
-        FirebaseDatabase.getInstance().reference.child("products").get().addOnSuccessListener { result ->
-            val listProducts = mutableListOf<ProductsDTO>()
-            for (productsBD in result.children) {
-                val p: ProductsDTO = ProductsDTO(productsBD.child("nombreProducto").getValue().toString(),
+        FirebaseDatabase.getInstance().reference.child("products").get()
+            .addOnSuccessListener { result ->
+                val listProducts = mutableListOf<ProductsDTO>()
+                for (productsBD in result.children) {
+                    val p: ProductsDTO = ProductsDTO(
+                        productsBD.child("nombreProducto").getValue().toString(),
                         productsBD.child("descripcionProducto").getValue().toString(),
                         productsBD.child("precioProducto").getValue().toString().toDouble(),
                         productsBD.child("contenedorProducto").getValue().toString(),
                         productsBD.child("tendenciaProducto").getValue().toString().toInt(),
-                        productsBD.child("imagenProducto").getValue().toString())
-                listProducts.add(p)
+                        productsBD.child("imagenProducto").getValue().toString()
+                    )
+                    listProducts.add(p)
 
+                }
+                mutableData.value = listProducts
             }
-            mutableData.value = listProducts
-        }
         return mutableData
     }
 
     fun getProductsTendencia(): LiveData<MutableList<ProductsDTO>> {
-        Log.e("FFF","FFF")
+
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
-        FirebaseDatabase.getInstance().reference.child("products").limitToFirst(8).get().addOnSuccessListener { result ->
+        FirebaseDatabase.getInstance().reference.child("products").orderByChild("tendenciaProducto")
+            .get().addOnSuccessListener { result ->
             val listProducts = mutableListOf<ProductsDTO>()
             for (productsBD in result.children) {
-                val p: ProductsDTO = ProductsDTO(productsBD.child("nombreProducto").getValue().toString(),
+
+                val p: ProductsDTO = ProductsDTO(
+                    productsBD.child("nombreProducto").getValue().toString(),
                     productsBD.child("descripcionProducto").getValue().toString(),
                     productsBD.child("precioProducto").getValue().toString().toDouble(),
                     productsBD.child("contenedorProducto").getValue().toString(),
                     productsBD.child("tendenciaProducto").getValue().toString().toInt(),
-                    productsBD.child("imagenProducto").getValue().toString())
+                    productsBD.child("imagenProducto").getValue().toString()
+                )
                 listProducts.add(p)
-                Log.e("order",p.toString())
+
+
 
             }
+            listProducts.sortByDescending { it.tendenciaProducto }
             mutableData.value = listProducts
         }
         return mutableData
@@ -63,32 +72,38 @@ class Repo {
         mAuth = FirebaseAuth.getInstance()
         currentUser = mAuth.currentUser!!
         val mutableData = MutableLiveData<UsuariDTO>()
-        FirebaseDatabase.getInstance().reference.child("usuaris").get().addOnSuccessListener { result ->
-            var user: UsuariDTO? = null
-            for (usuarisBD in result.children) {
-                if (usuarisBD.key.toString() == currentUser.uid) {
-                    val u: UsuariDTO = UsuariDTO(usuarisBD.child("nomUsuari").getValue().toString(),
-                            usuarisBD.child("mail").getValue().toString())
-                    user = u
+        FirebaseDatabase.getInstance().reference.child("usuaris").get()
+            .addOnSuccessListener { result ->
+                var user: UsuariDTO? = null
+                for (usuarisBD in result.children) {
+                    if (usuarisBD.key.toString() == currentUser.uid) {
+                        val u: UsuariDTO = UsuariDTO(
+                            usuarisBD.child("nomUsuari").getValue().toString(),
+                            usuarisBD.child("mail").getValue().toString()
+                        )
+                        user = u
+                    }
                 }
+                mutableData.value = user
             }
-            mutableData.value = user
-        }
         return mutableData
     }
 
     fun getUsers(): LiveData<MutableList<UsuariDTO>> {
         val mutableData = MutableLiveData<MutableList<UsuariDTO>>()
-        FirebaseDatabase.getInstance().reference.child("usuaris").get().addOnSuccessListener { result ->
-            val listUsers = mutableListOf<UsuariDTO>()
-            for (usersBD in result.children) {
-                val u: UsuariDTO = UsuariDTO(usersBD.child("nomUsuari").getValue().toString(),
-                    usersBD.child("mail").getValue().toString())
-                listUsers.add(u)
+        FirebaseDatabase.getInstance().reference.child("usuaris").get()
+            .addOnSuccessListener { result ->
+                val listUsers = mutableListOf<UsuariDTO>()
+                for (usersBD in result.children) {
+                    val u: UsuariDTO = UsuariDTO(
+                        usersBD.child("nomUsuari").getValue().toString(),
+                        usersBD.child("mail").getValue().toString()
+                    )
+                    listUsers.add(u)
 
+                }
+                mutableData.value = listUsers
             }
-            mutableData.value = listUsers
-        }
         return mutableData
     }
 }
