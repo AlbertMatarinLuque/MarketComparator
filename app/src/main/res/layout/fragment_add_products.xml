@@ -24,7 +24,6 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="50dp"
                     android:text="@string/nous_producte"
-                    android:textColor="#000000"
                     android:textSize="24sp" />
 
                 <TextView
@@ -33,7 +32,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/nom_producte"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <EditText
@@ -43,8 +41,10 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="10dp"
+                    android:backgroundTint="@color/black"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -52,7 +52,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/description"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <EditText
@@ -62,9 +61,11 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="10dp"
+                    android:backgroundTint="@color/black"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -72,7 +73,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/price"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <EditText
@@ -82,8 +82,10 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="10dp"
+                    android:backgroundTint="@color/black"
                     android:ems="10"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,7 +93,6 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/contenidor"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <Spinner
