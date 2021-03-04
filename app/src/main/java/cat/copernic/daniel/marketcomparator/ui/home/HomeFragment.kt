@@ -19,6 +19,9 @@ class HomeFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: TendenciasAdapter
 
+    lateinit var recyclerViewNuevo: RecyclerView
+    lateinit var adapterNuevo: MasNuevoAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,6 +41,11 @@ class HomeFragment : Fragment() {
         adapter = TendenciasAdapter(requireContext())
         recyclerView.adapter = adapter
         observeData()
+
+        recyclerViewNuevo = binding.recycleViewNuevo
+        adapterNuevo = MasNuevoAdapter(requireContext())
+        recyclerViewNuevo.adapter = adapterNuevo
+        observeDataNuevo()
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.title)
         setHasOptionsMenu(true)
         return binding.root
@@ -65,6 +73,16 @@ class HomeFragment : Fragment() {
             binding.shimmerViewContainer.visibility = View.GONE
             adapter.setListTendencias(it)
             adapter.notifyDataSetChanged()
+        })
+    }
+
+    fun observeDataNuevo() {
+        binding.shimmerViewContainerNuevo.startShimmer()
+        viewModel.fetchProductDataNuevo().observe(viewLifecycleOwner, Observer {
+            binding.shimmerViewContainerNuevo.stopShimmer()
+            binding.shimmerViewContainerNuevo.visibility = View.GONE
+            adapterNuevo.setListMasNuevos(it)
+            adapterNuevo.notifyDataSetChanged()
         })
     }
 }

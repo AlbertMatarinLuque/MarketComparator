@@ -17,4 +17,12 @@ class HomeViewModel : ViewModel() {
         }
         return mutableData
     }
+
+    fun fetchProductDataNuevo(): LiveData<MutableList<ProductsDTO>> {
+        val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
+        repo.getProductsMasNuevo().observeForever {
+            mutableData.value = it
+        }
+        return mutableData
+    }
 }

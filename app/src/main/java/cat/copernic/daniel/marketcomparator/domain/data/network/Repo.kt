@@ -1,5 +1,6 @@
 package cat.copernic.daniel.marketcomparator.domain.data.network
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
@@ -64,7 +65,6 @@ class Repo {
             .get().addOnSuccessListener { result ->
                 val listProducts = mutableListOf<ProductsDTO>()
                 for (productsBD in result.children) {
-
                     val p: ProductsDTO = ProductsDTO(
                         productsBD.child("nombreProducto").getValue().toString(),
                         productsBD.child("descripcionProducto").getValue().toString(),
