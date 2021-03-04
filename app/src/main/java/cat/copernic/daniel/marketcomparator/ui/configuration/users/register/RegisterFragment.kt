@@ -3,17 +3,20 @@ package cat.copernic.daniel.marketcomparator.ui.configuration.users.register
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentRegisterBinding
 import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
+import cat.copernic.daniel.marketcomparator.setcurrentUser
 import cat.copernic.daniel.marketcomparator.updateNav
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -49,6 +52,7 @@ class RegisterFragment : Fragment() {
         var passwordEditText = binding.ptPassword
 
         binding.signUpButton.setOnClickListener {
+
             if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()) {
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                     emailEditText.text.toString(),
@@ -60,8 +64,11 @@ class RegisterFragment : Fragment() {
                         viewModel.currentUser = currentUser
                         viewModel.usuari.nomUsuari = binding.ptUser.text.toString()
                         viewModel.usuari.mail = binding.etMail.text.toString()
+
                         viewModel.insertDataBBDD()
-                        updateNav(currentUser, repo.getUsername().value?.nomUsuari)
+                        setcurrentUser(currentUser)
+                        observeData()
+                      //  updateNav(currentUser, null)
                         requireView().findNavController()
                             .navigate(R.id.action_registerFragment_to_nav_home)
                     } else {
@@ -104,7 +111,9 @@ class RegisterFragment : Fragment() {
                                 viewModel.usuari.nomUsuari = currentUser.displayName!!
                                 viewModel.usuari.mail = currentUser.email!!
                                 viewModel.insertDataBBDD()
-                                updateNav(currentUser, null)
+                                setcurrentUser(currentUser)
+                                observeData()
+                                //updateNav(currentUser, null)
                                 requireView().findNavController()
                                     .navigate(R.id.action_registerFragment_to_nav_home)
                             } else {
@@ -152,5 +161,16 @@ class RegisterFragment : Fragment() {
         builder.setPositiveButton(context?.getString(R.string.acceptMessage), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
+    }
+
+    fun observeData() {
+        //binding.shimmerViewContainer.startShimmer()
+        // updateNav(viewModel.fetchProductData())
+        viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
+            //binding.shimmerViewContainer.stopShimmer()
+            //binding.shimmerViewContainer.visibility = View.GONE
+            //  Log.e("User",it.toString())
+            // updateNav(it)
+        })
     }
 }

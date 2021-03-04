@@ -24,4 +24,5 @@ class settingsFragment : Fragment() {
         menu.findItem(R.id.search).setVisible(false)
         menu.findItem(R.id.trolley).setVisible(false)
     }
+
 }

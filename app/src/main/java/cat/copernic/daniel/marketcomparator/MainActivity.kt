@@ -23,6 +23,7 @@ import cat.copernic.daniel.marketcomparator.ui.home.HomeViewModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import cat.copernic.daniel.marketcomparator.setnav
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -64,11 +65,13 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        setnav(navView)
+
         setnavView(navView)
 
         if (mAuth.currentUser != null) {
             currentUser = mAuth.currentUser!!
-            updateNav(currentUser, repo.getUsername().value?.nomUsuari)
+           // updateNav(currentUser, repo.getUsername().value?.nomUsuari)
         }
     }
 

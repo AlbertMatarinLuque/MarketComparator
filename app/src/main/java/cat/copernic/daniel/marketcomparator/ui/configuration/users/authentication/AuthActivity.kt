@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.R
@@ -27,6 +29,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import cat.copernic.daniel.marketcomparator.setcurrentUser
+import cat.copernic.daniel.marketcomparator.ui.configuration.users.usersViewModel
 
 
 class AuthActivity : Fragment() {
@@ -35,7 +39,7 @@ class AuthActivity : Fragment() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
     private lateinit var binding: FragmentAuthActivityBinding
-    private lateinit var viewModel: RegisterFragmetVM
+    private lateinit var viewModel: usersViewModel
     private val GOOGLE_SIGN_IN = 100
 
     override fun onCreateView(
@@ -49,7 +53,7 @@ class AuthActivity : Fragment() {
             R.layout.fragment_auth_activity, container, false
         )
         mAuth = FirebaseAuth.getInstance()
-        viewModel = ViewModelProvider(this).get(RegisterFragmetVM::class.java)
+        viewModel = ViewModelProvider(this).get(usersViewModel::class.java)
         val vieww = requireActivity().currentFocus
         var emailEditText = binding.emailEditText
         var passwordEditText = binding.PasswordEditText
@@ -69,8 +73,10 @@ class AuthActivity : Fragment() {
                         binding.loginButton.setVisibility(View.GONE)
                         binding.connectionClose.setVisibility(View.VISIBLE)
                         currentUser = mAuth.currentUser!!
-                        updateNav(currentUser, repo.getUsername().value?.nomUsuari)
-                        repo.getUsername()
+                        setcurrentUser(currentUser)
+                        observeData()
+                        //updateNav(currentUser, null)
+                        //repo.getUsername()
                         requireView().findNavController()
                             .navigate(R.id.action_authActivity_to_nav_home)
                     } else {
@@ -160,7 +166,10 @@ class AuthActivity : Fragment() {
                                 binding.loginButton.setVisibility(View.GONE)
                                 binding.connectionClose.setVisibility(View.VISIBLE)
                                 currentUser = mAuth.currentUser!!
-                                updateNav(currentUser, null)
+                                setcurrentUser(currentUser)
+                                observeData()
+                                //updateNav(repo.getUsername(currentUser))
+
                                 requireView().findNavController()
                                     .navigate(R.id.action_authActivity_to_nav_home)
                             } else {
@@ -195,6 +204,17 @@ class AuthActivity : Fragment() {
                 requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             input.hideSoftInputFromWindow(vieww.windowToken, 0)
         }
+    }
+
+    fun observeData() {
+        //binding.shimmerViewContainer.startShimmer()
+   // updateNav(viewModel.fetchProductData())
+        viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
+            //binding.shimmerViewContainer.stopShimmer()
+            //binding.shimmerViewContainer.visibility = View.GONE
+          //  Log.e("User",it.toString())
+           // updateNav(it)
+        })
     }
 
 }
