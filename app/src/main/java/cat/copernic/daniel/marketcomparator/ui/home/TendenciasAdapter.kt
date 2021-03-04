@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import com.bumptech.glide.Glide
+import cat.copernic.daniel.marketcomparator.setViewProduct
 
 class TendenciasAdapter(private val context: Context) :
     RecyclerView.Adapter<TendenciasAdapter.TendenciaViewHolder>() {
@@ -52,6 +53,7 @@ class TendenciasAdapter(private val context: Context) :
                 .load(media)
                 .into(itemView.findViewById<ImageView>(R.id.imageView))
             itemView.setOnClickListener {
+                setViewProduct(product)
                 itemView.findNavController().navigate(R.id.action_nav_home_to_seeProductFragment)
             }
         }

@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
+import cat.copernic.daniel.marketcomparator.setViewProduct
 import com.bumptech.glide.Glide
 
 class ProductsAdapter(private val context: Context) :
@@ -51,6 +52,7 @@ class ProductsAdapter(private val context: Context) :
                 .load(media)
                 .into(itemView.findViewById<ImageView>(R.id.imageView))
             itemView.setOnClickListener {
+                setViewProduct(product)
                 itemView.findNavController()
                     .navigate(R.id.action_productFragment_to_seeProductFragment)
             }
