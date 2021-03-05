@@ -174,5 +174,9 @@
     <string name="borrar">Borrar</string>
     <string name="modificar">Modificar</string>
     <string name="btn_register">No hi esteu registrat? Inscriu-te!</string>
+    <string name="contenedor">Contenidor:</string>
+    <string name="descripcion">Descripció:</string>
+    <string name="nombre">Nom Producte:</string>
+    <string name="pruductes_title">Productes</string>
 
 </resources>

@@ -43,4 +43,5 @@
     <string name="acerca_de">Sobre nosotros</string>
     <string name="ajustes">Ajustes</string>
     <string name="products">Productos</string>
+    <string name="app_name">MarketComparator</string>
 </resources>

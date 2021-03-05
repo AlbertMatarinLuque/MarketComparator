@@ -60,21 +60,21 @@ class SeeProductFragment : Fragment() {
         var tabSpec : TabHost.TabSpec
         tabSpec = tabHost.newTabSpec("INFO")
         tabSpec.setContent(R.id.tab1)
-        tabSpec.setIndicator("INFO")
+        tabSpec.setIndicator("Informació")
         tabHost.addTab(tabSpec)
 
         //Tab 2
         var tabSpec2 : TabHost.TabSpec
         tabSpec = tabHost.newTabSpec("PRECIOS")
         tabSpec.setContent(R.id.tab2)
-        tabSpec.setIndicator("PRECIOS")
+        tabSpec.setIndicator("Preus")
         tabHost.addTab(tabSpec)
 
         // Tab 3
         var tabSpec3 : TabHost.TabSpec
         tabSpec = tabHost.newTabSpec("CONTENEDOR")
         tabSpec.setContent(R.id.tab3)
-        tabSpec.setIndicator("CONTENEDOR")
+        tabSpec.setIndicator("Reciclatge")
         tabHost.addTab(tabSpec)
     }
 

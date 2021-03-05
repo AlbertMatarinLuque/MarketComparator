@@ -2,6 +2,7 @@ package cat.copernic.daniel.marketcomparator.ui.products
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -23,7 +24,7 @@ class productFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.pruductes_title)
         binding = DataBindingUtil.inflate<FragmentCategoryBinding>(
             inflater,
             R.layout.fragment_category,

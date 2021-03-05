@@ -2,18 +2,19 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginBottom="2dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
     app:cardBackgroundColor="@color/grey_100"
     app:cardElevation="4dp">
 
-    <LinearLayout android:orientation="vertical"
-        android:layout_height="wrap_content"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingStart="20dp"
-        android:paddingEnd="20dp"
         android:paddingTop="15dp"
+        android:paddingEnd="20dp"
         android:paddingBottom="15dp">
 
         <TextView
@@ -48,16 +49,16 @@
                 android:id="@+id/btnModify"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_wrench"
+                android:layout_marginEnd="10dp"
                 android:background="@color/colorTransparent"
-                android:layout_marginEnd="10dp"/>
+                android:src="@drawable/ic_wrench" />
 
             <ImageView
                 android:id="@+id/btnDelete"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_delete"
-                android:background="@color/colorTransparent" />
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_delete" />
 
         </LinearLayout>
 
