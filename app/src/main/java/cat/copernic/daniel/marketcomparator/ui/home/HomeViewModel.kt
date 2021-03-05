@@ -7,7 +7,6 @@ import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 
 class HomeViewModel : ViewModel() {
-
     private val repo = Repo()
 
     fun fetchProductData(): LiveData<MutableList<ProductsDTO>> {

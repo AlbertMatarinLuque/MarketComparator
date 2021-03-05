@@ -1,6 +1,5 @@
 package cat.copernic.daniel.marketcomparator.domain.data.network
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
@@ -17,6 +16,7 @@ class Repo {
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
         FirebaseDatabase.getInstance().reference.child("products").get()
             .addOnSuccessListener { result ->
+
                 val listProducts = mutableListOf<ProductsDTO>()
                 for (productsBD in result.children) {
                     val p: ProductsDTO = ProductsDTO(
@@ -37,6 +37,7 @@ class Repo {
 
     fun getProductsTendencia(): LiveData<MutableList<ProductsDTO>> {
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
+
         FirebaseDatabase.getInstance().reference.child("products").orderByChild("tendenciaProducto")
             .limitToFirst(8)
             .get().addOnSuccessListener { result ->
@@ -55,6 +56,7 @@ class Repo {
                 }
                 listProducts.sortByDescending { it.tendenciaProducto }
                 mutableData.value = listProducts
+
             }
         return mutableData
     }
