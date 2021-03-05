@@ -178,5 +178,7 @@
     <string name="descripcion">Descripció:</string>
     <string name="nombre">Nom Producte:</string>
     <string name="pruductes_title">Productes</string>
+    <string name="lomasnuevo">El més nou:</string>
+    <string name="tendencias">Tendències:</string>
 
 </resources>
