@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -38,7 +39,7 @@ class AddProductsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Afegir producte"
         viewModel = ViewModelProvider(this).get(AddProductViewModel::class.java)
         viewModel.setContext(requireContext())
         binding = DataBindingUtil.inflate<FragmentAddProductsBinding>(
@@ -83,7 +84,7 @@ class AddProductsFragment : Fragment() {
     override fun onStop() {
         viewModel.product.nombreProducto = binding.edProductName.text.toString()
         viewModel.product.descripcionProducto = binding.edDescription.text.toString()
-        viewModel.product.precioProducto = binding.edPrice.text.toString().toDouble()
+       // viewModel.product.precioProducto = binding.edPrice.text.toString().toDouble()
         viewModel.product.contenedorProducto = binding.spContenedor.toString()
         super.onStop()
     }
@@ -91,7 +92,7 @@ class AddProductsFragment : Fragment() {
     override fun onResume() {
         binding.edProductName.setText(viewModel.product.nombreProducto)
         binding.edDescription.setText(viewModel.product.descripcionProducto)
-        binding.edPrice.setText(viewModel.product.precioProducto.toString())
+      //  binding.edPrice.setText(viewModel.product.precioProducto.toString())
         //binding.spContenedor.set
         super.onResume()
     }
@@ -119,7 +120,7 @@ class AddProductsFragment : Fragment() {
                 if (it.isSuccessful) {
                     viewModel.product.nombreProducto = binding.edProductName.text.toString()
                     viewModel.product.descripcionProducto = binding.edDescription.text.toString()
-                    viewModel.product.precioProducto = binding.edPrice.text.toString().toDouble()
+                   // viewModel.product.precioProducto = binding.edPrice.text.toString().toDouble()
                     viewModel.product.contenedorProducto =
                         binding.spContenedor.selectedItem.toString()
                     viewModel.product.tendenciaProducto = 0

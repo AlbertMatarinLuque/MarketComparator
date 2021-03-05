@@ -44,8 +44,7 @@ class TendenciasAdapter(private val context: Context) :
     inner class TendenciaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(product: ProductsDTO) {
             itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
-            itemView.findViewById<TextView>(R.id.tvPriceProduct)
-                .setText(product.precioProducto.toString() + "€")
+            //itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.precioProducto.toString() + "€")
             itemView.findViewById<TextView>(R.id.tvContainerProduct)
                 .setText(product.contenedorProducto)
             val media = product.imagenProducto

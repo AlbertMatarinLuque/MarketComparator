@@ -22,7 +22,8 @@ class Repo {
                     val p: ProductsDTO = ProductsDTO(
                         productsBD.child("nombreProducto").getValue().toString(),
                         productsBD.child("descripcionProducto").getValue().toString(),
-                        productsBD.child("precioProducto").getValue().toString().toDouble(),
+                       // productsBD.child("precioProducto").getValue().toString().toDouble(),
+                        mutableListOf(),
                         productsBD.child("contenedorProducto").getValue().toString(),
                         productsBD.child("tendenciaProducto").getValue().toString().toInt(),
                         productsBD.child("imagenProducto").getValue().toString()
@@ -47,7 +48,8 @@ class Repo {
                     val p: ProductsDTO = ProductsDTO(
                         productsBD.child("nombreProducto").getValue().toString(),
                         productsBD.child("descripcionProducto").getValue().toString(),
-                        productsBD.child("precioProducto").getValue().toString().toDouble(),
+                       // productsBD.child("precioProducto").getValue().toString().toDouble(),
+                        mutableListOf(),
                         productsBD.child("contenedorProducto").getValue().toString(),
                         productsBD.child("tendenciaProducto").getValue().toString().toInt(),
                         productsBD.child("imagenProducto").getValue().toString()
@@ -70,7 +72,8 @@ class Repo {
                     val p: ProductsDTO = ProductsDTO(
                         productsBD.child("nombreProducto").getValue().toString(),
                         productsBD.child("descripcionProducto").getValue().toString(),
-                        productsBD.child("precioProducto").getValue().toString().toDouble(),
+                        //productsBD.child("precioProducto").getValue().toString().toDouble(),
+                        mutableListOf(),
                         productsBD.child("contenedorProducto").getValue().toString(),
                         productsBD.child("tendenciaProducto").getValue().toString().toInt(),
                         productsBD.child("imagenProducto").getValue().toString()

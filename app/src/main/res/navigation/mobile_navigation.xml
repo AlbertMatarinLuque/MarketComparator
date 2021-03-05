@@ -104,4 +104,9 @@
         android:id="@+id/seeProductFragment"
         android:name="cat.copernic.daniel.marketcomparator.ui.products.seeProduct.SeeProductFragment"
         android:label="SeeProductFragment" />
+    <fragment
+        android:id="@+id/gestionMercados"
+        android:name="cat.copernic.daniel.marketcomparator.ui.configuration.mercados.GestionMercados"
+        android:label="fragment_gestion_mercados"
+        tools:layout="@layout/fragment_gestion_mercados" />
 </navigation>

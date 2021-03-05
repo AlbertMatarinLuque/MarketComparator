@@ -16,7 +16,7 @@ class AddProductViewModel : ViewModel() {
     var options: Array<String> = arrayOf("Azul", "Verde", "Amarillo", "Marron", "Gris")
     var numid: Long = 0
     var idProducto: String
-    var product: ProductsDTO = ProductsDTO("", "", 0.0, "", 0, "")
+    var product: ProductsDTO = ProductsDTO("", "", mutableListOf(), "", 0, "")
 
     private var database: DatabaseReference =
         FirebaseDatabase.getInstance().getReference("products")

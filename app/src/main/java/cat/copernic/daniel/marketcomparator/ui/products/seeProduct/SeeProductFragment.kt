@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide
 
 class SeeProductFragment : Fragment() {
     lateinit var binding: FragmentSeeProductBinding
-    var product: ProductsDTO = ProductsDTO("","",0.0,"",0,"")
+    var product: ProductsDTO = ProductsDTO("","",mutableListOf(),"",0,"")
     private lateinit var tabHost: TabHost
 
     override fun onCreateView(

@@ -6,7 +6,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 data class ProductsDTO(
     var nombreProducto: String,
     var descripcionProducto: String,
-    var precioProducto: Double,
+    var listaPrecios: MutableList<PreciosSupermercados>,
     var contenedorProducto: String,
     var tendenciaProducto: Int,
     var imagenProducto: String

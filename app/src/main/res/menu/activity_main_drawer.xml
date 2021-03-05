@@ -43,6 +43,10 @@
                     android:icon="@drawable/ic_diseno_de_producto"
                     android:title="@string/administrar_productes"/>
                 <item
+                    android:id="@+id/gestionMercados"
+                    android:icon="@drawable/ic_mercado"
+                    android:title="Administrar Mercados"/>
+                <item
                     android:id="@+id/users"
                     android:icon="@drawable/ic_usuario"
                     android:title="@string/administrar_usuaris"/>

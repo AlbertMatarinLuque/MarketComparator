@@ -2,6 +2,7 @@ package cat.copernic.daniel.marketcomparator.ui.showUsers
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -22,6 +23,7 @@ class users : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Administrar Usuaris"
         binding = DataBindingUtil.inflate<FragmentUsersBinding>(
             inflater,
             R.layout.fragment_users,
