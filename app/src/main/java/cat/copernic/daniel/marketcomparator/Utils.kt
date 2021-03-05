@@ -1,6 +1,9 @@
 package cat.copernic.daniel.marketcomparator
 
+import android.app.Activity
+import android.content.Context
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseUser
@@ -44,6 +47,12 @@ fun updateNavAnonimo() {
     headerUserMail.setText("COMPTE ANÒNIMA")
     headerUserName.setText("")
     //  headerUserPhoto
+}
+
+fun hideKeyBoard(activity: Activity){
+    val input: InputMethodManager =
+        activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    input.hideSoftInputFromWindow(activity.getCurrentFocus()!!.getWindowToken(), 0)
 }
 
 

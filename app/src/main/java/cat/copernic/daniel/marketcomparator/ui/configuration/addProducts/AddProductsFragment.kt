@@ -1,16 +1,19 @@
 package cat.copernic.daniel.marketcomparator.ui.configuration.addProducts
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -26,6 +29,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
+import cat.copernic.daniel.marketcomparator.hideKeyBoard
 
 
 class AddProductsFragment : Fragment() {
@@ -40,6 +44,7 @@ class AddProductsFragment : Fragment() {
     private var image = ""
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -89,6 +94,17 @@ class AddProductsFragment : Fragment() {
 
         binding.btnAddPrice.setOnClickListener{
             addPrice()
+           /* Toast.makeText(requireContext(),"Se ha añadido correctamente el precio en el mercado : ${binding.spMercados.selectedItem.toString()} con un valor de " +
+                    "${binding.edPrice.text}€",Toast.LENGTH_LONG).show()*/
+
+            hideKeyBoard(requireActivity())
+            Snackbar.make(
+                requireView(),
+                "Se ha añadido correctamente el precio en el mercado : ${binding.spMercados.selectedItem.toString()} con un valor de " +
+                        "${binding.edPrice.text}€",
+                Snackbar.LENGTH_LONG
+            ).show()
+            binding.edPrice.text.clear()
         }
 
         return binding.root
@@ -156,7 +172,7 @@ class AddProductsFragment : Fragment() {
             }
         }
 
-        Log.e("Precios",viewModel.listPrices.toString())
+        Log.e("Precios", viewModel.listPrices.toString())
 
     }
 }
