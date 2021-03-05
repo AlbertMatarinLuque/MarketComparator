@@ -10,6 +10,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical"
             android:theme="@style/AppTheme.Usual">
 
@@ -17,8 +18,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="50dp"
-                android:text="Tendencias:"
+                android:layout_marginTop="25dp"
+                android:text="@string/tendencias"
+                android:textStyle="bold"
                 android:textSize="20dp" />
 
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -77,8 +79,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="50dp"
-                android:text="Lo mas nuevo:"
+                android:layout_marginTop="25dp"
+                android:textStyle="bold"
+                android:text="@string/lomasnuevo"
                 android:textSize="20dp" />
 
             <com.facebook.shimmer.ShimmerFrameLayout
