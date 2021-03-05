@@ -124,7 +124,8 @@ class Repo {
                     if (usuarisBD.key.toString() == currentUser.uid) {
                         val u: UsuariDTO = UsuariDTO(
                             usuarisBD.child("nomUsuari").getValue().toString(),
-                            usuarisBD.child("mail").getValue().toString()
+                            usuarisBD.child("mail").getValue().toString(),
+                            usuarisBD.child("permisos").getValue().toString()
                         )
                         user = u
                     }
@@ -142,7 +143,8 @@ class Repo {
                 for (usersBD in result.children) {
                     val u: UsuariDTO = UsuariDTO(
                         usersBD.child("nomUsuari").getValue().toString(),
-                        usersBD.child("mail").getValue().toString()
+                        usersBD.child("mail").getValue().toString(),
+                        usersBD.child("permisos").getValue().toString()
                     )
                     listUsers.add(u)
 
