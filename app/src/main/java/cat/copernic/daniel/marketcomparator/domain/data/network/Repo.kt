@@ -21,7 +21,7 @@ class Repo {
             .addOnSuccessListener { result ->
 
                 val listProducts = mutableListOf<ProductsDTO>()
-                val listPrices: MutableList<PreciosSupermercados> = mutableListOf<PreciosSupermercados>()
+                var listPrices: MutableList<PreciosSupermercados> = mutableListOf<PreciosSupermercados>()
                 for (productsBD in result.children) {
 
                     for(prices in productsBD.child("listaPrecios").children){
@@ -45,7 +45,7 @@ class Repo {
                         productsBD.child("imagenProducto").getValue().toString()
                     )
                     listProducts.add(p)
-
+                    listPrices = mutableListOf()
                 }
                 mutableData.value = listProducts
             }
@@ -59,7 +59,7 @@ class Repo {
             .limitToFirst(8)
             .get().addOnSuccessListener { result ->
                 val listProducts = mutableListOf<ProductsDTO>()
-                val listPrices: MutableList<PreciosSupermercados> = mutableListOf<PreciosSupermercados>()
+                var listPrices: MutableList<PreciosSupermercados> = mutableListOf<PreciosSupermercados>()
                 for (productsBD in result.children) {
                     // Recojer Lista de Precios por Supermercado
                     for(prices in productsBD.child("listaPrecios").children){
@@ -81,11 +81,12 @@ class Repo {
                         productsBD.child("tendenciaProducto").getValue().toString().toInt(),
                         productsBD.child("imagenProducto").getValue().toString()
                     )
+                    listPrices = mutableListOf()
                     listProducts.add(p)
+                    Log.e("Productos", listProducts.toString())
                 }
                 listProducts.sortByDescending { it.tendenciaProducto }
                 mutableData.value = listProducts
-
             }
         return mutableData
     }
@@ -95,7 +96,7 @@ class Repo {
         FirebaseDatabase.getInstance().reference.child("products").limitToLast(8)
             .get().addOnSuccessListener { result ->
                 val listProducts = mutableListOf<ProductsDTO>()
-                val listPrices: MutableList<PreciosSupermercados> = mutableListOf<PreciosSupermercados>()
+                var listPrices: MutableList<PreciosSupermercados> = mutableListOf<PreciosSupermercados>()
                 for (productsBD in result.children) {
 
                     for(prices in productsBD.child("listaPrecios").children){
@@ -119,8 +120,10 @@ class Repo {
                         productsBD.child("imagenProducto").getValue().toString()
                     )
                     listProducts.add(p)
+                    listPrices = mutableListOf()
                 }
-                //   listProducts.sortByDescending { it.tendenciaProducto }
+
+                listProducts.sortByDescending { it.tendenciaProducto }
                 mutableData.value = listProducts
             }
         return mutableData

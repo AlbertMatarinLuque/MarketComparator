@@ -1,6 +1,7 @@
 package cat.copernic.daniel.marketcomparator.ui.home
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,8 +45,7 @@ class TendenciasAdapter(private val context: Context) :
     inner class TendenciaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(product: ProductsDTO) {
             itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
-            itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.listaPrecios[1].preciosSupermercados.toString() +  "€")
-
+            itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.listaPrecios[0].preciosSupermercados.toString() +  "€")
             itemView.findViewById<TextView>(R.id.tvContainerProduct)
                 .setText(product.contenedorProducto)
             val media = product.imagenProducto
