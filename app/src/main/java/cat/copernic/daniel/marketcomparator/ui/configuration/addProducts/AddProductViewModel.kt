@@ -5,6 +5,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cat.copernic.daniel.marketcomparator.R
+import cat.copernic.daniel.marketcomparator.getMercados
+import cat.copernic.daniel.marketcomparator.model.Mercado
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import com.google.firebase.database.*
 import kotlinx.coroutines.Dispatchers
@@ -14,6 +16,7 @@ import java.lang.Double.parseDouble
 
 class AddProductViewModel : ViewModel() {
     var options: Array<String> = arrayOf("Azul", "Verde", "Amarillo", "Marron", "Gris")
+    var optionsMarket: MutableList<String> = mutableListOf()
     var numid: Long = 0
     var idProducto: String
     var product: ProductsDTO = ProductsDTO("", "", mutableListOf(), "", 0, "")
@@ -26,6 +29,7 @@ class AddProductViewModel : ViewModel() {
     init {
         idProducto = "product$numid"
         getLastIDFirebase()
+        setValuesSpinnerMarket()
     }
 
     fun insertarDatosBBDD() {
@@ -90,6 +94,12 @@ class AddProductViewModel : ViewModel() {
         }
 
         return sb.toString();
+    }
+
+    fun setValuesSpinnerMarket(){
+        for(markets in getMercados()){
+            optionsMarket.add(markets.nombreMercado)
+        }
     }
 
     private fun showPositiveProductRegisterAlert() {

@@ -11,7 +11,9 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="74dp"
+            tools:layout_editor_absoluteY="48dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,25 +69,68 @@
                     android:inputType="textMultiLine"
                     android:textColor="@color/black" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/price"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/edPrice"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="10dp"
-                    android:backgroundTint="@color/black"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:textColor="@color/black" />
+                    android:layout_height="102dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/price"
+                        android:textSize="16sp" />
+
+                    <Spinner
+                        android:id="@+id/spMercados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/edPrice"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="-112dp"
+                        android:layout_marginBottom="8dp" />
+
+                    <EditText
+                        android:id="@+id/edPrice"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="113dp"
+                        android:layout_marginBottom="3dp"
+                        android:backgroundTint="@color/black"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/black" />
+
+                    <ImageButton
+                        android:id="@+id/btnAddPrice"
+                        android:layout_width="57dp"
+                        android:layout_height="49dp"
+                        android:layout_alignRight="@+id/edPrice"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="67dp"
+                        android:layout_marginRight="-71dp"
+                        android:layout_marginBottom="2dp"
+                        android:background="@drawable/circle"
+                        android:src="@drawable/ic_baseline_add_24" />
+
+                    <ImageButton
+                        android:id="@+id/btnDeletePrice"
+                        android:layout_width="57dp"
+                        android:layout_height="49dp"
+                        android:layout_alignRight="@+id/edPrice"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="17dp"
+                        android:layout_marginRight="-124dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="@drawable/circle"
+                        android:src="@drawable/ic_baseline_delete_24" />
+                </RelativeLayout>
 
                 <TextView
                     android:layout_width="wrap_content"

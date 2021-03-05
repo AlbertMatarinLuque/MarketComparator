@@ -9,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentAddProductsBinding
+import cat.copernic.daniel.marketcomparator.getMercados
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
@@ -28,6 +30,7 @@ class AddProductsFragment : Fragment() {
 
     private lateinit var binding: FragmentAddProductsBinding
     private lateinit var opciones: Spinner
+    private lateinit var opcionesMarket: Spinner
     private lateinit var viewModel: AddProductViewModel
     private lateinit var mStorage: StorageReference
     private val GALLERY_INTENT: Int = 1
@@ -47,6 +50,7 @@ class AddProductsFragment : Fragment() {
             R.layout.fragment_add_products, container, false
         )
         opciones = binding.spContenedor
+        opcionesMarket = binding.spMercados
 
 
         // Esteblecer valores del Spinner
@@ -54,6 +58,11 @@ class AddProductsFragment : Fragment() {
             requireContext(),
             android.R.layout.simple_list_item_1,
             viewModel.options
+        )
+        opcionesMarket.adapter = ArrayAdapter<String>(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            viewModel.optionsMarket
         )
 
         //Storage
@@ -75,6 +84,10 @@ class AddProductsFragment : Fragment() {
 
 
             }
+        }
+
+        binding.btnAddPrice.setOnClickListener{
+            Toast.makeText(requireContext(),"Prueba", Toast.LENGTH_SHORT).show()
         }
 
         return binding.root
