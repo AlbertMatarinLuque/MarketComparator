@@ -6,5 +6,5 @@ import com.google.firebase.database.IgnoreExtraProperties
 data class PreciosSupermercados(
     var mercado: Mercado,
     var preciosSupermercados: Double,
+    )
 
-)
