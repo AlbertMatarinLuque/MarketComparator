@@ -1,6 +1,7 @@
 package cat.copernic.daniel.marketcomparator.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -11,6 +12,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentHomeBinding
+import cat.copernic.daniel.marketcomparator.addMercado
+import cat.copernic.daniel.marketcomparator.getMercados
 
 class HomeFragment : Fragment() {
     lateinit var viewModel: HomeViewModel
@@ -36,7 +39,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
+        observeDataMercado()
         recyclerView = binding.recycleView
         adapter = TendenciasAdapter(requireContext())
         recyclerView.adapter = adapter
@@ -83,6 +86,12 @@ class HomeFragment : Fragment() {
             binding.shimmerViewContainerNuevo.visibility = View.GONE
             adapterNuevo.setListMasNuevos(it)
             adapterNuevo.notifyDataSetChanged()
+        })
+    }
+
+    fun observeDataMercado() {
+        viewModel.fetchMarketData().observe(viewLifecycleOwner, Observer {
+            addMercado(it)
         })
     }
 }

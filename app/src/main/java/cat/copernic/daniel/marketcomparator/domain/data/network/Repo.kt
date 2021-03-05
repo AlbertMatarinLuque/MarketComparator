@@ -1,7 +1,9 @@
 package cat.copernic.daniel.marketcomparator.domain.data.network
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import cat.copernic.daniel.marketcomparator.model.Mercado
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import cat.copernic.daniel.marketcomparator.model.UsuariDTO
 import com.google.firebase.auth.FirebaseAuth
@@ -85,6 +87,31 @@ class Repo {
             }
         return mutableData
     }
+
+    fun getMarketsData(): LiveData<MutableList<Mercado>> {
+        val mutableData = MutableLiveData<MutableList<Mercado>>()
+        FirebaseDatabase.getInstance().reference.child("markets").get()
+            .addOnSuccessListener { result ->
+
+                val listmarkets = mutableListOf<Mercado>()
+                for (marketsBD in result.children) {
+                    val m: Mercado = Mercado(
+                        marketsBD.child("nombreMercado").getValue().toString(),
+                        marketsBD.child("descripcionMercado").getValue().toString(),
+                        marketsBD.child("puntuacionMercado").getValue().toString().toDouble(),
+                        marketsBD.child("imagenSupermercado").getValue().toString()
+                    )
+                    listmarkets.add(m)
+
+                }
+                mutableData.value = listmarkets
+
+            }
+        return mutableData
+    }
+
+
+
 
     fun getUsername(): LiveData<UsuariDTO> {
         mAuth = FirebaseAuth.getInstance()

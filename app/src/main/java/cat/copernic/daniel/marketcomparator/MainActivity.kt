@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -36,11 +37,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var currentUser: FirebaseUser
     private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
     private val repo = Repo()
+   // private lateinit var viewModel: MainViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        //viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
@@ -111,8 +114,6 @@ class MainActivity : AppCompatActivity() {
             mAuth.removeAuthStateListener(mAuthListener)
         }
     }
-
-
 
 
 }

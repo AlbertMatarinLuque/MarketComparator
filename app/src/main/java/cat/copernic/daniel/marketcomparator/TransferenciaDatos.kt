@@ -14,8 +14,8 @@ fun getViewProduct(): ProductsDTO{
     return product
 }
 
-fun addMercado(){
-
+fun addMercado(m: MutableList<Mercado>){
+    mercados.addAll(m)
 }
 
 fun getMercados(): List<Mercado>{
