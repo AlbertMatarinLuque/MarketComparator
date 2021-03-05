@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentAddProductsBinding
 import cat.copernic.daniel.marketcomparator.getMercados
+import cat.copernic.daniel.marketcomparator.model.PreciosSupermercados
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
@@ -70,8 +72,7 @@ class AddProductsFragment : Fragment() {
 
 
         binding.btnInsert.setOnClickListener {
-            if (binding.edProductName.text.isEmpty() || binding.edDescription.text.isEmpty() ||
-                binding.edPrice.text.isEmpty()
+            if (binding.edProductName.text.isEmpty() || binding.edDescription.text.isEmpty()
             ) {
                 Snackbar.make(requireView(), getString(R.string.emptyFields), Snackbar.LENGTH_SHORT)
                     .show()
@@ -87,7 +88,7 @@ class AddProductsFragment : Fragment() {
         }
 
         binding.btnAddPrice.setOnClickListener{
-            Toast.makeText(requireContext(),"Prueba", Toast.LENGTH_SHORT).show()
+            addPrice()
         }
 
         return binding.root
@@ -133,7 +134,7 @@ class AddProductsFragment : Fragment() {
                 if (it.isSuccessful) {
                     viewModel.product.nombreProducto = binding.edProductName.text.toString()
                     viewModel.product.descripcionProducto = binding.edDescription.text.toString()
-                   // viewModel.product.precioProducto = binding.edPrice.text.toString().toDouble()
+                    viewModel.product.listaPrecios = viewModel.listPrices
                     viewModel.product.contenedorProducto =
                         binding.spContenedor.selectedItem.toString()
                     viewModel.product.tendenciaProducto = 0
@@ -142,6 +143,21 @@ class AddProductsFragment : Fragment() {
                 }
             }
         }
+    }
+
+
+    fun addPrice(){
+        for(m in getMercados()){
+            if(m.nombreMercado == binding.spMercados.selectedItem.toString() && binding.edPrice.text.isNotEmpty()){
+                    var item: PreciosSupermercados = PreciosSupermercados(
+                        m, binding.edPrice.text.toString().toDouble()
+                    )
+                    viewModel.listPrices.add(item)
+            }
+        }
+
+        Log.e("Precios",viewModel.listPrices.toString())
+
     }
 }
 

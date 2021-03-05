@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.getMercados
 import cat.copernic.daniel.marketcomparator.model.Mercado
+import cat.copernic.daniel.marketcomparator.model.PreciosSupermercados
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import com.google.firebase.database.*
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +20,7 @@ class AddProductViewModel : ViewModel() {
     var optionsMarket: MutableList<String> = mutableListOf()
     var numid: Long = 0
     var idProducto: String
+    var listPrices: MutableList<PreciosSupermercados> = mutableListOf()
     var product: ProductsDTO = ProductsDTO("", "", mutableListOf(), "", 0, "")
 
     private var database: DatabaseReference =
