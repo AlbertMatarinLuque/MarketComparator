@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TabHost
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentSeeProductBinding
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import cat.copernic.daniel.marketcomparator.getViewProduct
+import cat.copernic.daniel.marketcomparator.ui.products.ProductsAdapter
 import com.bumptech.glide.Glide
 
 
@@ -19,6 +21,8 @@ class SeeProductFragment : Fragment() {
     lateinit var binding: FragmentSeeProductBinding
     var product: ProductsDTO = ProductsDTO("","",mutableListOf(),"",0,"")
     private lateinit var tabHost: TabHost
+    lateinit var recyclerView: RecyclerView
+    lateinit var adapter: SeeProductAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,11 +34,18 @@ class SeeProductFragment : Fragment() {
             container,
             false)
 
+
         inicializarHostTab()
 
 
         product = getViewProduct()
         setData()
+        recyclerView = binding.recycleViewPrices
+        // Inflate the layout for this fragment
+        adapter = SeeProductAdapter(requireContext())
+        // recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = adapter
+        observeData()
         return binding.root
     }
 
@@ -74,6 +85,16 @@ class SeeProductFragment : Fragment() {
         tabSpec.setContent(R.id.tab3)
         tabSpec.setIndicator("Reciclatge")
         tabHost.addTab(tabSpec)
+    }
+
+    fun observeData() {
+       // binding.shimmerViewContainer.startShimmer()
+       // viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
+           // binding.shimmerViewContainer.stopShimmer()
+           // binding.shimmerViewContainer.visibility = View.GONE
+            adapter.setListPricesData(product.listaPrecios)
+         //   adapter.notifyDataSetChanged()
+        //})
     }
 
 }
