@@ -47,16 +47,10 @@ class SeeProductAdapter(private val context: Context) :
         fun bindView(prices: PreciosSupermercados) {
             itemView.findViewById<TextView>(R.id.tvNameMarket).setText(prices.mercado.nombreMercado)
             itemView.findViewById<TextView>(R.id.tvPricesMarket).setText(prices.preciosSupermercados.toString() +  "€")
-            Log.e("Prices" ,dataList.toString() )
             val media = prices.mercado.imagenSupermercado
             Glide.with(itemView)
                 .load(media)
                 .into(itemView.findViewById<ImageView>(R.id.imgMarket))
-            itemView.setOnClickListener {
-               /* setViewProduct(product)
-                itemView.findNavController()
-                    .navigate(R.id.action_productFragment_to_seeProductFragment)*/
-            }
         }
     }
 
