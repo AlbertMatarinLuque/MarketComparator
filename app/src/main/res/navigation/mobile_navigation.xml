@@ -67,11 +67,6 @@
             app:destination="@id/searchFragment2" />
     </fragment>
     <fragment
-        android:id="@+id/trendsFragment2"
-        android:name="cat.copernic.daniel.marketcomparator.ui.class.TrendsFragment"
-        android:label="fragment_class"
-        tools:layout="@layout/fragment_class" />
-    <fragment
         android:id="@+id/registerFragment"
         android:name="cat.copernic.daniel.marketcomparator.ui.configuration.users.register.RegisterFragment"
         android:label="fragment_register"
@@ -91,8 +86,8 @@
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" >
         <action
-            android:id="@+id/action_aboutFragment_to_mapsFragment"
-            app:destination="@id/mapsFragment" />
+            android:id="@+id/action_aboutFragment_to_masInfoUbicacionFragment"
+            app:destination="@id/masInfoUbicacionFragment" />
     </fragment>
     <fragment
         android:id="@+id/addProductsFragment"
@@ -114,8 +109,8 @@
         android:label="fragment_gestion_mercados"
         tools:layout="@layout/fragment_gestion_mercados" />
     <fragment
-        android:id="@+id/mapsFragment"
-        android:name="cat.copernic.daniel.marketcomparator.ui.map.MapsFragment"
-        android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" />
+        android:id="@+id/masInfoUbicacionFragment"
+        android:name="cat.copernic.daniel.marketcomparator.ui.configuration.configuration.MasInfoUbicacionFragment"
+        android:label="fragment_mas_info_ubicacion"
+        tools:layout="@layout/fragment_mas_info_ubicacion" />
 </navigation>

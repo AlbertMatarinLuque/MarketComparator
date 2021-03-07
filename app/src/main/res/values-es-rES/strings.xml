@@ -44,4 +44,8 @@
     <string name="ajustes">Ajustes</string>
     <string name="products">Productos</string>
     <string name="app_name">MarketComparator</string>
+    <string name="aboutUs">Sobre nosotros</string>
+    <string name="Location">Nuestra Ubicación</string>
+    <string name="infoCentro">Dirección: Torrent del Batlle, 10 08225 Terrassa Barcelona. Horario Secretaría: Mañanas de Lunes a Viernes 09:00 - 14:00 h Tardes de Lunes, Martes y Jueves (Excepto Julio) 16:00-18:00 h</string>
+    <string name="ltima_actualitzaci_07_03_2021">" Última actualización: 03/07/2021"</string>
 </resources>

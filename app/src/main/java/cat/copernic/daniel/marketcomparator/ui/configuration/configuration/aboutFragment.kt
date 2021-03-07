@@ -9,10 +9,14 @@ import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentAboutBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -35,6 +39,7 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.aboutUs)
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentAboutBinding>(
             inflater,
@@ -109,8 +114,8 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
     override fun onMarkerClick(marker: Marker?): Boolean {
         if (marker!!.equals(myMarker))
         {
-            Toast.makeText(requireContext(),"Prueba",Toast.LENGTH_SHORT).show()
-            return true
+            findNavController()
+                .navigate(R.id.action_aboutFragment_to_masInfoUbicacionFragment)
         }
         return true
     }
