@@ -9,6 +9,8 @@ import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 
 class HomeViewModel : ViewModel() {
     private val repo = Repo()
+    var tendencias: MutableList<ProductsDTO> = mutableListOf()
+    var lomasNuevo: MutableList<ProductsDTO> = mutableListOf()
 
     fun fetchProductData(): LiveData<MutableList<ProductsDTO>> {
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()

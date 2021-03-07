@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TabHost
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.daniel.marketcomparator.R
@@ -28,6 +29,7 @@ class SeeProductFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.SeeProduct)
         binding = DataBindingUtil.inflate<FragmentSeeProductBinding>(
             inflater,
             R.layout.fragment_see_product,

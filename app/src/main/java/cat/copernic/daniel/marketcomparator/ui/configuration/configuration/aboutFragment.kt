@@ -63,16 +63,10 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         val Institut = LatLng(41.56981636285994, 1.9966395571577435)
-       /* mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Institut, 18F))
-        myMarker = mMap.addMarker(
-            MarkerOptions().position(Institut).title("Institut Nicolau Copèrnic")
-        )*/
         mMap.setOnMarkerClickListener(this)
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Institut, 18F))
         myMarker = mMap.addMarker(
             MarkerOptions().position(Institut).title("Institut Nicolau Copèrnic"))
-
-
 
         enableMyLocation()
 

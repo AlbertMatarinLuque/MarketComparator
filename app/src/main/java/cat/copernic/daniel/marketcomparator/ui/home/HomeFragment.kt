@@ -21,7 +21,6 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: TendenciasAdapter
-
     lateinit var recyclerViewNuevo: RecyclerView
     lateinit var adapterNuevo: MasNuevoAdapter
 
@@ -70,23 +69,27 @@ class HomeFragment : Fragment() {
     }
 
     fun observeData() {
-        binding.shimmerViewContainer.startShimmer()
-        viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
-            binding.shimmerViewContainer.stopShimmer()
-            binding.shimmerViewContainer.visibility = View.GONE
-            adapter.setListTendencias(it)
-            adapter.notifyDataSetChanged()
-        })
+            binding.shimmerViewContainer.startShimmer()
+            viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
+                binding.shimmerViewContainer.stopShimmer()
+                binding.shimmerViewContainer.visibility = View.GONE
+                viewModel.tendencias = it
+                adapter.setListTendencias(viewModel.tendencias)
+                adapter.notifyDataSetChanged()
+            })
+
     }
 
     fun observeDataNuevo() {
-        binding.shimmerViewContainerNuevo.startShimmer()
-        viewModel.fetchProductDataNuevo().observe(viewLifecycleOwner, Observer {
-            binding.shimmerViewContainerNuevo.stopShimmer()
-            binding.shimmerViewContainerNuevo.visibility = View.GONE
-            adapterNuevo.setListMasNuevos(it)
-            adapterNuevo.notifyDataSetChanged()
-        })
+            binding.shimmerViewContainerNuevo.startShimmer()
+            viewModel.fetchProductDataNuevo().observe(viewLifecycleOwner, Observer {
+                binding.shimmerViewContainerNuevo.stopShimmer()
+                binding.shimmerViewContainerNuevo.visibility = View.GONE
+                viewModel.lomasNuevo = it
+                adapterNuevo.setListMasNuevos(viewModel.lomasNuevo)
+                adapterNuevo.notifyDataSetChanged()
+            })
+
     }
 
     fun observeDataMercado() {

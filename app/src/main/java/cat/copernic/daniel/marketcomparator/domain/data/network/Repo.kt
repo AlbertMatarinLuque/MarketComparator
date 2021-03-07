@@ -9,6 +9,7 @@ import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import cat.copernic.daniel.marketcomparator.model.UsuariDTO
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class Repo {
@@ -83,7 +84,6 @@ class Repo {
                     )
                     listPrices = mutableListOf()
                     listProducts.add(p)
-                    Log.e("Productos", listProducts.toString())
                 }
                 listProducts.sortByDescending { it.tendenciaProducto }
                 mutableData.value = listProducts
