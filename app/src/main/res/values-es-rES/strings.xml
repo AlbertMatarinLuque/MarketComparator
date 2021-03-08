@@ -49,4 +49,10 @@
     <string name="infoCentro">Dirección: Torrent del Batlle, 10 08225 Terrassa Barcelona. Horario Secretaría: Mañanas de Lunes a Viernes 09:00 - 14:00 h Tardes de Lunes, Martes y Jueves (Excepto Julio) 16:00-18:00 h</string>
     <string name="ltima_actualitzaci_07_03_2021">" Última actualización: 03/07/2021"</string>
     <string name="SeeProduct">Producto</string>
+    <string name="tendencias">Tendencias:</string>
+    <string name="lomasnuevo">Lo más nuevo:</string>
+    <string name="pruductes_title">Productos</string>
+    <string name="nombre">Nombre Producto:</string>
+    <string name="descripcion">Descripción:</string>
+    <string name="contenedor">Contenedor:</string>
 </resources>
