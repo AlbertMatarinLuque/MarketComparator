@@ -1,6 +1,7 @@
 package cat.copernic.daniel.marketcomparator.ui.showUsers
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +10,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.daniel.marketcomparator.R
+import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
 import cat.copernic.daniel.marketcomparator.model.UsuariDTO
 
 class UsersAdapter(private val context: Context) :
     RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
     private var dataList = mutableListOf<UsuariDTO>()
-
+    private val repo = Repo()
     fun setListData(data: MutableList<UsuariDTO>) {
         dataList = data
     }
@@ -49,8 +51,10 @@ class UsersAdapter(private val context: Context) :
                 Toast.makeText(context, user.nomUsuari, Toast.LENGTH_SHORT).show()
             }
             itemView.findViewById<ImageView>(R.id.btnDelete).setOnClickListener {
-                Toast.makeText(context, "Delete", Toast.LENGTH_SHORT).show()
+                //repo.removeUser(user.uid)
+                Toast.makeText(context, "Delete " + user.nomUsuari, Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 }

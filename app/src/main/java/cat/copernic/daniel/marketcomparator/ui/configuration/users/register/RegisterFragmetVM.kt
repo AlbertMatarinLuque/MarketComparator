@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 
 class RegisterFragmetVM : ViewModel() {
-    var usuari: UsuariDTO = UsuariDTO("", "", "default")
+    var usuari: UsuariDTO = UsuariDTO("", "", "default", "")
     lateinit var currentUser: FirebaseUser
     private var database: DatabaseReference = FirebaseDatabase.getInstance().getReference("usuaris")
 

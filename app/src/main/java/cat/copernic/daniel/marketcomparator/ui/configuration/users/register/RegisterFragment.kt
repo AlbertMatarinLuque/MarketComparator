@@ -64,7 +64,7 @@ class RegisterFragment : Fragment() {
                         viewModel.currentUser = currentUser
                         viewModel.usuari.nomUsuari = binding.ptUser.text.toString()
                         viewModel.usuari.mail = binding.etMail.text.toString()
-
+                        viewModel.usuari.uid = currentUser.uid
                         viewModel.insertDataBBDD()
                         setcurrentUser(currentUser)
                         observeData()
@@ -110,6 +110,7 @@ class RegisterFragment : Fragment() {
                                 viewModel.currentUser = currentUser
                                 viewModel.usuari.nomUsuari = currentUser.displayName!!
                                 viewModel.usuari.mail = currentUser.email!!
+                                viewModel.usuari.uid = currentUser.uid
                                 viewModel.insertDataBBDD()
                                 setcurrentUser(currentUser)
                                 observeData()

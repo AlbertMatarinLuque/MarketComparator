@@ -24,24 +24,31 @@ class Repo {
             .addOnSuccessListener { result ->
 
                 val listProducts = mutableListOf<ProductsDTO>()
-                var listPrices: MutableList<PreciosSupermercados> = mutableListOf<PreciosSupermercados>()
+                var listPrices: MutableList<PreciosSupermercados> =
+                    mutableListOf<PreciosSupermercados>()
                 for (productsBD in result.children) {
 
-                    for(prices in productsBD.child("listaPrecios").children){
-                        val m : Mercado = Mercado(
+                    for (prices in productsBD.child("listaPrecios").children) {
+                        val m: Mercado = Mercado(
                             prices.child("mercado").child("nombreMercado").getValue().toString(),
-                            prices.child("mercado").child("descripcionMercado").getValue().toString(),
-                            prices.child("mercado").child("puntuacionMercado").getValue().toString().toDouble(),
-                            prices.child("mercado").child("imagenSupermercado").getValue().toString()
+                            prices.child("mercado").child("descripcionMercado").getValue()
+                                .toString(),
+                            prices.child("mercado").child("puntuacionMercado").getValue().toString()
+                                .toDouble(),
+                            prices.child("mercado").child("imagenSupermercado").getValue()
+                                .toString()
                         )
-                        val l : PreciosSupermercados = PreciosSupermercados(m,prices.child("preciosSupermercados").getValue().toString().toDouble())
-                        listPrices.add(prices.key!!.toInt(),l)
+                        val l: PreciosSupermercados = PreciosSupermercados(
+                            m,
+                            prices.child("preciosSupermercados").getValue().toString().toDouble()
+                        )
+                        listPrices.add(prices.key!!.toInt(), l)
                     }
 
                     val p: ProductsDTO = ProductsDTO(
                         productsBD.child("nombreProducto").getValue().toString(),
                         productsBD.child("descripcionProducto").getValue().toString(),
-                       // productsBD.child("precioProducto").getValue().toString().toDouble(),
+                        // productsBD.child("precioProducto").getValue().toString().toDouble(),
                         listPrices,
                         productsBD.child("contenedorProducto").getValue().toString(),
                         productsBD.child("tendenciaProducto").getValue().toString().toInt(),
@@ -62,18 +69,25 @@ class Repo {
             .limitToFirst(8)
             .get().addOnSuccessListener { result ->
                 val listProducts = mutableListOf<ProductsDTO>()
-                var listPrices: MutableList<PreciosSupermercados> = mutableListOf<PreciosSupermercados>()
+                var listPrices: MutableList<PreciosSupermercados> =
+                    mutableListOf<PreciosSupermercados>()
                 for (productsBD in result.children) {
                     // Recojer Lista de Precios por Supermercado
-                    for(prices in productsBD.child("listaPrecios").children){
-                        val m : Mercado = Mercado(
+                    for (prices in productsBD.child("listaPrecios").children) {
+                        val m: Mercado = Mercado(
                             prices.child("mercado").child("nombreMercado").getValue().toString(),
-                            prices.child("mercado").child("descripcionMercado").getValue().toString(),
-                            prices.child("mercado").child("puntuacionMercado").getValue().toString().toDouble(),
-                            prices.child("mercado").child("imagenSupermercado").getValue().toString()
+                            prices.child("mercado").child("descripcionMercado").getValue()
+                                .toString(),
+                            prices.child("mercado").child("puntuacionMercado").getValue().toString()
+                                .toDouble(),
+                            prices.child("mercado").child("imagenSupermercado").getValue()
+                                .toString()
                         )
-                        val l : PreciosSupermercados = PreciosSupermercados(m,prices.child("preciosSupermercados").getValue().toString().toDouble())
-                       listPrices.add(prices.key!!.toInt(),l)
+                        val l: PreciosSupermercados = PreciosSupermercados(
+                            m,
+                            prices.child("preciosSupermercados").getValue().toString().toDouble()
+                        )
+                        listPrices.add(prices.key!!.toInt(), l)
                     }
 
                     val p: ProductsDTO = ProductsDTO(
@@ -98,24 +112,31 @@ class Repo {
         FirebaseDatabase.getInstance().reference.child("products").limitToLast(8)
             .get().addOnSuccessListener { result ->
                 val listProducts = mutableListOf<ProductsDTO>()
-                var listPrices: MutableList<PreciosSupermercados> = mutableListOf<PreciosSupermercados>()
+                var listPrices: MutableList<PreciosSupermercados> =
+                    mutableListOf<PreciosSupermercados>()
                 for (productsBD in result.children) {
 
-                    for(prices in productsBD.child("listaPrecios").children){
-                        val m : Mercado = Mercado(
+                    for (prices in productsBD.child("listaPrecios").children) {
+                        val m: Mercado = Mercado(
                             prices.child("mercado").child("nombreMercado").getValue().toString(),
-                            prices.child("mercado").child("descripcionMercado").getValue().toString(),
-                            prices.child("mercado").child("puntuacionMercado").getValue().toString().toDouble(),
-                            prices.child("mercado").child("imagenSupermercado").getValue().toString()
+                            prices.child("mercado").child("descripcionMercado").getValue()
+                                .toString(),
+                            prices.child("mercado").child("puntuacionMercado").getValue().toString()
+                                .toDouble(),
+                            prices.child("mercado").child("imagenSupermercado").getValue()
+                                .toString()
                         )
-                        val l : PreciosSupermercados = PreciosSupermercados(m,prices.child("preciosSupermercados").getValue().toString().toDouble())
-                        listPrices.add(prices.key!!.toInt(),l)
+                        val l: PreciosSupermercados = PreciosSupermercados(
+                            m,
+                            prices.child("preciosSupermercados").getValue().toString().toDouble()
+                        )
+                        listPrices.add(prices.key!!.toInt(), l)
                     }
 
                     val p: ProductsDTO = ProductsDTO(
                         productsBD.child("nombreProducto").getValue().toString(),
                         productsBD.child("descripcionProducto").getValue().toString(),
-                      //  productsBD.child("precioProducto").getValue().toString().toDouble(),
+                        //  productsBD.child("precioProducto").getValue().toString().toDouble(),
                         listPrices,
                         productsBD.child("contenedorProducto").getValue().toString(),
                         productsBD.child("tendenciaProducto").getValue().toString().toInt(),
@@ -154,27 +175,23 @@ class Repo {
     }
 
 
-
-
     fun getUsername(): LiveData<UsuariDTO> {
-
         val mutableData = MutableLiveData<UsuariDTO>()
         val user: FirebaseUser = getCurrentUser()
-
         FirebaseDatabase.getInstance().reference.child("usuaris/${user.uid}").get()
             .addOnSuccessListener { result ->
+                val u: UsuariDTO = UsuariDTO(
+                    result.child("nomUsuari").getValue().toString(),
+                    result.child("mail").getValue().toString(),
+                    result.child("permisos").getValue().toString(),
+                    result.child("uid").getValue().toString()
 
-                        val u: UsuariDTO = UsuariDTO(
-                            result.child("nomUsuari").getValue().toString(),
-                            result.child("mail").getValue().toString(),
-                            result.child("permisos").getValue().toString()
 
-                        )
+                )
 
                 mutableData.value = u
                 updateNav(mutableData)
             }
-
         return mutableData
     }
 
@@ -187,7 +204,8 @@ class Repo {
                     val u: UsuariDTO = UsuariDTO(
                         usersBD.child("nomUsuari").getValue().toString(),
                         usersBD.child("mail").getValue().toString(),
-                        usersBD.child("permisos").getValue().toString()
+                        usersBD.child("permisos").getValue().toString(),
+                        result.child("uid").getValue().toString()
                     )
                     listUsers.add(u)
 
@@ -195,5 +213,11 @@ class Repo {
                 mutableData.value = listUsers
             }
         return mutableData
+    }
+
+    fun removeUser(uid: String) {
+        var database = FirebaseDatabase.getInstance()
+        val myRef: DatabaseReference = database.getReference("usuaris").child(uid)
+        myRef.removeValue()
     }
 }
