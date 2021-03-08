@@ -59,9 +59,6 @@ fun updateNavAnonimo() {
     getnav().menu.findItem(R.id.admin).isVisible = false
 }
 
-fun getpermisions(){
-
-}
 
 fun hideKeyBoard(activity: Activity){
     val input: InputMethodManager =

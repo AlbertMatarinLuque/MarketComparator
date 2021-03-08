@@ -73,6 +73,7 @@ class AuthActivity : Fragment() {
                         binding.loginButton.setVisibility(View.GONE)
                         binding.connectionClose.setVisibility(View.VISIBLE)
                         currentUser = mAuth.currentUser!!
+                        setcurrentUser(currentUser)
                         observeData()
                         //updateNav(currentUser, null)
                         //repo.getUsername()
