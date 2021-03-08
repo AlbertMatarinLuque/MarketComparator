@@ -1,22 +1,17 @@
 package cat.copernic.daniel.marketcomparator.domain.data.network
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import cat.copernic.daniel.marketcomparator.model.Mercado
 import cat.copernic.daniel.marketcomparator.model.PreciosSupermercados
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import cat.copernic.daniel.marketcomparator.model.UsuariDTO
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import cat.copernic.daniel.marketcomparator.getCurrentUser
 import cat.copernic.daniel.marketcomparator.updateNav
 
 class Repo {
-    private lateinit var mAuth: FirebaseAuth
-    lateinit var currentUser: FirebaseUser
 
     fun getProductsData(): LiveData<MutableList<ProductsDTO>> {
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
@@ -185,8 +180,6 @@ class Repo {
                     result.child("mail").getValue().toString(),
                     result.child("permisos").getValue().toString(),
                     result.child("uid").getValue().toString()
-
-
                 )
 
                 mutableData.value = u
@@ -205,7 +198,7 @@ class Repo {
                         usersBD.child("nomUsuari").getValue().toString(),
                         usersBD.child("mail").getValue().toString(),
                         usersBD.child("permisos").getValue().toString(),
-                        result.child("uid").getValue().toString()
+                        usersBD.child("uid").getValue().toString()
                     )
                     listUsers.add(u)
 
@@ -216,8 +209,12 @@ class Repo {
     }
 
     fun removeUser(uid: String) {
-        var database = FirebaseDatabase.getInstance()
-        val myRef: DatabaseReference = database.getReference("usuaris").child(uid)
-        myRef.removeValue()
+        FirebaseDatabase.getInstance().reference.child("usuaris")
+            .child(uid).removeValue()
+    }
+
+    fun modifyUser(user: UsuariDTO) {
+        FirebaseDatabase.getInstance().reference.child("usuaris")
+            .child(user.uid).setValue(user)
     }
 }

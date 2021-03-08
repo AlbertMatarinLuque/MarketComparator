@@ -27,6 +27,7 @@ import cat.copernic.daniel.marketcomparator.setnav
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import cat.copernic.daniel.marketcomparator.setcurrentUser
 
 
 class MainActivity : AppCompatActivity() {
@@ -98,6 +99,8 @@ class MainActivity : AppCompatActivity() {
             override fun onAuthStateChanged(@NonNull firebaseAuth: FirebaseAuth) {
                 val user = firebaseAuth.getCurrentUser()
                 if (user != null) {
+                    setcurrentUser(user)
+                    repo.getUsername()
                     Log.d(TAG, "onAuthStateChanged: signed_in: " + user.getUid())
                 } else {
                     Log.d(TAG, "onAuthStateChanged: signed_out")

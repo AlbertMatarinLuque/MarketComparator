@@ -55,6 +55,7 @@ class users : Fragment() {
     }
 
 
+
     fun observeData() {
         binding.shimmerViewContainerUser.startShimmer()
         viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {

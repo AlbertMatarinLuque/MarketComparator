@@ -15,7 +15,7 @@ class RegisterFragmetVM : ViewModel() {
     private var database: DatabaseReference = FirebaseDatabase.getInstance().getReference("usuaris")
 
     fun insertDataBBDD() {
-        Log.e("user",currentUser.uid.toString())
+        Log.e("user",currentUser.uid)
         database.child(currentUser.uid).setValue(usuari)
     }
 
