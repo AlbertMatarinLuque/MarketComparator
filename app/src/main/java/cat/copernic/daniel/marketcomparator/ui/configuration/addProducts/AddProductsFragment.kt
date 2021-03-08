@@ -60,7 +60,7 @@ class AddProductsFragment : Fragment() {
         opcionesMarket = binding.spMercados
 
 
-        // Esteblecer valores del Spinner
+        // Establecer valores del Spinner
         opciones.adapter = ArrayAdapter<String>(
             requireContext(),
             android.R.layout.simple_list_item_1,
@@ -92,11 +92,8 @@ class AddProductsFragment : Fragment() {
             }
         }
 
-        binding.btnAddPrice.setOnClickListener{
+        binding.btnAddPrice.setOnClickListener {
             addPrice()
-           /* Toast.makeText(requireContext(),"Se ha añadido correctamente el precio en el mercado : ${binding.spMercados.selectedItem.toString()} con un valor de " +
-                    "${binding.edPrice.text}€",Toast.LENGTH_LONG).show()*/
-
             hideKeyBoard(requireActivity())
             Snackbar.make(
                 requireView(),
@@ -114,7 +111,7 @@ class AddProductsFragment : Fragment() {
     override fun onStop() {
         viewModel.product.nombreProducto = binding.edProductName.text.toString()
         viewModel.product.descripcionProducto = binding.edDescription.text.toString()
-       // viewModel.product.precioProducto = binding.edPrice.text.toString().toDouble()
+        // viewModel.product.precioProducto = binding.edPrice.text.toString().toDouble()
         viewModel.product.contenedorProducto = binding.spContenedor.toString()
         super.onStop()
     }
@@ -122,7 +119,7 @@ class AddProductsFragment : Fragment() {
     override fun onResume() {
         binding.edProductName.setText(viewModel.product.nombreProducto)
         binding.edDescription.setText(viewModel.product.descripcionProducto)
-      //  binding.edPrice.setText(viewModel.product.precioProducto.toString())
+        //  binding.edPrice.setText(viewModel.product.precioProducto.toString())
         //binding.spContenedor.set
         super.onResume()
     }
@@ -162,13 +159,13 @@ class AddProductsFragment : Fragment() {
     }
 
 
-    fun addPrice(){
-        for(m in getMercados()){
-            if(m.nombreMercado == binding.spMercados.selectedItem.toString() && binding.edPrice.text.isNotEmpty()){
-                    var item: PreciosSupermercados = PreciosSupermercados(
-                        m, binding.edPrice.text.toString().toDouble()
-                    )
-                    viewModel.listPrices.add(item)
+    fun addPrice() {
+        for (m in getMercados()) {
+            if (m.nombreMercado == binding.spMercados.selectedItem.toString() && binding.edPrice.text.isNotEmpty()) {
+                var item: PreciosSupermercados = PreciosSupermercados(
+                    m, binding.edPrice.text.toString().toDouble()
+                )
+                viewModel.listPrices.add(item)
             }
         }
 
