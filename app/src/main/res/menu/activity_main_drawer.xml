@@ -26,10 +26,10 @@
                     android:id="@+id/authActivity"
                     android:icon="@drawable/common_full_open_on_phone"
                     android:title="@string/menu_login" />
-                <item
+                <!--><item
                     android:id="@+id/settingsFragment"
                     android:icon="@drawable/ic_settings"
-                    android:title="@string/ajustes" />
+                    android:title="@string/ajustes" />-->
                 <item
                     android:id="@+id/aboutFragment"
                     android:icon="@drawable/ic_about"
