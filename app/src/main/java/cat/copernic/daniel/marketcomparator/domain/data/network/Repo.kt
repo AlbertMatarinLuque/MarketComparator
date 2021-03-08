@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import cat.copernic.daniel.marketcomparator.getCurrentUser
+import cat.copernic.daniel.marketcomparator.updateNav
 
 class Repo {
     private lateinit var mAuth: FirebaseAuth
@@ -155,24 +157,24 @@ class Repo {
 
 
     fun getUsername(): LiveData<UsuariDTO> {
-        mAuth = FirebaseAuth.getInstance()
-        currentUser = mAuth.currentUser!!
+
         val mutableData = MutableLiveData<UsuariDTO>()
-        FirebaseDatabase.getInstance().reference.child("usuaris").get()
+        val user: FirebaseUser = getCurrentUser()
+
+        FirebaseDatabase.getInstance().reference.child("usuaris/${user.uid}").get()
             .addOnSuccessListener { result ->
-                var user: UsuariDTO? = null
-                for (usuarisBD in result.children) {
-                    if (usuarisBD.key.toString() == currentUser.uid) {
+
                         val u: UsuariDTO = UsuariDTO(
-                            usuarisBD.child("nomUsuari").getValue().toString(),
-                            usuarisBD.child("mail").getValue().toString(),
-                            usuarisBD.child("permisos").getValue().toString()
+                            result.child("nomUsuari").getValue().toString(),
+                            result.child("mail").getValue().toString(),
+                            result.child("permisos").getValue().toString()
+
                         )
-                        user = u
-                    }
-                }
-                mutableData.value = user
+
+                mutableData.value = u
+                updateNav(mutableData)
             }
+
         return mutableData
     }
 

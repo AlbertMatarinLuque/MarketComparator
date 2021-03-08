@@ -61,7 +61,7 @@ class RegisterFragment : Fragment() {
                         viewModel.usuari.nomUsuari = binding.ptUser.text.toString()
                         viewModel.usuari.mail = binding.etMail.text.toString()
                         viewModel.insertDataBBDD()
-                        updateNav(currentUser, repo.getUsername().value?.nomUsuari)
+                      //  updateNav(currentUser, null)
                         requireView().findNavController()
                             .navigate(R.id.action_registerFragment_to_nav_home)
                     } else {
@@ -104,7 +104,7 @@ class RegisterFragment : Fragment() {
                                 viewModel.usuari.nomUsuari = currentUser.displayName!!
                                 viewModel.usuari.mail = currentUser.email!!
                                 viewModel.insertDataBBDD()
-                                updateNav(currentUser, null)
+                                //updateNav(currentUser, null)
                                 requireView().findNavController()
                                     .navigate(R.id.action_registerFragment_to_nav_home)
                             } else {
