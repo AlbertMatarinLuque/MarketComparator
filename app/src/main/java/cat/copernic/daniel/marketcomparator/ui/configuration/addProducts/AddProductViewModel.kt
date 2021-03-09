@@ -48,7 +48,7 @@ class AddProductViewModel : ViewModel() {
                     ) as NotificationManager
                     var nombre: String = product.nombreProducto
                     notificationManager.sendNotification(
-                        "S'ha afegit un nou producte, $nombre",
+                        context.getString(R.string.notificationText) + nombre,
                         context
                     )
 
@@ -80,6 +80,7 @@ class AddProductViewModel : ViewModel() {
                             incrementarid()
                         }
                     }
+
                     override fun onCancelled(error: DatabaseError) {
                     }
                 })
@@ -111,8 +112,8 @@ class AddProductViewModel : ViewModel() {
         return sb.toString();
     }
 
-    fun setValuesSpinnerMarket(){
-        for(markets in getMercados()){
+    fun setValuesSpinnerMarket() {
+        for (markets in getMercados()) {
             optionsMarket.add(markets.nombreMercado)
         }
     }
