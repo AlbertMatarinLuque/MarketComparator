@@ -1,7 +1,9 @@
 package cat.copernic.daniel.marketcomparator.ui.configuration.addProducts
 
 import android.app.AlertDialog
+import android.app.NotificationManager
 import android.content.Context
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cat.copernic.daniel.marketcomparator.R
@@ -9,6 +11,7 @@ import cat.copernic.daniel.marketcomparator.getMercados
 import cat.copernic.daniel.marketcomparator.model.Mercado
 import cat.copernic.daniel.marketcomparator.model.PreciosSupermercados
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
+import com.example.android.eggtimernotifications.util.sendNotification
 import com.google.firebase.database.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,6 +42,16 @@ class AddProductViewModel : ViewModel() {
             database.child(idProducto).setValue(product)
                 .addOnSuccessListener {
                     showPositiveProductRegisterAlert()
+                    val notificationManager = ContextCompat.getSystemService(
+                        context,
+                        NotificationManager::class.java
+                    ) as NotificationManager
+                    var nombre: String = product.nombreProducto
+                    notificationManager.sendNotification(
+                        "S'ha afegit un nou producte, $nombre",
+                        context
+                    )
+
                 }.addOnFailureListener {
                     showNegativeProductRegisterAlert()
                 }
