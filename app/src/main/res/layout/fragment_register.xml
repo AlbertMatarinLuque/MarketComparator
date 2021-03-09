@@ -102,6 +102,7 @@
                     android:layout_marginRight="20dp"
                     android:text="@string/registrarse" />
 
+
                 <ImageView
                     android:id="@+id/googleImageRegister"
                     android:layout_width="50dp"
@@ -111,7 +112,7 @@
                     android:layout_marginBottom="50dp"
                     app:layout_constraintBottom_toTopOf="@+id/singUpButton"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@mipmap/google_icon" />
+                    app:srcCompat="@drawable/ic_google" />
 
             </LinearLayout>
         </ScrollView>
