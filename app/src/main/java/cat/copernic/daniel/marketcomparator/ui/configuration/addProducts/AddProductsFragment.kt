@@ -1,8 +1,11 @@
 package cat.copernic.daniel.marketcomparator.ui.configuration.addProducts
 
 import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -49,6 +52,11 @@ class AddProductsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        createChannel(
+            getString(R.string.channel_id),
+            getString(R.string.channel_name)
+        )
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Afegir producte"
         viewModel = ViewModelProvider(this).get(AddProductViewModel::class.java)
         viewModel.setContext(requireContext())
@@ -60,7 +68,7 @@ class AddProductsFragment : Fragment() {
         opcionesMarket = binding.spMercados
 
 
-        // Esteblecer valores del Spinner
+        // Establecer valores del Spinner
         opciones.adapter = ArrayAdapter<String>(
             requireContext(),
             android.R.layout.simple_list_item_1,
@@ -92,11 +100,8 @@ class AddProductsFragment : Fragment() {
             }
         }
 
-        binding.btnAddPrice.setOnClickListener{
+        binding.btnAddPrice.setOnClickListener {
             addPrice()
-           /* Toast.makeText(requireContext(),"Se ha añadido correctamente el precio en el mercado : ${binding.spMercados.selectedItem.toString()} con un valor de " +
-                    "${binding.edPrice.text}€",Toast.LENGTH_LONG).show()*/
-
             hideKeyBoard(requireActivity())
             Snackbar.make(
                 requireView(),
@@ -114,7 +119,7 @@ class AddProductsFragment : Fragment() {
     override fun onStop() {
         viewModel.product.nombreProducto = binding.edProductName.text.toString()
         viewModel.product.descripcionProducto = binding.edDescription.text.toString()
-       // viewModel.product.precioProducto = binding.edPrice.text.toString().toDouble()
+        // viewModel.product.precioProducto = binding.edPrice.text.toString().toDouble()
         viewModel.product.contenedorProducto = binding.spContenedor.toString()
         super.onStop()
     }
@@ -122,7 +127,7 @@ class AddProductsFragment : Fragment() {
     override fun onResume() {
         binding.edProductName.setText(viewModel.product.nombreProducto)
         binding.edDescription.setText(viewModel.product.descripcionProducto)
-      //  binding.edPrice.setText(viewModel.product.precioProducto.toString())
+        //  binding.edPrice.setText(viewModel.product.precioProducto.toString())
         //binding.spContenedor.set
         super.onResume()
     }
@@ -162,18 +167,43 @@ class AddProductsFragment : Fragment() {
     }
 
 
-    fun addPrice(){
-        for(m in getMercados()){
-            if(m.nombreMercado == binding.spMercados.selectedItem.toString() && binding.edPrice.text.isNotEmpty()){
-                    var item: PreciosSupermercados = PreciosSupermercados(
-                        m, binding.edPrice.text.toString().toDouble()
-                    )
-                    viewModel.listPrices.add(item)
+    fun addPrice() {
+        for (m in getMercados()) {
+            if (m.nombreMercado == binding.spMercados.selectedItem.toString() && binding.edPrice.text.isNotEmpty()) {
+                var item: PreciosSupermercados = PreciosSupermercados(
+                    m, binding.edPrice.text.toString().toDouble()
+                )
+                viewModel.listPrices.add(item)
             }
         }
 
         Log.e("Precios", viewModel.listPrices.toString())
 
+    }
+
+    private fun createChannel(channelId: String, channelName: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(
+                channelId,
+                channelName,
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                setShowBadge(false)
+            }
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.RED
+            notificationChannel.enableVibration(true)
+            notificationChannel.description = ""
+
+            val notificationManager = requireActivity().getSystemService(
+                NotificationManager::class.java
+            )
+            notificationManager.createNotificationChannel(notificationChannel)
+        }
+    }
+
+    companion object {
+        fun newInstance() = AddProductsFragment()
     }
 }
 

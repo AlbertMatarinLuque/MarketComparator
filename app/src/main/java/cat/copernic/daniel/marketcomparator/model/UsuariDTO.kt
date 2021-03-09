@@ -6,5 +6,6 @@ import com.google.firebase.database.IgnoreExtraProperties
 data class UsuariDTO(
     var nomUsuari: String,
     var mail: String,
-    var permisos: String
+    var permisos: String,
+    var uid: String
 )
