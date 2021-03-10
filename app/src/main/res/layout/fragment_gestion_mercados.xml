@@ -1,88 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="cat.copernic.daniel.marketcomparator.ui.configuration.mercados.GestionMercados">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="88dp"
-        android:text="Nombre del Mercado:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/tvNombreMercado"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Nombre Mercado"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Descripcion del Mercado:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombreMercado" />
-
-    <Button
-        android:id="@+id/btnAddMarket"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="16dp"
-        android:text="Insertar Imagen y subir"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:theme="@style/AppTheme.Usual"
+            tools:context="cat.copernic.daniel.marketcomparator.ui.configuration.mercados.GestionMercados">
 
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="Descripcion del Mercado:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescripcionMercado" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/nombre_del_mercado"
+                android:textColor="@color/dark_green"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/tvPuntuaconMercado"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Puntuacion"
-        android:inputType="textShortMessage|number|textPersonName|numberDecimal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            <EditText
+                android:id="@+id/tvNombreMercado"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/dark_green"
+                android:hint="@string/nombre_mercado_hinr"
+                android:inputType="textPersonName"
+                android:textColor="@color/dark_green"
+                android:textColorHint="@color/dark_green" />
 
-    <EditText
-        android:id="@+id/tvDescripcionMercado"
-        android:layout_width="406dp"
-        android:layout_height="245dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:hint="Descripcion Mercado"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/descripcion_del_mercado"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+            <EditText
+                android:id="@+id/tvDescripcionMercado"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/dark_green"
+                android:gravity="start|top"
+                android:hint="@string/descripcion_mercado_hint"
+                android:inputType="textMultiLine"
+                android:textColor="@color/dark_green"
+                android:textColorHint="@color/dark_green" />
+
+            <EditText
+                android:id="@+id/tvPuntuaconMercado"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/dark_green"
+                android:hint="@string/puntuacion"
+
+                android:inputType="textShortMessage|number|textPersonName|numberDecimal"
+                android:textColor="@color/dark_green"
+                android:textColorHint="@color/dark_green" />
+
+            <Button
+                android:id="@+id/btnAddMarket"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="75dp"
+                android:text="@string/insertar_imagen_y_subir" />
+
+
+        </LinearLayout>
+    </ScrollView>
 </layout>

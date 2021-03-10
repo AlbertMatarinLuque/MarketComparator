@@ -56,4 +56,12 @@
     <string name="descripcion">Descripción:</string>
     <string name="contenedor">Contenedor:</string>
     <string name="notificationText">Se ha añadido un nuevo producto,</string>
+    <string name="qui_som">¿Quiénes somos?</string>
+    <string name="mesInfoUbi">Si quieres saber más sobre dónde estamos, pincha en el marcador de nuestra ubicación.</string>
+    <string name="nombre_del_mercado">Nombre del mercado:</string>
+    <string name="descripcion_del_mercado">Descripción del mercado:</string>
+    <string name="nombre_mercado_hinr">Nombre mercado</string>
+    <string name="descripcion_mercado_hint">Descripción mercado</string>
+    <string name="puntuacion">Puntuación</string>
+    <string name="insertar_imagen_y_subir">Insertar mercado</string>
 </resources>

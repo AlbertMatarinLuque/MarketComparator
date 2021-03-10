@@ -188,5 +188,11 @@
     <string name="notificationText">"S'ha afegit un nou producte, "</string>
     <string name="qui_som">Qui som?</string>
     <string name="mesInfoUbi">Si vols saber més sobre ón som, clica al marcador de la nostre úbicació.</string>
+    <string name="nombre_del_mercado">Nom del mercat:</string>
+    <string name="nombre_mercado_hinr">Nom mercat</string>
+    <string name="descripcion_del_mercado">Descripció del mercat:</string>
+    <string name="descripcion_mercado_hint">Descripció mercat</string>
+    <string name="puntuacion">Puntuació</string>
+    <string name="insertar_imagen_y_subir">Insertar mercat</string>
 
 </resources>
