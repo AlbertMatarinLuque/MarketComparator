@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.core.view.isVisible
 import androidx.navigation.Navigation.findNavController
@@ -47,6 +48,7 @@ class UsersAdapter(private val context: Context) :
 
     inner class UsersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(user: UsuariDTO) {
+            itemView.animation = AnimationUtils.loadAnimation(context,R.anim.fade_transition_animation_up_tp_down)
             itemView.findViewById<TextView>(R.id.mailTV).setText(user.mail)
             itemView.findViewById<TextView>(R.id.usernameTV).setText(user.nomUsuari)
             var mostrar: Boolean = false

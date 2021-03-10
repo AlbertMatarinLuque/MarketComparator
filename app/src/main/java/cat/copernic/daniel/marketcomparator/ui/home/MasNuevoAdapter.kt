@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -43,6 +44,7 @@ class MasNuevoAdapter(private val context: Context) :
 
     inner class LoMasNuevoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(product: ProductsDTO) {
+            itemView.animation = AnimationUtils.loadAnimation(context,R.anim.fade_transition_animation_left_to_right)
             itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
             itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.listaPrecios[0].preciosSupermercados.toString() +  "€")
             itemView.findViewById<TextView>(R.id.tvContainerProduct)

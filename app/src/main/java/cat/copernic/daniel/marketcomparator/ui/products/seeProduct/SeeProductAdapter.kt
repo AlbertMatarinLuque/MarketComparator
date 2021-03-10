@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -45,6 +46,7 @@ class SeeProductAdapter(private val context: Context) :
 
     inner class SeeProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(prices: PreciosSupermercados) {
+            itemView.animation = AnimationUtils.loadAnimation(context,R.anim.fade_transition_animation_up_tp_down)
             itemView.findViewById<TextView>(R.id.tvNameMarket).setText(prices.mercado.nombreMercado)
             itemView.findViewById<TextView>(R.id.tvPricesMarket).setText(prices.preciosSupermercados.toString() +  "€")
             val media = prices.mercado.imagenSupermercado

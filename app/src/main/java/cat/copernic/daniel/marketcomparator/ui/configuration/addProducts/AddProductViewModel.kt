@@ -3,6 +3,7 @@ package cat.copernic.daniel.marketcomparator.ui.configuration.addProducts
 import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.Context
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -32,7 +33,7 @@ class AddProductViewModel : ViewModel() {
     private lateinit var context: Context
 
     init {
-        idProducto = "product$numid"
+        idProducto = "$numid"+"product"
         getLastIDFirebase()
         setValuesSpinnerMarket()
     }
@@ -65,19 +66,21 @@ class AddProductViewModel : ViewModel() {
 
     fun incrementarid() {
         numid++
-        idProducto = "product$numid"
+        idProducto = "$numid" + "product"
     }
 
     fun getLastIDFirebase() {
         viewModelScope.launch(Dispatchers.Main) {
-            val querry = FirebaseDatabase.getInstance().reference.child("products").limitToLast(1)
+            val querry = FirebaseDatabase.getInstance().reference.child("products")
 
             withContext(Dispatchers.IO) {
                 querry.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         for (products in snapshot.children) {
-                            numid = getNumericValues(products.key.toString()).toLong()
-                            incrementarid()
+                            if(numid <= getNumericValues(products.key.toString()).toLong()){
+                                numid = getNumericValues(products.key.toString()).toLong()
+                                incrementarid()
+                            }
                         }
                     }
 
@@ -113,6 +116,7 @@ class AddProductViewModel : ViewModel() {
     }
 
     fun setValuesSpinnerMarket() {
+        optionsMarket.clear()
         for (markets in getMercados()) {
             optionsMarket.add(markets.nombreMercado)
         }
