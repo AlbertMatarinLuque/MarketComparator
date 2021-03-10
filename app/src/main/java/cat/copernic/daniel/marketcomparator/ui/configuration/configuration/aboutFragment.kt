@@ -63,7 +63,7 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
         val videoView: VideoView = binding.vVideo
         val mediaController: MediaController = MediaController(requireContext())
         mediaController.setAnchorView(videoView)
-        val offlineUri: Uri = Uri.parse("android.resource://"+ requireActivity().packageName+"/${R.raw.ejemplo}")
+        val offlineUri: Uri = Uri.parse("android.resource://"+ requireActivity().packageName+"/${R.raw.ejemplo2}")
         videoView.setMediaController(mediaController)
         videoView.setVideoURI(offlineUri)
         videoView.requestFocus()

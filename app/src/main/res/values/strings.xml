@@ -186,5 +186,7 @@
     <string name="ltima_actualitzaci_07_03_2021">Última actualització: 07/03/2021</string>
     <string name="SeeProduct">Producte</string>
     <string name="notificationText">"S'ha afegit un nou producte, "</string>
+    <string name="qui_som">Qui som?</string>
+    <string name="mesInfoUbi">Si vols saber més sobre ón som, clica al marcador de la nostre úbicació.</string>
 
 </resources>
