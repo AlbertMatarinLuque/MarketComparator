@@ -16,6 +16,7 @@ import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentRegisterBinding
 import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
+import cat.copernic.daniel.marketcomparator.hideKeyBoard
 import cat.copernic.daniel.marketcomparator.setcurrentUser
 import cat.copernic.daniel.marketcomparator.updateNav
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -79,6 +80,7 @@ class RegisterFragment : Fragment() {
                 Snackbar.make(requireView(), getString(R.string.emptyFields), Snackbar.LENGTH_SHORT)
                     .show()
             }
+            hideKeyBoard(requireActivity())
         }
 
         binding.googleImageRegister.setOnClickListener {
@@ -90,7 +92,6 @@ class RegisterFragment : Fragment() {
             googleClient.signOut()
             startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
         }
-
         return binding.root
     }
 

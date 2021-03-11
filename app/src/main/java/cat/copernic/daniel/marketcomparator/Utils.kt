@@ -11,6 +11,7 @@ import cat.copernic.daniel.marketcomparator.model.UsuariDTO
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseUser
 import cat.copernic.daniel.marketcomparator.getnav
+import cat.copernic.daniel.marketcomparator.ui.configuration.users.authentication.AuthActivity
 
 
 private lateinit var navView: NavigationView

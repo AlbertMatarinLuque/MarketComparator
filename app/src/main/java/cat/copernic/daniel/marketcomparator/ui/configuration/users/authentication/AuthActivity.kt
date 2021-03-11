@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +14,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import cat.copernic.daniel.marketcomparator.R
+import cat.copernic.daniel.marketcomparator.*
 import cat.copernic.daniel.marketcomparator.databinding.FragmentAuthActivityBinding
 import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
-import cat.copernic.daniel.marketcomparator.ui.configuration.users.register.RegisterFragmetVM
-import cat.copernic.daniel.marketcomparator.updateNav
-import cat.copernic.daniel.marketcomparator.updateNavAnonimo
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -29,7 +25,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import cat.copernic.daniel.marketcomparator.setcurrentUser
 import cat.copernic.daniel.marketcomparator.ui.configuration.users.usersViewModel
 
 
@@ -70,13 +65,12 @@ class AuthActivity : Fragment() {
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         showPositiveLoginAlert()
-                        binding.loginButton.setVisibility(View.GONE)
-                        binding.connectionClose.setVisibility(View.VISIBLE)
+                        binding.loginButton.visibility = View.GONE
+                        binding.connectionClose.visibility = View.VISIBLE
                         currentUser = mAuth.currentUser!!
                         setcurrentUser(currentUser)
                         observeData()
-                        //updateNav(currentUser, null)
-                        //repo.getUsername()
+
                         requireView().findNavController()
                             .navigate(R.id.action_authActivity_to_nav_home)
                     } else {
@@ -87,6 +81,7 @@ class AuthActivity : Fragment() {
                 showEmptyAlert()
             }
             ocultar()
+            hideKeyBoard(requireActivity())
         }
         binding.googleImage.setOnClickListener {
             val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -103,12 +98,12 @@ class AuthActivity : Fragment() {
             updateNavAnonimo()
             requireView().findNavController().navigate(R.id.action_authActivity_to_nav_home)
         }
-        binding.connectionClose.setVisibility(View.GONE)
+        binding.connectionClose.visibility = View.GONE
         var user = mAuth.currentUser
 
         if (user != null) {
-            binding.loginButton.setVisibility(View.GONE)
-            binding.connectionClose.setVisibility(View.VISIBLE)
+            binding.loginButton.visibility = View.GONE
+            binding.connectionClose.visibility = View.VISIBLE
         }
 
         return binding.root
@@ -163,8 +158,8 @@ class AuthActivity : Fragment() {
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
                                 showPositiveGoogleAlert()
-                                binding.loginButton.setVisibility(View.GONE)
-                                binding.connectionClose.setVisibility(View.VISIBLE)
+                                binding.loginButton.visibility = View.GONE
+                                binding.connectionClose.visibility = View.VISIBLE
                                 currentUser = mAuth.currentUser!!
                                 setcurrentUser(currentUser)
                                 observeData()

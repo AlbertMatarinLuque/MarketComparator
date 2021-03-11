@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentGestionMercadosBinding
+import cat.copernic.daniel.marketcomparator.hideKeyBoard
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
@@ -57,6 +58,7 @@ class GestionMercados : Fragment() {
                 intent.setType("image/*")
                 startActivityForResult(intent, GALLERY_INTENT)
             }
+            hideKeyBoard(requireActivity())
         }
 
 

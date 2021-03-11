@@ -3,17 +3,14 @@ package cat.copernic.daniel.marketcomparator.ui.configuration.addProducts
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.annotation.RequiresApi
@@ -89,15 +86,13 @@ class AddProductsFragment : Fragment() {
             ) {
                 Snackbar.make(requireView(), getString(R.string.emptyFields), Snackbar.LENGTH_SHORT)
                     .show()
-
             } else {
 
                 var intent = Intent(Intent.ACTION_PICK)
                 intent.setType("image/*")
                 startActivityForResult(intent, GALLERY_INTENT)
-
-
             }
+            hideKeyBoard(requireActivity())
         }
 
         binding.btnAddPrice.setOnClickListener {
@@ -109,6 +104,7 @@ class AddProductsFragment : Fragment() {
                         "${binding.edPrice.text}€",
                 Snackbar.LENGTH_LONG
             ).show()
+            hideKeyBoard(requireActivity())
             binding.edPrice.text.clear()
         }
 
