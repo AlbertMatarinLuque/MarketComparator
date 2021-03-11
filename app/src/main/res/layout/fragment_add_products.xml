@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +16,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -26,23 +26,24 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="50dp"
                     android:text="@string/nous_producte"
+                    android:textStyle="bold"
                     android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/nom_producte"
+                    android:textStyle="bold"
                     android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/edProductName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginHorizontal="30dp"
                     android:backgroundTint="@color/black"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -51,35 +52,36 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/description"
+                    android:textStyle="bold"
                     android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/edDescription"
-                    android:layout_width="388dp"
+                    android:layout_width="match_parent"
                     android:layout_height="115dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="10dp"
                     android:backgroundTint="@color/black"
-                    android:ems="10"
                     android:gravity="start|top"
                     android:inputType="textMultiLine"
                     android:textColor="@color/black" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="102dp">
+                    android:layout_height="105dp"
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="20dp"
                         android:text="@string/price"
+                        android:textStyle="bold"
                         android:textSize="16sp" />
 
                     <Spinner
@@ -88,14 +90,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignLeft="@+id/edPrice"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginLeft="-112dp"
+                        android:layout_marginLeft="-105dp"
                         android:layout_marginBottom="8dp" />
 
                     <EditText
                         android:id="@+id/edPrice"
                         android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-
+                        android:layout_height="50dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="113dp"
@@ -107,8 +108,8 @@
 
                     <ImageButton
                         android:id="@+id/btnAddPrice"
-                        android:layout_width="57dp"
-                        android:layout_height="49dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_alignRight="@+id/edPrice"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
@@ -128,9 +129,9 @@
                         android:layout_marginEnd="17dp"
                         android:layout_marginRight="-124dp"
                         android:layout_marginBottom="1dp"
-                        android:visibility="gone"
                         android:background="@drawable/circle"
-                        android:src="@drawable/ic_baseline_delete_24" />
+                        android:src="@drawable/ic_baseline_delete_24"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <TextView
@@ -139,19 +140,21 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/contenidor"
+                    android:textStyle="bold"
                     android:textSize="16sp" />
 
                 <Spinner
                     android:id="@+id/spContenedor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp" />
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/black" />
 
                 <Button
                     android:id="@+id/btnInsert"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="10dp"
