@@ -161,6 +161,7 @@ class AddProductsFragment : Fragment() {
                     viewModel.product.tendenciaProducto = 0
                     viewModel.product.imagenProducto = it.result.toString()
                     viewModel.insertarDatosBBDD()
+                    viewModel.listPrices.clear()
                 }
             }
         }
@@ -177,7 +178,6 @@ class AddProductsFragment : Fragment() {
             }
         }
 
-        Log.e("Precios", viewModel.listPrices.toString())
 
     }
 
