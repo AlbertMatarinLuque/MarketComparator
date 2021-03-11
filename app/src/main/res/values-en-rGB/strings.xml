@@ -59,9 +59,9 @@
     <string name="qui_som">About us?</string>
     <string name="mesInfoUbi">If you want to know more about where we are, click on our location marker.</string>
     <string name="nombre_del_mercado">Market name:</string>
-    <string name="nombre_mercado_hinr">Market name</string>
     <string name="descripcion_del_mercado">Market description:</string>
     <string name="descripcion_mercado_hint">Market description</string>
     <string name="puntuacion">Score</string>
     <string name="insertar_imagen_y_subir">Insert market</string>
+    <string name="nombre_mercado_hint">Market name</string>
 </resources>

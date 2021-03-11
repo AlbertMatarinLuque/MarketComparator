@@ -60,8 +60,8 @@
     <string name="mesInfoUbi">Si quieres saber más sobre dónde estamos, pincha en el marcador de nuestra ubicación.</string>
     <string name="nombre_del_mercado">Nombre del mercado:</string>
     <string name="descripcion_del_mercado">Descripción del mercado:</string>
-    <string name="nombre_mercado_hinr">Nombre mercado</string>
     <string name="descripcion_mercado_hint">Descripción mercado</string>
     <string name="puntuacion">Puntuación</string>
     <string name="insertar_imagen_y_subir">Insertar mercado</string>
+    <string name="nombre_mercado_hint">Nombre mercado</string>
 </resources>

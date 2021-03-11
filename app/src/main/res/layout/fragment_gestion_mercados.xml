@@ -5,7 +5,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/grey_100">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +35,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/dark_green"
-                android:hint="@string/nombre_mercado_hinr"
+                android:hint="@string/nombre_mercado_hint"
                 android:inputType="textPersonName"
                 android:textColor="@color/dark_green"
                 android:textColorHint="@color/dark_green" />
