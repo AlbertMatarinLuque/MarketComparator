@@ -24,20 +24,20 @@
                     android:id="@+id/imageViewProduct"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:minHeight="200dp"
-                    android:maxHeight="500dp"
-                    android:minWidth="200dp"
-                    android:maxWidth="500dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
-                    tools:srcCompat="@tools:sample/avatars"/>
+                    android:maxWidth="500dp"
+                    android:maxHeight="500dp"
+                    android:minWidth="200dp"
+                    android:minHeight="200dp"
+                    tools:srcCompat="@tools:sample/avatars" />
 
                 <TabWidget
                     android:id="@android:id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:elevation="4dp"
-                    android:background="@color/grey_300"></TabWidget>
+                    android:background="@color/grey_300"
+                    android:elevation="4dp"></TabWidget>
 
                 <FrameLayout
                     android:id="@android:id/tabcontent"
@@ -68,8 +68,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/nombre"
-                                    android:textStyle="bold"
-                                    android:textSize="16dp"/>
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/tvName"
@@ -78,7 +78,7 @@
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="5dp"
-                                    android:textSize="14dp"/>
+                                    android:textSize="14dp" />
 
                                 <TextView
                                     android:id="@+id/tvDesc"
@@ -86,8 +86,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:text="@string/descripcion"
-                                    android:textStyle="bold"
-                                    android:textSize="16dp"/>
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/tvDescription"
@@ -96,7 +96,7 @@
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="5dp"
-                                    android:textSize="14dp"/>
+                                    android:textSize="14dp" />
                             </LinearLayout>
                         </ScrollView>
                     </LinearLayout>
@@ -114,7 +114,7 @@
                             android:id="@+id/recycleViewPrices"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
                     </LinearLayout>
 
                     <!-- Tab Contenedor -->
@@ -141,8 +141,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/contenedor"
-                                    android:textStyle="bold"
-                                    android:textSize="16dp"/>
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/tvContenedor"
@@ -151,7 +151,7 @@
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="5dp"
-                                    android:textSize="14dp"/>
+                                    android:textSize="14dp" />
 
 
                             </LinearLayout>

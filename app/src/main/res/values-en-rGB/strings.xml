@@ -64,4 +64,6 @@
     <string name="puntuacion">Score</string>
     <string name="insertar_imagen_y_subir">Insert market</string>
     <string name="nombre_mercado_hint">Market name</string>
+    <string name="copyright">Copyright Disclaimer Under section 107 of the Copyright Act 1976, fair use is permitted for purposes such as criticism, commentary, news, teaching, scholarship, and research. Fair use is use permitted by copyright law that would otherwise infringe. Non-profit educational or personal use proposes a balance in favor of fair use. It is not intended to infringe copyright. ALL RIGHTS belong to their respective owners</string>
+    <string name="qui_som_text">This is the video of our application where you can learn more about our application and who we are.</string>
 </resources>

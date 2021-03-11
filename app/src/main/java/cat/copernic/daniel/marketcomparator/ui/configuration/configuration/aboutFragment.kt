@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
+import android.widget.TabHost
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -34,6 +35,7 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
     private val REQUEST_LOCATION_PERMISSION = 1
     private lateinit var mMap: GoogleMap
     private lateinit var myMarker: Marker
+    private lateinit var tabHost: TabHost
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +47,8 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
             inflater,
             R.layout.fragment_about, container, false
         )
-        val mapFragment =
+        inicializarHostTab()
+       val mapFragment =
             childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         startvideo()
@@ -60,14 +63,14 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
     }
 
     fun startvideo(){
-        val videoView: VideoView = binding.vVideo
+       val videoView: VideoView = binding.vVideo
         val mediaController: MediaController = MediaController(requireContext())
         mediaController.setAnchorView(videoView)
         val offlineUri: Uri = Uri.parse("android.resource://"+ requireActivity().packageName+"/${R.raw.ejemplo2}")
         videoView.setMediaController(mediaController)
         videoView.setVideoURI(offlineUri)
         videoView.requestFocus()
-        videoView.start()
+       // videoView.start()
     }
 
 
@@ -122,6 +125,30 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
                 .navigate(R.id.action_aboutFragment_to_masInfoUbicacionFragment)
         }
         return true
+    }
+
+    fun inicializarHostTab(){
+        tabHost = binding.tabHost
+        tabHost.setup()
+
+        // Tab 1
+        var tabSpec : TabHost.TabSpec
+        tabSpec = tabHost.newTabSpec("Qui som?")
+        tabSpec.setContent(R.id.tab1)
+        tabSpec.setIndicator("Qui som?")
+        tabHost.addTab(tabSpec)
+
+        //Tab 2
+        tabSpec = tabHost.newTabSpec("On som?")
+        tabSpec.setContent(R.id.tab2)
+        tabSpec.setIndicator("On som?")
+        tabHost.addTab(tabSpec)
+
+        // Tab 3
+        tabSpec = tabHost.newTabSpec("Drets d'autor")
+        tabSpec.setContent(R.id.tab3)
+        tabSpec.setIndicator("Drets d'autor")
+        tabHost.addTab(tabSpec)
     }
 
 }
