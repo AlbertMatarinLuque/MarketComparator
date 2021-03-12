@@ -3,13 +3,11 @@ package cat.copernic.daniel.marketcomparator.ui.configuration.addProducts
 import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.Context
-import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.getMercados
-import cat.copernic.daniel.marketcomparator.model.Mercado
 import cat.copernic.daniel.marketcomparator.model.PreciosSupermercados
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import com.example.android.eggtimernotifications.util.sendNotification
@@ -33,7 +31,7 @@ class AddProductViewModel : ViewModel() {
     private lateinit var context: Context
 
     init {
-        idProducto = "$numid"+"product"
+        idProducto = "$numid" + "product"
         getLastIDFirebase()
         setValuesSpinnerMarket()
     }
@@ -77,7 +75,7 @@ class AddProductViewModel : ViewModel() {
                 querry.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         for (products in snapshot.children) {
-                            if(numid <= getNumericValues(products.key.toString()).toLong()){
+                            if (numid <= getNumericValues(products.key.toString()).toLong()) {
                                 numid = getNumericValues(products.key.toString()).toLong()
                                 incrementarid()
                             }
@@ -104,10 +102,10 @@ class AddProductViewModel : ViewModel() {
             }
 
             if (numeric) {
-                //es un valor numerico.
+                //Valor numeric
                 sb.append(cadena[i].toString())
             } else {
-                //no es valor numerico.
+                //Valor no numeric.
             }
 
         }

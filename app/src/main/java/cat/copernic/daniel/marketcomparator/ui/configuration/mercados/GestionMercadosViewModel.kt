@@ -11,11 +11,11 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class GestionMercadosViewModel: ViewModel() {
+class GestionMercadosViewModel : ViewModel() {
     private var database: DatabaseReference =
         FirebaseDatabase.getInstance().getReference("markets")
 
-    var market = Mercado("","",0.0,"")
+    var market = Mercado("", "", 0.0, "")
 
     private lateinit var context: Context
 

@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import cat.copernic.daniel.marketcomparator.R
@@ -14,7 +13,7 @@ import com.bumptech.glide.Glide
 
 
 class MasInfoUbicacionFragment : Fragment() {
-    lateinit var binding:FragmentMasInfoUbicacionBinding
+    lateinit var binding: FragmentMasInfoUbicacionBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,12 +24,13 @@ class MasInfoUbicacionFragment : Fragment() {
             inflater,
             R.layout.fragment_mas_info_ubicacion,
             container,
-            false)
-        val media = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/IESNicolauCopernic.jpg/520px-IESNicolauCopernic.jpg"
+            false
+        )
+        val media =
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/IESNicolauCopernic.jpg/520px-IESNicolauCopernic.jpg"
         Glide.with(requireActivity())
             .load(media)
             .into(binding.ivPictureINS)
-        // Inflate the layout for this fragment
         return binding.root
     }
 }

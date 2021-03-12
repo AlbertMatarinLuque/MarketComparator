@@ -48,7 +48,7 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
             R.layout.fragment_about, container, false
         )
         inicializarHostTab()
-       val mapFragment =
+        val mapFragment =
             childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         startvideo()
@@ -62,15 +62,16 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
         menu.findItem(R.id.trolley).setVisible(false)
     }
 
-    fun startvideo(){
-       val videoView: VideoView = binding.vVideo
+    fun startvideo() {
+        val videoView: VideoView = binding.vVideo
         val mediaController: MediaController = MediaController(requireContext())
         mediaController.setAnchorView(videoView)
-        val offlineUri: Uri = Uri.parse("android.resource://"+ requireActivity().packageName+"/${R.raw.ejemplo2}")
+        val offlineUri: Uri =
+            Uri.parse("android.resource://" + requireActivity().packageName + "/${R.raw.ejemplo2}")
         videoView.setMediaController(mediaController)
         videoView.setVideoURI(offlineUri)
         videoView.requestFocus()
-       // videoView.start()
+        // videoView.start()
     }
 
 
@@ -82,9 +83,7 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
         myMarker = mMap.addMarker(
             MarkerOptions().position(Institut).title("Institut Nicolau Copèrnic")
         )
-
         enableMyLocation()
-
     }
 
     @SuppressLint("MissingPermission")
@@ -127,12 +126,12 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
         return true
     }
 
-    fun inicializarHostTab(){
+    fun inicializarHostTab() {
         tabHost = binding.tabHost
         tabHost.setup()
 
         // Tab 1
-        var tabSpec : TabHost.TabSpec
+        var tabSpec: TabHost.TabSpec
         tabSpec = tabHost.newTabSpec("Qui som?")
         tabSpec.setContent(R.id.tab1)
         tabSpec.setIndicator("Qui som?")

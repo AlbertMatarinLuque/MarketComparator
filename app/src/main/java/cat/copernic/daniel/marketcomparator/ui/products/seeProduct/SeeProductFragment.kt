@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TabHost
 import androidx.appcompat.app.AppCompatActivity
@@ -35,17 +36,11 @@ class SeeProductFragment : Fragment() {
             R.layout.fragment_see_product,
             container,
             false)
-
-
         inicializarHostTab()
-
-
         product = getViewProduct()
         setData()
         recyclerView = binding.recycleViewPrices
-        // Inflate the layout for this fragment
         adapter = SeeProductAdapter(requireContext())
-        // recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
         observeData()
         return binding.root
@@ -55,7 +50,6 @@ class SeeProductFragment : Fragment() {
 
 
     fun setData(){
-
        Glide.with(requireContext())
             .load(product.imagenProducto)
             .into(binding.imageViewProduct)
@@ -90,13 +84,7 @@ class SeeProductFragment : Fragment() {
     }
 
     fun observeData() {
-       // binding.shimmerViewContainer.startShimmer()
-       // viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
-           // binding.shimmerViewContainer.stopShimmer()
-           // binding.shimmerViewContainer.visibility = View.GONE
             adapter.setListPricesData(product.listaPrecios)
-         //   adapter.notifyDataSetChanged()
-        //})
     }
 
 }

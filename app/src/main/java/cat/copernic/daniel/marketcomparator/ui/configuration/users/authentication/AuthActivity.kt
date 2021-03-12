@@ -30,7 +30,6 @@ import cat.copernic.daniel.marketcomparator.ui.configuration.users.usersViewMode
 
 class AuthActivity : Fragment() {
 
-    private val repo = Repo()
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
     private lateinit var binding: FragmentAuthActivityBinding
@@ -163,8 +162,6 @@ class AuthActivity : Fragment() {
                                 currentUser = mAuth.currentUser!!
                                 setcurrentUser(currentUser)
                                 observeData()
-                                //updateNav(repo.getUsername(currentUser))
-
                                 requireView().findNavController()
                                     .navigate(R.id.action_authActivity_to_nav_home)
                             } else {
@@ -194,7 +191,6 @@ class AuthActivity : Fragment() {
     fun ocultar() {
         val vieww: View? = requireActivity().getCurrentFocus()
         if (vieww != null) {
-            //Aquí esta la magia
             val input =
                 requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             input.hideSoftInputFromWindow(vieww.windowToken, 0)
@@ -202,13 +198,7 @@ class AuthActivity : Fragment() {
     }
 
     fun observeData() {
-        //binding.shimmerViewContainer.startShimmer()
-   // updateNav(viewModel.fetchProductData())
         viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
-            //binding.shimmerViewContainer.stopShimmer()
-            //binding.shimmerViewContainer.visibility = View.GONE
-          //  Log.e("User",it.toString())
-           // updateNav(it)
         })
     }
 

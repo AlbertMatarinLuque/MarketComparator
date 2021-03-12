@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -50,19 +49,16 @@ class GestionMercados : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Afegir mercat"
 
         binding.btnAddMarket.setOnClickListener {
-            if(binding.tvNombreMercado.text.isEmpty()){
+            if (binding.tvNombreMercado.text.isEmpty()) {
                 Snackbar.make(requireView(), getString(R.string.emptyFields), Snackbar.LENGTH_SHORT)
                     .show()
-            }else{
+            } else {
                 var intent = Intent(Intent.ACTION_PICK)
                 intent.setType("image/*")
                 startActivityForResult(intent, GALLERY_INTENT)
             }
             hideKeyBoard(requireActivity())
         }
-
-
-        // Inflate the layout for this fragment
         return binding.root
     }
 
@@ -88,8 +84,10 @@ class GestionMercados : Fragment() {
             }).addOnCompleteListener {
                 if (it.isSuccessful) {
                     viewModel.market.nombreMercado = binding.tvNombreMercado.text.toString()
-                    viewModel.market.descripcionMercado = binding.tvDescripcionMercado.text.toString()
-                    viewModel.market.puntuacionMercado = binding.tvPuntuaconMercado.text.toString().toDouble()
+                    viewModel.market.descripcionMercado =
+                        binding.tvDescripcionMercado.text.toString()
+                    viewModel.market.puntuacionMercado =
+                        binding.tvPuntuaconMercado.text.toString().toDouble()
                     viewModel.market.imagenSupermercado = it.result.toString()
                     viewModel.insertarDatosBBDD(binding.tvNombreMercado.text.toString())
                 }

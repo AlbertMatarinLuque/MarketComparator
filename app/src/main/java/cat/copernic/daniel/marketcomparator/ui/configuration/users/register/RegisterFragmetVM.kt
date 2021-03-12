@@ -15,13 +15,12 @@ class RegisterFragmetVM : ViewModel() {
     private var database: DatabaseReference = FirebaseDatabase.getInstance().getReference("usuaris")
 
     fun insertDataBBDD() {
-        Log.e("user",currentUser.uid)
+        Log.e("user", currentUser.uid)
         database.child(currentUser.uid).setValue(usuari)
     }
 
     private val repo = Repo()
     fun fetchProductData(): LiveData<UsuariDTO> {
-
         val mutableData = MutableLiveData<UsuariDTO>()
         repo.getUsername().observeForever {
             mutableData.value = it

@@ -26,8 +26,8 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="50dp"
                     android:text="@string/nous_producte"
-                    android:textStyle="bold"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -35,15 +35,15 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/nom_producte"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edProductName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
                     android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/black"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -55,8 +55,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/description"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edDescription"
@@ -81,8 +81,8 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="20dp"
                         android:text="@string/price"
-                        android:textStyle="bold"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spMercados"
@@ -140,8 +140,8 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/contenidor"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/spContenedor"

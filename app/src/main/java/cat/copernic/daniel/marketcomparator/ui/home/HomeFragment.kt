@@ -43,7 +43,6 @@ class HomeFragment : Fragment() {
         adapter = TendenciasAdapter(requireContext())
         recyclerView.adapter = adapter
         observeData()
-
         recyclerViewNuevo = binding.recycleViewNuevo
         adapterNuevo = MasNuevoAdapter(requireContext())
         recyclerViewNuevo.adapter = adapterNuevo

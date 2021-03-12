@@ -44,7 +44,6 @@ class ProductsAdapter(private val context: Context) :
     inner class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(product: ProductsDTO) {
             itemView.animation = AnimationUtils.loadAnimation(context,R.anim.fade_transition_animation_up_tp_down)
-
             itemView.findViewById<TextView>(R.id.tvNameProduct).setText(product.nombreProducto)
             itemView.findViewById<TextView>(R.id.tvPriceProduct).setText(product.listaPrecios[0].preciosSupermercados.toString() +  "€")
             itemView.findViewById<TextView>(R.id.tvContainerProduct)

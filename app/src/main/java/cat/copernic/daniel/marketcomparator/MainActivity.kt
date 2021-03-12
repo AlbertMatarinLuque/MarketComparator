@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -19,15 +17,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import cat.copernic.daniel.marketcomparator.databinding.ActivityMainBinding
 import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
-import cat.copernic.daniel.marketcomparator.ui.home.HomeViewModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import cat.copernic.daniel.marketcomparator.setnav
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import cat.copernic.daniel.marketcomparator.setcurrentUser
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,24 +31,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var currentUser: FirebaseUser
     private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
     private val repo = Repo()
-   // private lateinit var viewModel: MainViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        //viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
-
         setSupportActionBar(toolbar)
-
         setupFirebaseAuth()
         title = "MarketComparator"
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.productFragment, R.id.authActivity,
@@ -72,12 +58,10 @@ class MainActivity : AppCompatActivity() {
 
         if (mAuth.currentUser != null) {
             currentUser = mAuth.currentUser!!
-           // updateNav(currentUser, repo.getUsername().value?.nomUsuari)
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
@@ -91,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    // Cosas del Firebase
+    // Coses del Firebase
     private fun setupFirebaseAuth() {
         Log.d(TAG, "setupFirebaseAuth: setting up firebase auth.")
         mAuth = FirebaseAuth.getInstance()

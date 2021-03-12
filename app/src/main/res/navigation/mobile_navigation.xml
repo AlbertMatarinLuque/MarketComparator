@@ -18,7 +18,9 @@
             app:destination="@id/shoppingListFragment" />
         <action
             android:id="@+id/action_nav_home_to_seeProductFragment"
-            app:destination="@id/seeProductFragment" />
+            app:destination="@id/seeProductFragment"
+            app:enterAnim="@anim/zoom_in"
+            app:popEnterAnim="@anim/zoom_out" />
     </fragment>
 
     <fragment
@@ -55,7 +57,9 @@
             app:destination="@id/shoppingListFragment" />
         <action
             android:id="@+id/action_productFragment_to_seeProductFragment"
-            app:destination="@id/seeProductFragment" />
+            app:destination="@id/seeProductFragment"
+            app:enterAnim="@anim/zoom_in"
+            app:popEnterAnim="@anim/zoom_out" />
     </fragment>
     <fragment
         android:id="@+id/shoppingListFragment"
@@ -84,7 +88,7 @@
         android:id="@+id/aboutFragment"
         android:name="cat.copernic.daniel.marketcomparator.ui.configuration.configuration.aboutFragment"
         android:label="fragment_about"
-        tools:layout="@layout/fragment_about" >
+        tools:layout="@layout/fragment_about">
         <action
             android:id="@+id/action_aboutFragment_to_masInfoUbicacionFragment"
             app:destination="@id/masInfoUbicacionFragment" />

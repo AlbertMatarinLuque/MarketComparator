@@ -3,7 +3,6 @@ package cat.copernic.daniel.marketcomparator.ui.configuration.users.register
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import cat.copernic.daniel.marketcomparator.R
 import cat.copernic.daniel.marketcomparator.databinding.FragmentRegisterBinding
-import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
 import cat.copernic.daniel.marketcomparator.hideKeyBoard
 import cat.copernic.daniel.marketcomparator.setcurrentUser
-import cat.copernic.daniel.marketcomparator.updateNav
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -28,7 +25,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
 class RegisterFragment : Fragment() {
-    private val repo = Repo()
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
@@ -69,7 +65,7 @@ class RegisterFragment : Fragment() {
                         viewModel.insertDataBBDD()
                         setcurrentUser(currentUser)
                         observeData()
-                      //  updateNav(currentUser, null)
+                        //  updateNav(currentUser, null)
                         requireView().findNavController()
                             .navigate(R.id.action_registerFragment_to_nav_home)
                     } else {
@@ -115,7 +111,6 @@ class RegisterFragment : Fragment() {
                                 viewModel.insertDataBBDD()
                                 setcurrentUser(currentUser)
                                 observeData()
-                                //updateNav(currentUser, null)
                                 requireView().findNavController()
                                     .navigate(R.id.action_registerFragment_to_nav_home)
                             } else {
@@ -166,13 +161,7 @@ class RegisterFragment : Fragment() {
     }
 
     fun observeData() {
-        //binding.shimmerViewContainer.startShimmer()
-        // updateNav(viewModel.fetchProductData())
         viewModel.fetchProductData().observe(viewLifecycleOwner, Observer {
-            //binding.shimmerViewContainer.stopShimmer()
-            //binding.shimmerViewContainer.visibility = View.GONE
-            //  Log.e("User",it.toString())
-            // updateNav(it)
         })
     }
 }

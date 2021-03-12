@@ -49,8 +49,8 @@ class UsersAdapter(private val context: Context) :
     inner class UsersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(user: UsuariDTO) {
             itemView.animation = AnimationUtils.loadAnimation(context,R.anim.fade_transition_animation_up_tp_down)
-            itemView.findViewById<TextView>(R.id.mailTV).setText(user.mail)
-            itemView.findViewById<TextView>(R.id.usernameTV).setText(user.nomUsuari)
+            itemView.findViewById<TextView>(R.id.mailTV).text = user.mail
+            itemView.findViewById<TextView>(R.id.usernameTV).text = user.nomUsuari
             var mostrar: Boolean = false
             itemView.findViewById<ImageView>(R.id.btnModify).setOnClickListener {
                 if(mostrar == false){
