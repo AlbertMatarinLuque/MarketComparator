@@ -188,7 +188,6 @@ class AddProductsFragment : Fragment() {
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.RED
             notificationChannel.enableVibration(true)
-            notificationChannel.description = "Hola"
 
             val notificationManager = requireActivity().getSystemService(
                 NotificationManager::class.java
@@ -197,9 +196,6 @@ class AddProductsFragment : Fragment() {
         }
     }
 
-    companion object {
-        fun newInstance() = AddProductsFragment()
-    }
 }
 
 

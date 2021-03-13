@@ -2,6 +2,7 @@ package cat.copernic.daniel.marketcomparator.ui.configuration.configuration
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.UiModeManager
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -13,6 +14,7 @@ import android.widget.MediaController
 import android.widget.TabHost
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -67,11 +69,10 @@ class aboutFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener {
         val mediaController: MediaController = MediaController(requireContext())
         mediaController.setAnchorView(videoView)
         val offlineUri: Uri =
-            Uri.parse("android.resource://" + requireActivity().packageName + "/${R.raw.ejemplo2}")
+            Uri.parse("android.resource://" + requireActivity().packageName + "/${R.raw.video}")
         videoView.setMediaController(mediaController)
         videoView.setVideoURI(offlineUri)
         videoView.requestFocus()
-        // videoView.start()
     }
 
 

@@ -2,22 +2,20 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view"
-    >
+    tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
 
 
-        <item android:title="Navegació"
-            >
+        <item android:title="Navegació">
             <menu>
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/productFragment"
-            android:icon="@drawable/ic_food_basket"
-            android:title="@string/products" />
+                <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="@string/menu_home" />
+                <item
+                    android:id="@+id/productFragment"
+                    android:icon="@drawable/ic_food_basket"
+                    android:title="@string/products" />
             </menu>
         </item>
 
@@ -39,22 +37,23 @@
             </menu>
         </item>
 
-        <item android:title="Administració"
+        <item
             android:id="@+id/admin"
+            android:title="Administració"
             android:visible="false">
             <menu>
                 <item
                     android:id="@+id/addProductsFragment"
                     android:icon="@drawable/ic_diseno_de_producto"
-                    android:title="@string/administrar_productes"/>
+                    android:title="@string/administrar_productes" />
                 <item
                     android:id="@+id/gestionMercados"
                     android:icon="@drawable/ic_mercado"
-                    android:title="Administrar Mercados"/>
+                    android:title="Administrar Mercados" />
                 <item
                     android:id="@+id/users"
                     android:icon="@drawable/ic_usuario"
-                    android:title="@string/administrar_usuaris"/>
+                    android:title="@string/administrar_usuaris" />
             </menu>
         </item>
     </group>
