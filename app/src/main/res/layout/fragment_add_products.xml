@@ -145,7 +145,7 @@
 
                 <Spinner
                     android:id="@+id/spContenedor"
-                    android:layout_width="115dp"
+                    android:layout_width="125dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
