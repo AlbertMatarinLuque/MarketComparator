@@ -4,10 +4,14 @@ import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.Context
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cat.copernic.daniel.marketcomparator.R
+import cat.copernic.daniel.marketcomparator.domain.data.network.Repo
 import cat.copernic.daniel.marketcomparator.getMercados
+import cat.copernic.daniel.marketcomparator.model.Mercado
 import cat.copernic.daniel.marketcomparator.model.PreciosSupermercados
 import cat.copernic.daniel.marketcomparator.model.ProductsDTO
 import com.example.android.eggtimernotifications.util.sendNotification
@@ -24,6 +28,7 @@ class AddProductViewModel : ViewModel() {
     var idProducto: String
     var listPrices: MutableList<PreciosSupermercados> = mutableListOf()
     var product: ProductsDTO = ProductsDTO("", "", mutableListOf(), "", 0, "")
+    private val repo = Repo()
 
     private var database: DatabaseReference =
         FirebaseDatabase.getInstance().getReference("products")
@@ -33,7 +38,6 @@ class AddProductViewModel : ViewModel() {
     init {
         idProducto = "$numid" + "product"
         getLastIDFirebase()
-        setValuesSpinnerMarket()
     }
 
     fun insertarDatosBBDD() {
@@ -50,6 +54,7 @@ class AddProductViewModel : ViewModel() {
                         context.getString(R.string.notificationText) + nombre,
                         context
                     )
+                    listPrices.clear()
 
                 }.addOnFailureListener {
                     showNegativeProductRegisterAlert()
@@ -113,9 +118,18 @@ class AddProductViewModel : ViewModel() {
         return sb.toString();
     }
 
+    fun fetchMarketData(): LiveData<MutableList<Mercado>> {
+        val mutableData = MutableLiveData<MutableList<Mercado>>()
+        repo.getMarketsData().observeForever {
+            mutableData.value = it
+        }
+
+        return mutableData
+    }
+
     fun setValuesSpinnerMarket() {
         optionsMarket.clear()
-        for (markets in getMercados()) {
+        for (markets in fetchMarketData().value!!) {
             optionsMarket.add(markets.nombreMercado)
         }
     }

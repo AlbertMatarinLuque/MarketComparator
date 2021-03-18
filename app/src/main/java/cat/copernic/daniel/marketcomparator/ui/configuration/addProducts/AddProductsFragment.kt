@@ -17,8 +17,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import cat.copernic.daniel.marketcomparator.R
+import cat.copernic.daniel.marketcomparator.addMercado
 import cat.copernic.daniel.marketcomparator.databinding.FragmentAddProductsBinding
 import cat.copernic.daniel.marketcomparator.getMercados
 import cat.copernic.daniel.marketcomparator.model.PreciosSupermercados
@@ -71,11 +73,17 @@ class AddProductsFragment : Fragment() {
             android.R.layout.simple_list_item_1,
             viewModel.options
         )
-        opcionesMarket.adapter = ArrayAdapter<String>(
-            requireContext(),
-            android.R.layout.simple_list_item_1,
-            viewModel.optionsMarket
-        )
+
+        viewModel.fetchMarketData().observe(viewLifecycleOwner, Observer {
+            for(market in it) {
+                viewModel.optionsMarket.add(market.nombreMercado)
+            }
+            opcionesMarket.adapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.simple_list_item_1,
+                viewModel.optionsMarket
+            )
+        })
 
         //Storage
         mStorage = FirebaseStorage.getInstance().getReference()
@@ -105,7 +113,6 @@ class AddProductsFragment : Fragment() {
                 Snackbar.LENGTH_LONG
             ).show()
             hideKeyBoard(requireActivity())
-            binding.edPrice.text.clear()
         }
 
         return binding.root
@@ -157,6 +164,7 @@ class AddProductsFragment : Fragment() {
                     viewModel.product.tendenciaProducto = 0
                     viewModel.product.imagenProducto = it.result.toString()
                     viewModel.insertarDatosBBDD()
+
                 }
             }
         }

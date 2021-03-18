@@ -259,8 +259,9 @@ class Repo {
     }
 
     fun getMarketsData(): LiveData<MutableList<Mercado>> {
+
         val mutableData = MutableLiveData<MutableList<Mercado>>()
-        FirebaseDatabase.getInstance().reference.child("markets").get()
+        /*FirebaseDatabase.getInstance().reference.child("markets").get()
             .addOnSuccessListener { result ->
 
                 val listmarkets = mutableListOf<Mercado>()
@@ -276,7 +277,33 @@ class Repo {
                 }
                 mutableData.value = listmarkets
 
+            }*/
+
+        var database: FirebaseDatabase  = FirebaseDatabase.getInstance()
+        var ref: DatabaseReference = database.getReference("markets")
+        var query: Query = ref.limitToLast(8)
+
+        query.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val listmarkets = mutableListOf<Mercado>()
+                for (marketsBD in snapshot.children) {
+                    val m: Mercado = Mercado(
+                        marketsBD.child("nombreMercado").getValue().toString(),
+                        marketsBD.child("descripcionMercado").getValue().toString(),
+                        marketsBD.child("puntuacionMercado").getValue().toString().toDouble(),
+                        marketsBD.child("imagenSupermercado").getValue().toString()
+                    )
+                    listmarkets.add(m)
+
+                }
+                mutableData.value = listmarkets
             }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("Repo Mercados","Error a la hora de cargar los mercados")
+            }
+
+        })
         return mutableData
     }
 
