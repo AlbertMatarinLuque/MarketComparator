@@ -22,7 +22,7 @@ import kotlinx.coroutines.withContext
 import java.lang.Double.parseDouble
 
 class AddProductViewModel : ViewModel() {
-    var options: Array<String> = arrayOf("Azul", "Verde", "Amarillo", "Marron", "Gris")
+    var options: Array<String> = arrayOf("Blau", "Verd", "Groc", "Marró", "Gris")
     var optionsMarket: MutableList<String> = mutableListOf()
     var numid: Long = 0
     var idProducto: String
