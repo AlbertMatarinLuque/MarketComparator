@@ -16,16 +16,14 @@ class Repo {
 
     fun getProductsData(): LiveData<MutableList<ProductsDTO>> {
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
-        var database: FirebaseDatabase  = FirebaseDatabase.getInstance()
+        var database: FirebaseDatabase = FirebaseDatabase.getInstance()
         var ref: DatabaseReference = database.getReference("products")
-
-        ref.addValueEventListener(object: ValueEventListener{
+        ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val listProducts = mutableListOf<ProductsDTO>()
                 var listPrices: MutableList<PreciosSupermercados> =
                     mutableListOf<PreciosSupermercados>()
                 for (productsBD in snapshot.children) {
-
                     for (prices in productsBD.child("listaPrecios").children) {
                         val m: Mercado = Mercado(
                             prices.child("mercado").child("nombreMercado").getValue().toString(),
@@ -42,11 +40,9 @@ class Repo {
                         )
                         listPrices.add(prices.key!!.toInt(), l)
                     }
-
                     val p: ProductsDTO = ProductsDTO(
                         productsBD.child("nombreProducto").getValue().toString(),
                         productsBD.child("descripcionProducto").getValue().toString(),
-                        // productsBD.child("precioProducto").getValue().toString().toDouble(),
                         listPrices,
                         productsBD.child("contenedorProducto").getValue().toString(),
                         productsBD.child("tendenciaProducto").getValue().toString().toInt(),
@@ -59,61 +55,19 @@ class Repo {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("Repo Productos","Error a la hora de cargar los datos")
+                Log.e("Repo Productos", "Error a la hora de cargar los datos")
             }
-
         })
         return mutableData
     }
 
     fun getProductsTendencia(): LiveData<MutableList<ProductsDTO>> {
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
-
-      /*  FirebaseDatabase.getInstance().reference.child("products").orderByChild("tendenciaProducto")
-            .limitToFirst(8)
-            .get().addOnSuccessListener { result ->
-                val listProducts = mutableListOf<ProductsDTO>()
-                var listPrices: MutableList<PreciosSupermercados> =
-                    mutableListOf<PreciosSupermercados>()
-                for (productsBD in result.children) {
-                    // Recojer Lista de Precios por Supermercado
-                    for (prices in productsBD.child("listaPrecios").children) {
-                        val m: Mercado = Mercado(
-                            prices.child("mercado").child("nombreMercado").getValue().toString(),
-                            prices.child("mercado").child("descripcionMercado").getValue()
-                                .toString(),
-                            prices.child("mercado").child("puntuacionMercado").getValue().toString()
-                                .toDouble(),
-                            prices.child("mercado").child("imagenSupermercado").getValue()
-                                .toString()
-                        )
-                        val l: PreciosSupermercados = PreciosSupermercados(
-                            m,
-                            prices.child("preciosSupermercados").getValue().toString().toDouble()
-                        )
-                        listPrices.add(prices.key!!.toInt(), l)
-                    }
-
-                    val p: ProductsDTO = ProductsDTO(
-                        productsBD.child("nombreProducto").getValue().toString(),
-                        productsBD.child("descripcionProducto").getValue().toString(),
-                        listPrices,
-                        productsBD.child("contenedorProducto").getValue().toString(),
-                        productsBD.child("tendenciaProducto").getValue().toString().toInt(),
-                        productsBD.child("imagenProducto").getValue().toString()
-                    )
-                    listPrices = mutableListOf()
-                    listProducts.add(p)
-                }
-                listProducts.sortByDescending { it.tendenciaProducto }
-                mutableData.value = listProducts
-            }*/
-        var database: FirebaseDatabase  = FirebaseDatabase.getInstance()
+        var database: FirebaseDatabase = FirebaseDatabase.getInstance()
         var ref: DatabaseReference = database.getReference("products")
         var query: Query = ref.orderByChild("tendenciaProducto")
             .limitToLast(8)
-
-        query.addValueEventListener(object: ValueEventListener{
+        query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val listProducts = mutableListOf<ProductsDTO>()
                 var listPrices: MutableList<PreciosSupermercados> =
@@ -136,7 +90,6 @@ class Repo {
                         )
                         listPrices.add(prices.key!!.toInt(), l)
                     }
-
                     val p: ProductsDTO = ProductsDTO(
                         productsBD.child("nombreProducto").getValue().toString(),
                         productsBD.child("descripcionProducto").getValue().toString(),
@@ -153,9 +106,8 @@ class Repo {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("Repo Productos","Error a la hora de cargar los datos")
+                Log.e("Repo Productos", "Error a la hora de cargar los datos")
             }
-
         })
 
 
@@ -164,52 +116,10 @@ class Repo {
 
     fun getProductsMasNuevo(): LiveData<MutableList<ProductsDTO>> {
         val mutableData = MutableLiveData<MutableList<ProductsDTO>>()
-        /*FirebaseDatabase.getInstance().reference.child("products").limitToLast(8)
-            .get().addOnSuccessListener { result ->
-                val listProducts = mutableListOf<ProductsDTO>()
-                var listPrices: MutableList<PreciosSupermercados> =
-                    mutableListOf<PreciosSupermercados>()
-                for (productsBD in result.children) {
-
-                    for (prices in productsBD.child("listaPrecios").children) {
-                        val m: Mercado = Mercado(
-                            prices.child("mercado").child("nombreMercado").getValue().toString(),
-                            prices.child("mercado").child("descripcionMercado").getValue()
-                                .toString(),
-                            prices.child("mercado").child("puntuacionMercado").getValue().toString()
-                                .toDouble(),
-                            prices.child("mercado").child("imagenSupermercado").getValue()
-                                .toString()
-                        )
-                        val l: PreciosSupermercados = PreciosSupermercados(
-                            m,
-                            prices.child("preciosSupermercados").getValue().toString().toDouble()
-                        )
-                        listPrices.add(prices.key!!.toInt(), l)
-                    }
-
-                    val p: ProductsDTO = ProductsDTO(
-                        productsBD.child("nombreProducto").getValue().toString(),
-                        productsBD.child("descripcionProducto").getValue().toString(),
-                        //  productsBD.child("precioProducto").getValue().toString().toDouble(),
-                        listPrices,
-                        productsBD.child("contenedorProducto").getValue().toString(),
-                        productsBD.child("tendenciaProducto").getValue().toString().toInt(),
-                        productsBD.child("imagenProducto").getValue().toString()
-                    )
-                    listProducts.add(p)
-                    listPrices = mutableListOf()
-                }
-
-                listProducts.sortByDescending { it.tendenciaProducto }
-                mutableData.value = listProducts
-            }*/
-
-        var database: FirebaseDatabase  = FirebaseDatabase.getInstance()
+        var database: FirebaseDatabase = FirebaseDatabase.getInstance()
         var ref: DatabaseReference = database.getReference("products")
         var query: Query = ref.limitToLast(8)
-
-        query.addValueEventListener(object: ValueEventListener{
+        query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val listProducts = mutableListOf<ProductsDTO>()
                 var listPrices: MutableList<PreciosSupermercados> =
@@ -251,7 +161,7 @@ class Repo {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("Repo Productos","Error a la hora de cargar los datos")
+                Log.e("Repo Productos", "Error a la hora de cargar los datos")
             }
 
         })
@@ -259,31 +169,12 @@ class Repo {
     }
 
     fun getMarketsData(): LiveData<MutableList<Mercado>> {
-
         val mutableData = MutableLiveData<MutableList<Mercado>>()
-        /*FirebaseDatabase.getInstance().reference.child("markets").get()
-            .addOnSuccessListener { result ->
-
-                val listmarkets = mutableListOf<Mercado>()
-                for (marketsBD in result.children) {
-                    val m: Mercado = Mercado(
-                        marketsBD.child("nombreMercado").getValue().toString(),
-                        marketsBD.child("descripcionMercado").getValue().toString(),
-                        marketsBD.child("puntuacionMercado").getValue().toString().toDouble(),
-                        marketsBD.child("imagenSupermercado").getValue().toString()
-                    )
-                    listmarkets.add(m)
-
-                }
-                mutableData.value = listmarkets
-
-            }*/
-
-        var database: FirebaseDatabase  = FirebaseDatabase.getInstance()
+        var database: FirebaseDatabase = FirebaseDatabase.getInstance()
         var ref: DatabaseReference = database.getReference("markets")
         var query: Query = ref.limitToLast(8)
 
-        query.addValueEventListener(object: ValueEventListener{
+        query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val listmarkets = mutableListOf<Mercado>()
                 for (marketsBD in snapshot.children) {
@@ -300,7 +191,7 @@ class Repo {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("Repo Mercados","Error a la hora de cargar los mercados")
+                Log.e("Repo Mercados", "Error a la hora de cargar los mercados")
             }
 
         })
@@ -319,7 +210,6 @@ class Repo {
                     result.child("permisos").getValue().toString(),
                     result.child("uid").getValue().toString()
                 )
-
                 mutableData.value = u
                 updateNav(mutableData)
             }
